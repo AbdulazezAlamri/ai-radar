@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "generated_at": "2026-11-01T00:34:38.573633+00:00",
+ "generated_at": "2026-11-01T10:42:35.273718+00:00",
  "count": 39,
  "pillars": {
   "tech": "تقنيات جديدة",
@@ -19,13 +19,13 @@
    "category": "tech",
    "published": "2026-10-31T23:15:22+00:00",
    "snippet": "How We Took Over ChatGPT Accounts Parameter Labs describe an exploit they found against ChatGPT's implementation of the artifacts pattern (OpenAI used to call this \"Canvas\" but it looks like the latest revision is called HTML previews ), where interactive custom HTML apps are displayed in a sandboxed iframe. It's important that HTML in these stays tightly sandboxed to avoid untrusted code interacting with OpenAI APIs and accessing private data. Parameter found quite a complex attack chain. OpenA",
-   "title_ar": "ثغرة تسمح بالاستيلاء على حسابات ChatGPT عبر عرض HTML",
-   "summary_ar": "كشفت Parameter Labs ثغرة استغلال ضد آلية عرض التطبيقات التفاعلية في ChatGPT، وهي تعمل داخل iframe معزول. الهدف من هذا العزل منع الكود غير الموثوق من التفاعل مع واجهات OpenAI والوصول إلى بيانات خاصة. وصفت الجهة سلسلة هجوم معقدة، لكن النص المتاح مقطوع فلا تتوفر تفاصيل أكثر.",
-   "why_ar": "مهم لأي POC يعرض كوداً مولداً بالذكاء الاصطناعي، لأنه يوضح مخاطر العزل الضعيف لمراجعة الأمان.",
+   "title_ar": "فريق Parameter Labs يكشف ثغرة للاستيلاء على حسابات ChatGPT",
+   "summary_ar": "وجد الفريق سلسلة هجوم معقدة ضد آلية artifacts في ChatGPT التي تعرض تطبيقات HTML تفاعلية داخل iframe معزول. الهدف من العزل منع الكود غير الموثوق من الوصول إلى واجهات OpenAI والبيانات الخاصة، والنص مقتطع فلا تتوفر كل التفاصيل.",
+   "why_ar": "إذا كان البنك سيعرض محتوى تولده النماذج داخل تطبيقاته، فهذه الثغرة تذكر بضرورة اختبار عزل الـ sandbox بدقة في أي POC.",
    "tags": [
     "security",
-    "sandboxing",
-    "LLM apps"
+    "sandbox",
+    "ChatGPT"
    ],
    "importance": 4,
    "pillar": "tech"
@@ -38,9 +38,9 @@
    "category": "research",
    "published": "2026-10-30T13:05:28+00:00",
    "snippet": "Evaluating Microsoft Copilot at enterprise scale requires test data that captures the full complexity of real organizations, yet real enterprise data contains sensitive information that cannot be used for evaluation under any circumstances. The post From synthetic enterprise data evaluations to real Microsoft Copilot AI confidence appeared first on Microsoft Research .",
-   "title_ar": "تقييم Copilot ببيانات مؤسسية اصطناعية بدلاً من البيانات الحقيقية",
-   "summary_ar": "يناقش المقال كيف يحتاج تقييم Microsoft Copilot على نطاق المؤسسات إلى بيانات اختبار تحاكي تعقيد المؤسسات الحقيقية. البيانات الحقيقية تحتوي على معلومات حساسة لا يمكن استخدامها للتقييم بأي حال. لذلك يتجه العمل نحو بيانات مؤسسية اصطناعية كبديل. النص المتاح مقتطع، لذا التفاصيل التقنية غير واضحة.",
-   "why_ar": "إذا بنيت POC لتقييم أنظمة ذكاء اصطناعي داخل البنك، فقد تفيدك فكرة استخدام بيانات اصطناعية لتجاوز قيود الخصوصية.",
+   "title_ar": "تقييم Copilot ببيانات مؤسسية اصطناعية بدل البيانات الحساسة",
+   "summary_ar": "يناقش المقال كيفية تقييم Microsoft Copilot على نطاق المؤسسات باستخدام بيانات مؤسسية اصطناعية. السبب أن البيانات الحقيقية تحتوي معلومات حساسة لا يمكن استخدامها للتقييم بأي حال. الهدف هو الوصول إلى ثقة أعلى في أداء أدوات الذكاء الاصطناعي المؤسسية.",
+   "why_ar": "بما أنك تبني POCs في بيئة بنكية، فطريقة إنشاء بيانات تقييم اصطناعية دون كشف معلومات حساسة مفيدة لك مباشرة.",
    "tags": [
     "Copilot",
     "synthetic-data",
@@ -48,64 +48,6 @@
     "enterprise-AI"
    ],
    "importance": 4,
-   "pillar": "poc"
-  },
-  {
-   "id": "a9388aaea1de",
-   "title": "CBK's Draft Guidance Note on Artificial Intelligence in the Banking Sector​ - Deloitte",
-   "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPajJqR3I3YWJFZ1B1N3dOaUlPMXZ0MjBhZF9ENXBDVUw1UndsTW1sNkpuWkZvQzRWSlNQaVlQaExkUnNOUmxWcW5LSHdyN1lGVnVYamZpX3JIdnEtX1VNaHE5MkhJNlRrY0JOM1JmZEo5LWhwZFVZaUFyUHl3WDFPLUhPU3BEaW04eHpEa2ZXdmhVX2YtQXpqQ3hTUksxWTZzMnlWLUxxZ2JxQzhqU0p4QjNDX1ltNDhfWWk5am15bV9rS2h5QWN6R2FwaUlLcDVxdThuejhZQzctTmVfMG83WTBrNmh0Zw?oc=5",
-   "source": "Google News: AI Banking",
-   "category": "banking",
-   "published": "2026-10-31T08:16:27+00:00",
-   "snippet": "CBK's Draft Guidance Note on Artificial Intelligence in the Banking Sector​ Deloitte",
-   "title_ar": "مسودة إرشادات البنك المركزي الكيني حول الذكاء الاصطناعي في القطاع المصرفي",
-   "summary_ar": "يشير العنوان إلى مسودة إرشادات أعدها البنك المركزي الكيني حول استخدام الذكاء الاصطناعي في القطاع المصرفي، ونشرها موقع Deloitte. النص المتاح هو العنوان فقط، ولم يُذكر فيه محتوى الإرشادات.",
-   "why_ar": "يهم هذا المهندس لأنه مؤشر على توجه الرقابة المصرفية تجاه الذكاء الاصطناعي، ويستحق مراجعة النص الكامل للمقارنة مع متطلبات الجهات السعودية.",
-   "tags": [
-    "regulation",
-    "ai-governance",
-    "central-bank"
-   ],
-   "importance": 4,
-   "pillar": "banking"
-  },
-  {
-   "id": "2df1c1274d4d",
-   "title": "دراسة لـ «سدايا» تستعرض دور البيانات المصطنعة في تطوير الذكاء الاصطناعي - عاجل",
-   "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTFA5N2VmUExJNDh5X1kyY2QwckstSFJCZWs2WmxhcEhNTlVEakZzSFFWRVdyTEZXRng4UE5LaHlRbDNlY045?oc=5",
-   "source": "أخبار: الذكاء الاصطناعي في السعودية",
-   "category": "saudi",
-   "published": "2026-10-31T20:45:00+00:00",
-   "snippet": "دراسة لـ «سدايا» تستعرض دور البيانات المصطنعة في تطوير الذكاء الاصطناعي عاجل",
-   "title_ar": "سدايا تستعرض دور البيانات المصطنعة في تطوير الذكاء الاصطناعي",
-   "summary_ar": "دراسة صادرة عن الهيئة السعودية للبيانات والذكاء الاصطناعي (سدايا) تتناول دور البيانات المصطنعة في تطوير الذكاء الاصطناعي. النص المتاح لا يوضح المنهجية أو النتائج.",
-   "why_ar": "البيانات المصطنعة حل عملي لنقص بيانات التدريب في البنوك بسبب قيود الخصوصية، وقد تصلح موضوعاً لبحث أو POC.",
-   "tags": [
-    "Synthetic Data",
-    "SDAIA",
-    "Saudi AI"
-   ],
-   "importance": 4,
-   "pillar": "research"
-  },
-  {
-   "id": "b7d877ad207e",
-   "title": "Unlocking Any-Order Generation in Pretrained Autoregressive Image Models",
-   "url": "https://huggingface.co/papers/2610.39293",
-   "source": "HF Papers 👍2",
-   "category": "research",
-   "published": "2026-10-28T20:00:00.000Z",
-   "snippet": "Autoregressive (AR) image generators are powerful in principle but inflexible in practice: training with a fixed raster-scan order hardcodes a single factorization of the image distribution into the model, leaving it unable to inpaint, outpaint, or edit at inference time. Existing solutions, including the modern discrete-diffusion family, train from scratch on a mixture of token orderings, paying roughly 3x the compute of standard raster-scan training; discrete diffusion further sacrifices compatibility with the AR inference ecosystem (KV caching, vLLM) by construction. We argue that this cost is unnecessary. A pretrained raster-scan AR model has already learned the joint distribution over i",
-   "title_ar": "توليد الصور بأي ترتيب في نماذج Autoregressive المدربة مسبقاً",
-   "summary_ar": "تعالج الورقة قيد نماذج توليد الصور الانحدارية التي تُدرّب على ترتيب ثابت من أعلى لأسفل، مما يمنعها من الرسم الداخلي أو التوسيع أو التحرير وقت الاستدلال. الحلول الحالية تتطلب تدريباً من الصفر بتكلفة تقارب ثلاثة أضعاف. يرى الباحثون أن النموذج المدرب مسبقاً قد تعلّم التوزيع المشترك بالفعل، مما يجعل التكلفة الإضافية غير ضرورية حسب طرحهم.",
-   "why_ar": "إذا كنت تعمل على تحرير الصور أو إكمالها باستخدام نماذج موجودة، فقد تقدم الورقة طريقة أرخص للتجربة.",
-   "tags": [
-    "autoregressive",
-    "image-generation",
-    "inpainting",
-    "pretrained-models"
-   ],
-   "importance": 3,
    "pillar": "research"
   },
   {
@@ -116,14 +58,129 @@
    "category": "research",
    "published": "2026-10-28T20:00:00.000Z",
    "snippet": "Foundation models are typically trained in stages: pretraining, midtraining, supervised fine-tuning (SFT), and reinforcement learning (RL), with changes in both data and learning algorithms. We show that this algorithmic separation is not fundamental. By deriving suitable RL objectives as maximum-likelihood fitting to model-generated target distributions, we place all of these stages under a single likelihood-based training algorithm, unified training. This perspective turns the foundation-model training lifecycle into a problem of choosing which data to train on, in what proportions, and when, with conventional staged training as a special case. We instantiate this framework in a unified tr",
-   "title_ar": "تدريب النماذج الأساسية بخوارزمية واحدة بدلاً من مراحل منفصلة",
-   "summary_ar": "تقترح الورقة أن الفصل بين مراحل التدريب المسبق وmidtraining وSFT والتعلم المعزز ليس جوهرياً. تُصاغ أهداف RL كتعظيم احتمالية على توزيعات مستهدفة يولدها النموذج، فتصبح كل المراحل ضمن خوارزمية احتمالية واحدة. يتحول القرار إلى اختيار البيانات ونسبها وتوقيتها. يقدم الباحثون تطبيقاً لهذا الإطار في تدريب موحد.",
-   "why_ar": "فهم هذا الإطار يساعد في تصميم خطوط تدريب أو ضبط نماذج داخلية بطريقة أبسط وأقل تعقيداً.",
+   "title_ar": "تدريب النماذج الأساسية بخوارزمية واحدة موحدة",
+   "summary_ar": "تُدرَّب النماذج الأساسية عادةً على مراحل منفصلة تشمل الإعداد المسبق والتدريب الوسيط والضبط الإشرافي والتعلم المعزز. يقترح الباحثون صياغة أهداف التعلم المعزز كملاءمة للاحتمال الأعظم لتوزيعات مستهدفة يولدها النموذج. بهذا تصبح كل المراحل جزءاً من خوارزمية احتمالية واحدة يقتصر الاختيار فيها على البيانات ونسبها وتوقيتها.",
+   "why_ar": "يفيدك هذا الطرح إذا كنت تفكر في تخصيص نموذج لبيانات البنك وتريد فهم كيف تُرتَّب مراحل التدريب بطريقة أبسط.",
    "tags": [
+    "foundation-models",
     "unified-training",
     "RL",
-    "SFT",
-    "foundation-models"
+    "SFT"
+   ],
+   "importance": 4,
+   "pillar": "research"
+  },
+  {
+   "id": "272a4aea3916",
+   "title": "Saudi Aramco takes 49% stake in AI firm HUMAIN in $2.6 billion deal - سانا",
+   "url": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFAweEYteUk1Rkw1czd2SWladWxKZmNVX1dRMzZVMHpoeE81cHVNX1hMMU92NEYtM1BFU2NGM1B2aHh4c3FJMEc5clo5NFg?oc=5",
+   "source": "Google News: Saudi AI",
+   "category": "saudi",
+   "published": "2026-11-01T10:34:37+00:00",
+   "snippet": "Saudi Aramco takes 49% stake in AI firm HUMAIN in $2.6 billion deal سانا",
+   "title_ar": "أرامكو تستحوذ على 49% من شركة هيوماين للذكاء الاصطناعي",
+   "summary_ar": "أعلنت أرامكو السعودية استحواذها على 49% من شركة HUMAIN للذكاء الاصطناعي في صفقة بقيمة 2.6 مليار دولار. الخبر يؤكد توجه المملكة للاستثمار في الذكاء الاصطناعي عبر كبرى الشركات.",
+   "why_ar": "تغيّر ملكية شركة ذكاء اصطناعي سعودية كبيرة قد يؤثر على فرص الشراكة والمنتجات المتاحة محلياً.",
+   "tags": [
+    "Aramco",
+    "HUMAIN",
+    "Saudi AI"
+   ],
+   "importance": 4,
+   "pillar": "vc"
+  },
+  {
+   "id": "8e4de3e6f2a2",
+   "title": "«أرامكو» السعودية تستحوذ على 49% من «هيوماين» للذكاء الاصطناعي - CNN الاقتصادية",
+   "url": "https://news.google.com/rss/articles/CBMi4wNBVV95cUxPTDdwd1JCWGJiNkVMakRwaTAxSUpwdTVYVXNEVEFpN1YyYmtVNWplQXRCcHNhSlBlMGVtVzRKbXBITzBZdXFkMTBYOTdKR3Y0QzZ5TXRZZ09MbEZ3R2NUMGdhbmJ2YXVvcE5PdlFZX1VKMlQwQ2p4aXU4SmcxNTJCcFU0dU41bFVuVnVnSTMwSmZpTnhLbXJNUzdnQTlhY1J0c2NfRmtEaHVWUnJlTl9DaElqd29rejZmZVczZmVPRFRkVXVmUmdpT250OHU0UGRVQXYzcVNyNHVwNTFZMmV0ZEdGbU1nNG8tOFY3Q1pkc2hMcHQ4RlNtdmpvMXBNeWU1STJlbURoVTV5dUJ6STI5UFJNT0dYY1NXMzFTaC02Rlk0eE5KNm1CalFzS3QxODZKRU04TXVBUHRZdmZzenY3QXd2NTJQWTdoTzlqeElGdWk2RWFYOG9mTkJZVjZXWVpKUFhEalhycGpSWlVDOTNmMWh0Tm5CUXRrVXVhd2hFX19pR1NVWWJsdmZMWElpTnpreTBqUTNXVkpmczAySldsbThqaEt4QWJWcGFGb3VuSWVoLXJMZXEweC00U3E4WWh5YmVwWkhHLVFZUFRtQ2tvd2ZiR1dZN2FUM0NOMWwtNGZSYlU?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي في السعودية",
+   "category": "saudi",
+   "published": "2026-11-01T10:33:30+00:00",
+   "snippet": "«أرامكو» السعودية تستحوذ على 49% من «هيوماين» للذكاء الاصطناعي CNN الاقتصادية",
+   "title_ar": "أرامكو تستحوذ على 49% من هيوماين بقيمة 2.6 مليار دولار",
+   "summary_ar": "تستحوذ أرامكو السعودية على 49% من شركة هيوماين للذكاء الاصطناعي. يشير الخبر إلى أن قيمة الصفقة تبلغ 2.6 مليار دولار.",
+   "why_ar": "خبر تكرر في عدة مصادر ويؤكد نمو نظام الذكاء الاصطناعي السعودي، وهو مهم لمتابعة السوق المحلي.",
+   "tags": [
+    "Aramco",
+    "HUMAIN",
+    "Deal"
+   ],
+   "importance": 4,
+   "pillar": "vc"
+  },
+  {
+   "id": "d7e241d7cf24",
+   "title": "Leaking Secrets from Air-Gap Computers by Spelling Radio Signals from RAM (2024)",
+   "url": "https://arxiv.org/abs/2409.02292",
+   "source": "Hacker News (90 pts)",
+   "category": "tech",
+   "published": "2026-11-01T01:46:29Z",
+   "snippet": "",
+   "title_ar": "تسريب البيانات من الحواسيب المعزولة عبر إشارات الراديو الصادرة من الذاكرة",
+   "summary_ar": "عنوان بحثي يصف طريقة لاستخراج أسرار من حاسوب معزول عن الشبكة (air-gap) عبر إشارات راديو تصدرها الذاكرة RAM. النص الكامل غير متوفر، لذا التفاصيل التقنية غير مؤكدة.",
+   "why_ar": "يهم المهندس لأن الأنظمة البنكية الحساسة تعتمد على العزل المادي، فمعرفة هذا النوع من القنوات الجانبية مفيدة عند تقييم أمن بيئات تشغيل النماذج.",
+   "tags": [
+    "security",
+    "air-gap",
+    "side-channel"
+   ],
+   "importance": 3,
+   "pillar": "tech"
+  },
+  {
+   "id": "f9b8a9efbf26",
+   "title": "Memdoor: A team of 5 Qwen3.8-27B models beats Fable 5 on LiveCodeBench Hard",
+   "url": "https://github.com/guregodevo/memdoor/tree/main/examples/workflows/team-solve",
+   "source": "Hacker News (240 pts)",
+   "category": "tech",
+   "published": "2026-10-31T22:46:12Z",
+   "snippet": "",
+   "title_ar": "فريق من خمسة نماذج Qwen3.8-27B يتفوق على Fable 5 في LiveCodeBench Hard",
+   "summary_ar": "يفيد العنوان بأن فريقاً من خمسة نماذج Qwen3.8-27B تفوق على Fable 5 في اختبار LiveCodeBench Hard للبرمجة. النص غير متوفر، لذا لا يمكن التحقق من طريقة التقييم أو الأرقام.",
+   "why_ar": "فكرة الفرق المكونة من نماذج متعددة صغيرة نسبياً تستحق التجربة في مهام البرمجة إذا تأكدت النتائج.",
+   "tags": [
+    "multi-agent",
+    "benchmark",
+    "Qwen"
+   ],
+   "importance": 3,
+   "pillar": "tech"
+  },
+  {
+   "id": "e07ec5d69c95",
+   "title": "Anthropic blocks users for anything touching training larger models",
+   "url": "https://twitter.com/jiahaoshao1/status/2116475922190922088",
+   "source": "Hacker News (363 pts)",
+   "category": "tech",
+   "published": "2026-10-31T19:39:19Z",
+   "snippet": "",
+   "title_ar": "Anthropic تحظر مستخدمين بسبب أي نشاط يتعلق بتدريب نماذج أكبر",
+   "summary_ar": "يفيد العنوان بأن Anthropic تحظر مستخدمين لأسباب مرتبطة بأي نشاط يمس تدريب نماذج أكبر. النص غير متوفر، ولا توجد معايير أو تفاصيل عن نطاق الحظر.",
+   "why_ar": "قد تؤثر هذه السياسة على تجارب تدريب النماذج، لذا يجب مراجعة شروط الاستخدام قبل تنفيذ أي تجربة من هذا النوع.",
+   "tags": [
+    "Anthropic",
+    "policy",
+    "model-training"
+   ],
+   "importance": 3,
+   "pillar": "tech"
+  },
+  {
+   "id": "b7d877ad207e",
+   "title": "Unlocking Any-Order Generation in Pretrained Autoregressive Image Models",
+   "url": "https://huggingface.co/papers/2610.39293",
+   "source": "HF Papers 👍2",
+   "category": "research",
+   "published": "2026-10-28T20:00:00.000Z",
+   "snippet": "Autoregressive (AR) image generators are powerful in principle but inflexible in practice: training with a fixed raster-scan order hardcodes a single factorization of the image distribution into the model, leaving it unable to inpaint, outpaint, or edit at inference time. Existing solutions, including the modern discrete-diffusion family, train from scratch on a mixture of token orderings, paying roughly 3x the compute of standard raster-scan training; discrete diffusion further sacrifices compatibility with the AR inference ecosystem (KV caching, vLLM) by construction. We argue that this cost is unnecessary. A pretrained raster-scan AR model has already learned the joint distribution over i",
+   "title_ar": "توليد الصور بأي ترتيب في نماذج AR المدربة مسبقاً",
+   "summary_ar": "نماذج توليد الصور الانحدارية (AR) تعتمد ترتيباً ثابتاً من أعلى لأسفل، مما يمنعها من الرسم داخل الصورة أو توسيعها أو تعديلها أثناء الاستدلال. الحلول الحالية، ومنها نماذج الانتشار المتقطع، تتطلب تدريباً من الصفر بتكلفة تقارب ثلاثة أضعاف. يجادل الباحثون بأن النموذج المدرب مسبقاً قد تعلم التوزيع المشترك بالفعل، وأن هذه التكلفة غير ضرورية.",
+   "why_ar": "إذا كنت تعمل على تعديل الصور أو توليدها، فهذه الطريقة قد تتيح ميزات التعديل دون إعادة تدريب مكلفة.",
+   "tags": [
+    "autoregressive",
+    "image-generation",
+    "inpainting",
+    "diffusion"
    ],
    "importance": 3,
    "pillar": "research"
@@ -132,18 +189,18 @@
    "id": "c8f4db4ef10f",
    "title": "Proving and Improving the Platonic Representation Hypothesis with JEPAs",
    "url": "https://huggingface.co/papers/2610.39302",
-   "source": "HF Papers 👍58",
+   "source": "HF Papers 👍59",
    "category": "research",
    "published": "2026-10-28T20:00:00.000Z",
    "snippet": "Whether models trained on different modalities converge to the same representation of the world is central to AI. The Platonic Representation Hypothesis (PRH) conjectures that they do as they scale, but without a proof it offers neither a guarantee nor a recipe. We turn the hypothesis into a theorem. First, we prove a Platonic Representation Theorem: Joint-Embedding Predictive Architectures (JEPAs) trained separately on any number of modalities learn the same representation up to one rotation whenever their positive pairs are two observations of one scene--good views--and their misalignment is bounded otherwise. Second, we show that next-token prediction is a JEPA with bad views, parts of a ",
-   "title_ar": "إثبات فرضية التمثيل الأفلاطوني باستخدام نماذج JEPA",
-   "summary_ar": "تحوّل الورقة فرضية التمثيل الأفلاطوني إلى نظرية رياضية. تثبت أن نماذج JEPA المدربة منفصلة على طرائق متعددة تتعلم التمثيل نفسه بعد دوران واحد، بشرط أن تكون أزواج الإيجابيات مشاهدات لنفس المشهد. كما تبيّن أن التنبؤ بالرمز التالي هو JEPA بمشاهدات سيئة. النص المتاح لا يوضح تفاصيل التجارب.",
-   "why_ar": "موضوع نظري قد يصلح كمرجع عند التفكير في توحيد التمثيلات متعددة الوسائط، لكنه ليس عملياً مباشراً للـPOC.",
+   "title_ar": "إثبات فرضية التمثيل الأفلاطوني باستخدام JEPAs",
+   "summary_ar": "يحوّل المقال فرضية التمثيل الأفلاطوني إلى نظرية مُثبتة حول نماذج JEPA المدربة على عدة طرائق. تنص النظرية على أنها تتعلم التمثيل نفسه بعد دوران واحد عندما تكون أزواج الإيجاب من مشاهدات لمشهد واحد. ويعرض المقال أن التنبؤ بالرمز التالي يُعد JEPA بمشاهدات سيئة.",
+   "why_ar": "هو موضوع بحثي نظري يصلح كمرجع إذا كنت تفكر في نشر أبحاث عن تمثيلات متعددة الطرائق.",
    "tags": [
     "JEPA",
     "representation-learning",
-    "theory",
-    "multimodal"
+    "multimodal",
+    "theory"
    ],
    "importance": 3,
    "pillar": "research"
@@ -156,14 +213,14 @@
    "category": "research",
    "published": "2026-10-28T01:24:11.000Z",
    "snippet": "Quarterly earnings forecasting requires an agent to connect financial evidence to the income-statement line items that produce a company's reported earnings. We introduce EPSBench, a benchmark for studying this ability across 149 firm-quarters from 86 US companies. Agents read a fixed collection of filings, earnings-call transcripts, and news, then estimate company-specific income-statement drivers with cited evidence. A shared accounting calculator converts these estimates into GAAP diluted earnings per share (EPS), providing a common basis for comparing forecast assumptions. We evaluate six models under a common harness, assessing point forecast error relative to date-matched analyst conse",
-   "title_ar": "EPSBench: معيار لقياس وكلاء LLM في توقع أرباح السهم",
-   "summary_ar": "يقدم EPSBench معياراً لتقييم قدرة وكلاء النماذج اللغوية على ربط الأدلة المالية ببنود قائمة الدخل التي تنتج ربحية الشركة. يشمل 149 ربعاً مالياً لـ86 شركة أمريكية. يقارن الوكلاء بتوقعات المحللين ويحسب ربحية السهم وفق GAAP بأداة محاسبية مشتركة. تُقيَّم ستة نماذج تحت إطار موحد.",
-   "why_ar": "إذا كنت تبني أدوات تحليل مالي أو تقييم وكلاء في المجال المصرفي، فهذا المعيار يقدم منهجية قابلة لإعادة الاستخدام.",
+   "title_ar": "EPSBench: قياس وكلاء LLM في توقع أرباح الشركات",
+   "summary_ar": "يقدم EPSBench معياراً لقياس قدرة وكلاء النماذج اللغوية على توقع ربحية السهم الفصلية. يشمل المعيار 149 فترة ربع سنوية لـ86 شركة أمريكية، ويقيّم الوكلاء بالاعتماد على التقارير والمكالمات والأخبار. تُحوَّل التقديرات عبر حاسبة محاسبية مشتركة إلى ربحية وفق GAAP، ثم تُقارن بتوقعات المحللين.",
+   "why_ar": "إذا كنت ستقيس وكلاء الذكاء الاصطناعي في بيئة مالية، فهذا المعيار يقدم منهجية تقييم قابلة للتطبيق.",
    "tags": [
     "benchmark",
     "LLM-agents",
-    "finance",
-    "earnings"
+    "earnings",
+    "finance"
    ],
    "importance": 3,
    "pillar": "banking"
@@ -176,9 +233,9 @@
    "category": "research",
    "published": "2026-10-27T20:00:00.000Z",
    "snippet": "Self-distillation offers a way to improve reasoning models when a suitable external teacher is unavailable. However, common approaches rely on privileged information to construct a stronger self-teacher, limiting their use when only unlabeled prompts are available. In this paper, we introduce Weakening-Induced On-Policy Self-Distillation (WISD), which instead constructs a weaker counterpart of the original model and uses the contrast between the two as a training signal without requiring privileged information. We explore two ways to construct the weaker model: low-bit quantization and magnitude pruning. We evaluate WISD across diverse architectures and scales on mathematical and coding reas",
-   "title_ar": "WISD: تحسين نماذج الاستدلال بالتقطير الذاتي عبر إضعاف النموذج",
-   "summary_ar": "تقدم الورقة WISD، وهي طريقة تقطير ذاتي على السياسة الحالية لا تحتاج معلومات مميزة. تُنشئ نسخة أضعف من النموذج عبر التكميم منخفض البت أو تقليم المقادير، ثم تستخدم التباين بينهما كإشارة تدريب. تُختبر على مهام رياضيات وبرمجة عبر معماريات وأحجام مختلفة.",
-   "why_ar": "تقنية عملية لتحسين نماذج الاستدلال عندما تتوفر بيانات بدون تسميات، وتستحق التجربة إذا كنت تضبط نماذج مفتوحة.",
+   "title_ar": "التضعيف المتعمد للتقطير الذاتي في نماذج الاستدلال",
+   "summary_ar": "يقترح WISD تحسين نماذج الاستدلال عبر التقطير الذاتي دون الحاجة إلى معلومات مميزة. يُنشئ الأسلوب نسخة أضعف من النموذج عبر التكميم منخفض البت أو التقليم، ثم يستخدم التباين بين النسختين كإشارة تدريب. يُقيَّم الأسلوب على مهام رياضية وبرمجية عبر بنى وأحجام مختلفة.",
+   "why_ar": "يفيدك إذا أردت تحسين نموذج استدلال لديك بوجود مطالبات غير موسومة فقط، وهو موضوع مناسب للتجربة أو النشر.",
    "tags": [
     "self-distillation",
     "reasoning",
@@ -186,48 +243,67 @@
     "pruning"
    ],
    "importance": 3,
-   "pillar": "tech"
+   "pillar": "research"
   },
   {
-   "id": "c1d7bbe61d18",
-   "title": "microsoft/TokenEconomizer",
-   "url": "https://github.com/microsoft/TokenEconomizer",
-   "source": "GitHub ★3,058",
+   "id": "e0793e65a85a",
+   "title": "outcrawlai/scout",
+   "url": "https://github.com/outcrawlai/scout",
+   "source": "GitHub ★948",
    "category": "github",
-   "published": "2026-10-31T22:53:30Z",
-   "snippet": "Experience-Driven Black-Box Cost Control for Coding Agents",
-   "stars": 3058,
-   "lang": "Python",
-   "title_ar": "TokenEconomizer: التحكم في تكلفة وكلاء البرمجة بالتجربة",
-   "summary_ar": "مشروع من Microsoft يقدم طريقة للتحكم في تكلفة وكلاء البرمجة بأسلوب الصندوق الأسود، ويعتمد على التجربة السابقة. النص المتاح قصير جداً ولا يوضح الآلية أو النتائج.",
-   "why_ar": "إذا كنت تشغل وكلاء برمجة في POCs، فقد يساعد هذا المشروع في ضبط الميزانية، لكن يلزم فحص الكود والتوثيق أولاً.",
+   "published": "2026-11-01T09:51:30Z",
+   "snippet": "Scout: the open-source browser agent, by Outcrawl. Mirrored automatically from Outcrawl's own repository.",
+   "stars": 948,
+   "lang": "TypeScript",
+   "title_ar": "Scout: وكيل متصفح مفتوح المصدر من Outcrawl",
+   "summary_ar": "Scout هو وكيل متصفح مفتوح المصدر من شركة Outcrawl. النص المتاح عنه قصير ولا يذكر تفاصيل تقنية عن القدرات أو طريقة العمل. المستودع منسوخ تلقائياً من مستودع Outcrawl الأصلي.",
+   "why_ar": "وكلاء المتصفح يمكن أن يكونوا أساساً لـ POC لأتمتة مهام الويب الداخلية، ويستحق الأمر إلقاء نظرة سريعة على الكود.",
    "tags": [
-    "cost-control",
-    "coding-agents",
-    "Microsoft",
-    "LLM-ops"
+    "browser-agent",
+    "open-source",
+    "automation"
    ],
    "importance": 3,
-   "pillar": "tech"
+   "pillar": "poc"
   },
   {
    "id": "5757e0eb3900",
    "title": "reacher-z/Awesome-REA",
    "url": "https://github.com/reacher-z/Awesome-REA",
-   "source": "GitHub ★721",
+   "source": "GitHub ★744",
    "category": "github",
-   "published": "2026-10-31T22:47:10Z",
+   "published": "2026-11-01T09:36:43Z",
    "snippet": "Awesome Reverse Engineering Anything: tools, projects, case studies and research papers for websites, games, apps, binaries, firmware and communication protocols.",
-   "stars": 721,
+   "stars": 744,
    "lang": "Python",
-   "title_ar": "قائمة موارد مفتوحة لهندسة العكس للتطبيقات والبرمجيات الثابتة",
-   "summary_ar": "مستودع Awesome-REA يجمع أدوات ومشاريع ودراسات حالة وأوراق بحثية في الهندسة العكسية. يغطي المواقع والألعاب والتطبيقات والملفات الثنائية والبرمجيات الثابتة وبروتوكولات الاتصال. ويتصدر المستودع قائمة الريبوهات الصاعدة بعدد نجوم 721.",
-   "why_ar": "يفيد هذا المهندس كمرجع سريع لفهم أدوات تحليل الثغرات ومتابعة الأبحاث المرتبطة بالأمن السيبراني.",
+   "title_ar": "قائمة مرجعية لهندسة العكس بمساعدة الذكاء الاصطناعي",
+   "summary_ar": "مستودع Awesome-REA يجمع أدوات ومشاريع ودراسات حالة وأوراق بحثية في هندسة العكس للمواقع والألعاب والتطبيقات والملفات الثنائية والبرامج الثابتة وبروتوكولات الاتصال. الهدف الأساسي هو تجميع المراجع في مكان واحد.",
+   "why_ar": "هو مرجع مفيد لفهم تهديدات وكلاء هندسة العكس الآليين، ومادة مناسبة لبحث في أمن البرمجيات والذكاء الاصطناعي.",
    "tags": [
     "reverse-engineering",
-    "security",
-    "research-papers",
-    "awesome-list"
+    "awesome-list",
+    "security"
+   ],
+   "importance": 3,
+   "pillar": "research"
+  },
+  {
+   "id": "e8bb9b5c5c77",
+   "title": "qybaihe/bla",
+   "url": "https://github.com/qybaihe/bla",
+   "source": "GitHub ★1,767",
+   "category": "github",
+   "published": "2026-11-01T09:01:18Z",
+   "snippet": "🛡️ BLA (Blind LLM Agents) — Adversarial defense shield that protects binaries, Electron apps, JS bundles, Python, and WebAssembly against AI reverse-engineering agents like REA. Poison -> Exhaust -> Hallucinate.",
+   "stars": 1767,
+   "lang": "JavaScript",
+   "title_ar": "BLA: درع دفاعي ضد وكلاء هندسة العكس بالذكاء الاصطناعي",
+   "summary_ar": "مشروع BLA يقدم دفاعاً عدائياً يحمي الملفات الثنائية وتطبيقات Electron وحزم JavaScript وPython وWebAssembly من وكلاء هندسة العكس مثل REA. يصف المشروع أسلوبه بثلاث مراحل هي التسميم ثم الإرهاق ثم الهلوسة. النص لا يوضح نتائج التقييم.",
+   "why_ar": "يهم المهندس الذي يبني تطبيقات تحمل منطقاً حساساً أو نماذج داخل البرمجيات الموزعة، ويفتح موضوعاً بحثياً حول حماية النماذج من الوكلاء الآليين.",
+   "tags": [
+    "llm-security",
+    "reverse-engineering",
+    "defense"
    ],
    "importance": 3,
    "pillar": "research"
@@ -236,65 +312,22 @@
    "id": "f72111f2a530",
    "title": "wangzan101/Mika",
    "url": "https://github.com/wangzan101/Mika",
-   "source": "GitHub ★2,726",
+   "source": "GitHub ★3,239",
    "category": "github",
-   "published": "2026-10-31T21:22:13Z",
-   "snippet": "Mika — 你手机上的私人 AI 助理，替你操作 App、上网、把事办成。An on-device AI agent for Android that operates apps and the web to get things done for you.",
-   "stars": 2726,
+   "published": "2026-11-01T07:41:51Z",
+   "snippet": "An on-device AI agent for Android that operates apps and the web to get things done for you.",
+   "stars": 3239,
    "lang": "Kotlin",
-   "title_ar": "Mika: وكيل ذكاء اصطناعي يعمل على الهاتف ويدير التطبيقات",
-   "summary_ar": "Mika وكيل ذكاء اصطناعي يعمل محلياً على أجهزة أندرويد. يستطيع تشغيل التطبيقات وتصفح الإنترنت لإنجاز المهام نيابة عن المستخدم. وحصل المشروع على نحو 2726 نجمة.",
-   "why_ar": "يستحق التجربة لفهم إمكانات الوكلاء على الجهاز المحلي وما يترتب عليها من مخاطر خصوصية وأمان.",
+   "title_ar": "Mika: وكيل ذكاء اصطناعي يعمل على الجهاز ويشغل التطبيقات",
+   "summary_ar": "Mika وكيل ذكاء اصطناعي يعمل على أجهزة أندرويد ويتحكم في التطبيقات والويب لإنجاز المهام نيابة عن المستخدم. يعمل المشروع على الجهاز نفسه دون الاعتماد على خدمة سحابية بحسب الوصف. النص لا يذكر تفاصيل النموذج المستخدم أو مستوى الأداء.",
+   "why_ar": "يقدم نموذجاً عملياً لوكيل على الجهاز يمكن دراسته لتقييم إمكانية تطبيقه في تطبيقات الجوال البنكية.",
    "tags": [
     "on-device-ai",
-    "android-agent",
-    "automation"
+    "android",
+    "agent"
    ],
    "importance": 3,
    "pillar": "tech"
-  },
-  {
-   "id": "97c28dfefe84",
-   "title": "ccch1mneyyy/dsh-Go",
-   "url": "https://github.com/ccch1mneyyy/dsh-Go",
-   "source": "GitHub ★3,603",
-   "category": "github",
-   "published": "2026-10-31T20:37:35Z",
-   "snippet": "dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。",
-   "stars": 3603,
-   "lang": "Dart",
-   "title_ar": "dsh-Go: تشغيل DeepSeek على الهاتف والتحكم بالحاسوب عن بعد",
-   "summary_ar": "dsh-go يتيح تشغيل DeepSeek Harness على الهاتف مباشرة. كما يمكن استخدامه للتحكم بالحاسوب عن بعد. وبلغ عدد نجوم المستودع نحو 3603.",
-   "why_ar": "يفيد في تجربة تشغيل النماذج محلياً وبناء أدوات تحكم بعيد ضمن نماذج POC.",
-   "tags": [
-    "deepseek",
-    "on-device-ai",
-    "remote-control"
-   ],
-   "importance": 3,
-   "pillar": "tech"
-  },
-  {
-   "id": "e8bb9b5c5c77",
-   "title": "qybaihe/bla",
-   "url": "https://github.com/qybaihe/bla",
-   "source": "GitHub ★1,707",
-   "category": "github",
-   "published": "2026-10-31T18:20:01Z",
-   "snippet": "🛡️ BLA (Blind LLM Agents) — Adversarial defense shield that protects binaries, Electron apps, JS bundles, Python, and WebAssembly against AI reverse-engineering agents like REA. Poison -> Exhaust -> Hallucinate.",
-   "stars": 1707,
-   "lang": "JavaScript",
-   "title_ar": "BLA: درع دفاعي يحمي البرمجيات من وكلاء الهندسة العكسية",
-   "summary_ar": "BLA درع دفاعي يحمي الملفات الثنائية وتطبيقات Electron وحزم JavaScript وPython وWebAssembly من وكلاء الهندسة العكسية بالذكاء الاصطناعي مثل REA. يعتمد المشروع على ثلاث مراحل هي التسميم والإرهاق والهلوسة. وبلغ عدد نجوم المستودع نحو 1707.",
-   "why_ar": "يهم هذا المهندس لأنه يطرح تقنية دفاعية قد تحتاج إليها أنظمة البنك عند حماية تطبيقاته ومنصاته من الهندسة العكسية الآلية.",
-   "tags": [
-    "adversarial-defense",
-    "reverse-engineering",
-    "security",
-    "llm-agents"
-   ],
-   "importance": 3,
-   "pillar": "research"
   },
   {
    "id": "98984e2b000d",
@@ -304,89 +337,89 @@
    "category": "banking",
    "published": "2026-11-18T15:00:00+00:00",
    "snippet": "Post-incident fraud management needs to adapt. But how?",
-   "title_ar": "إدارة النزاعات بعد الاحتيال تحتاج إلى تطوير جذري",
-   "summary_ar": "يطرح المقال سؤالاً حول كيفية تكيف إدارة الاحتيال بعد وقوع الحادثة مع الوضع الحالي. النص المتاح قصير ولا يقدم تفاصيل عن الحلول المقترحة.",
-   "why_ar": "يهم هذا المهندس في مشاريع كشف الاحتيال بالذكاء الاصطناعي داخل البنك، وينبغي قراءة المقال الكامل قبل الاعتماد عليه.",
+   "title_ar": "ما بعد كشف الاحتيال: لماذا تحتاج إدارة النزاعات إلى تطوير",
+   "summary_ar": "يرى المقال أن إدارة الاحتيال بعد وقوع الحادثة يجب أن تتكيف مع التطورات الحالية. النص القصير لا يقدم حلولاً محددة أو أرقاماً.",
+   "why_ar": "يفيد فريق الذكاء الاصطناعي في البنك لأنه يشير إلى فرصة لتطوير أنظمة تحليل النزاعات بعد عمليات الاحتيال.",
    "tags": [
     "fraud-detection",
-    "disputes",
+    "dispute-management",
     "banking"
    ],
    "importance": 3,
    "pillar": "banking"
   },
   {
-   "id": "ba9bfa5ff3ec",
-   "title": "Mind the gap: What’s missing from modern resilience?",
-   "url": "https://www.finextra.com/event-info/639/mind-the-gap-whats-missing-from-modern-resilience?utm_medium=rssfinextra&utm_source=finextrafeed",
-   "source": "Finextra AI",
+   "id": "a9388aaea1de",
+   "title": "CBK's Draft Guidance Note on Artificial Intelligence in the Banking Sector​ - Deloitte",
+   "url": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPajJqR3I3YWJFZ1B1N3dOaUlPMXZ0MjBhZF9ENXBDVUw1UndsTW1sNkpuWkZvQzRWSlNQaVlQaExkUnNOUmxWcW5LSHdyN1lGVnVYamZpX3JIdnEtX1VNaHE5MkhJNlRrY0JOM1JmZEo5LWhwZFVZaUFyUHl3WDFPLUhPU3BEaW04eHpEa2ZXdmhVX2YtQXpqQ3hTUksxWTZzMnlWLUxxZ2JxQzhqU0p4QjNDX1ltNDhfWWk5am15bV9rS2h5QWN6R2FwaUlLcDVxdThuejhZQzctTmVfMG83WTBrNmh0Zw?oc=5",
+   "source": "Google News: AI Banking",
    "category": "banking",
-   "published": "2026-11-03T15:00:00+00:00",
-   "snippet": "A roadmap towards engineering resilience into the technology estate from the outset.",
-   "title_ar": "ما الذي تفتقده المرونة التقنية في البنوك الحديثة؟",
-   "summary_ar": "يقدم المقال خريطة طريق لبناء المرونة التقنية في البنية التقنية منذ البداية. النص المتاح قصير ولا يذكر تفاصيل تنفيذية.",
-   "why_ar": "يهم المهندس لأن تصميم أنظمة الذكاء الاصطناعي في البنك يحتاج إلى مرونة تشغيلية منذ المراحل الأولى.",
+   "published": "2026-10-31T08:16:27+00:00",
+   "snippet": "CBK's Draft Guidance Note on Artificial Intelligence in the Banking Sector​ Deloitte",
+   "title_ar": "بنك الكويت المركزي يصدر مسودة إرشادات للذكاء الاصطناعي في البنوك",
+   "summary_ar": "تناول عنوان من Deloitte مسودة إرشادات أصدرها البنك المركزي الكويتي بشأن الذكاء الاصطناعي في القطاع المصرفي. النص المتاح يقتصر على العنوان ولا يتضمن تفاصيل المتطلبات.",
+   "why_ar": "إذا كانت لديك حوكمة نماذج الذكاء الاصطناعي ضمن مهامك، فمراجعة المسودة قد تفيد في مقارنة متطلبات الرقابة الإقليمية.",
    "tags": [
-    "resilience",
-    "architecture",
-    "banking"
+    "Regulation",
+    "AI Governance",
+    "Kuwait"
    ],
    "importance": 3,
    "pillar": "banking"
   },
   {
-   "id": "35674f3b4cb1",
-   "title": "تُحدث البنوك الرقمية تحولاً جذرياً في رحلة الحصول على الائتمان وإدارته. - Vietnam.vn",
-   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQckJJbVROUHBfSTF4cUl2VXVzN29KTjRsOGl0bl9lSGVhaFhSMldpLTFtS2NWRGFXLU05ajVuaC1HQWRjTkJncFBWdVlQc3hJcmxsVjZ2UDdZNDc0M2VNVkhYOS1Eb2tzOHV5WFVTLXVDWVpmVVJSWWRJTnp3WlhSV2lJUE1ucFpVOEE?oc=5",
-   "source": "أخبار: الذكاء الاصطناعي والبنوك",
-   "category": "banking",
-   "published": "2026-10-31T01:10:24+00:00",
-   "snippet": "تُحدث البنوك الرقمية تحولاً جذرياً في رحلة الحصول على الائتمان وإدارته. Vietnam.vn",
-   "title_ar": "البنوك الرقمية تعيد تشكيل الائتمان وإدارته",
-   "summary_ar": "يشير المقال إلى أن البنوك الرقمية تُحدث تحولاً جذرياً في رحلة الحصول على الائتمان وإدارته. النص المتاح عام ولا يتضمن أرقاماً أو تقنيات محددة.",
-   "why_ar": "يفيد في التفكير في POCs لأتمتة قرارات الائتمان وتحسين تجربة العميل في القطاع المصرفي.",
+   "id": "0db89bbf6338",
+   "title": "Oil giant Aramco takes 49 pct stake in Saudi AI company - Bangladesh Sangbad Sangstha (BSS)",
+   "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE4zbE84QlJsX3ZyVmlBZGczSEVjTF9kYjYwamNKaXRQLVJRLS0xUlBRQV9XQVhsazJoTTdDSWtGV0N5WjVXek92VzhucFRja1RF?oc=5",
+   "source": "Google News: Saudi AI",
+   "category": "saudi",
+   "published": "2026-11-01T10:11:59+00:00",
+   "snippet": "Oil giant Aramco takes 49 pct stake in Saudi AI company Bangladesh Sangbad Sangstha (BSS)",
+   "title_ar": "أرامكو تأخذ حصة 49% في شركة سعودية للذكاء الاصطناعي",
+   "summary_ar": "تشير وكالة BSS إلى أن أرامكو حصلت على حصة 49% في شركة سعودية للذكاء الاصطناعي. النص لا يذكر اسم الشركة بوضوح في الجزء المتاح.",
+   "why_ar": "خبر مكرر حول الصفقة نفسها، ومهم فقط لمتابعة تطورات شركات الذكاء الاصطناعي السعودية.",
    "tags": [
-    "Digital Banking",
-    "Credit",
-    "Fintech"
+    "Aramco",
+    "Saudi AI",
+    "Investment"
    ],
    "importance": 3,
-   "pillar": "banking"
+   "pillar": "vc"
   },
   {
-   "id": "3cc50100b930",
-   "title": "دراسة لـ«سدايا» تستعرض دور البيانات المصطنعة في تطوير الذكاء الاصطناعي - صحيفة أحوال الإلكترونية",
-   "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE4ybFF3Q1ZvRVdILWozdDZLUHpvY0Q4N2c0NnVfdG5ZZzF4MlcxZloxNUYwNktUaGY0V0RGVUk4OENyY0MtY1E0?oc=5",
+   "id": "b9ea5cb08a31",
+   "title": "أرامكو السعودية تستحوذ على 49% من هيوماين عبر استثمار 2.6 مليار دولار - جريدة حابي",
+   "url": "https://news.google.com/rss/articles/CBMi1wJBVV95cUxOZGNseWZiTkk1V1I0X1NMWlNMbFdrZmVvazhsWHRpVDZqM0QtaDl3NDAwLUlnSlhKTVQ4ZDRQWUNVNU1kUlhOekppSWQ5UXhNRDBNak0tRmxfUjNLOTNzVHU2VFlad3V1M24tSzI3RERmR3RzcERWbFE4R2FYVjNKQXNWemZEcHdIUnpSUHVwZGtETjVhbERDTWlJcDFzVG9KTkg0V05TaXpZNTdpenBYUHlFQllEMzQ3bFo3LU9MZ0dhbGpaSjdGOGhKRW94N096OTBHcm5kQkVUQnJMRGVQOVNiQnhkb3p6MFh2aGQyMkpBWV9pNEphMTFPaURkRUdTQzcwb1ZEZFJFVlFubzM0cWU4M2h0N1JTQW9FQ01WVU81UU0yUE80ejNEMW43ZFNXRnNPZTg3Y1h5LWxPMFF4UnZJTVBKSUFtN3YzM0FWWDJxRTZ2dlVZ?oc=5",
    "source": "أخبار: الذكاء الاصطناعي في السعودية",
    "category": "saudi",
-   "published": "2026-10-31T14:57:27+00:00",
-   "snippet": "دراسة لـ«سدايا» تستعرض دور البيانات المصطنعة في تطوير الذكاء الاصطناعي صحيفة أحوال الإلكترونية",
-   "title_ar": "سدايا تستعرض دور البيانات المصطنعة في تطوير الذكاء الاصطناعي",
-   "summary_ar": "دراسة لسدايا تتناول دور البيانات المصطنعة في تطوير الذكاء الاصطناعي، وهي نفس الخبر المنشور في مصدر آخر. النص لا يوضح النتائج أو التوصيات.",
-   "why_ar": "تكرار للخبر السابق، ويكفي الاطلاع على الدراسة الأصلية لتقييم فائدتها في مشاريع البيانات المصطنعة.",
+   "published": "2026-11-01T10:11:37+00:00",
+   "snippet": "أرامكو السعودية تستحوذ على 49% من هيوماين عبر استثمار 2.6 مليار دولار جريدة حابي",
+   "title_ar": "أرامكو تستحوذ على 49% من هيوماين باستثمار 2.6 مليار دولار",
+   "summary_ar": "تستحوذ أرامكو السعودية على 49% من هيوماين عبر استثمار بقيمة 2.6 مليار دولار. الخبر مطابق لتغطيات أخرى حول الصفقة نفسها.",
+   "why_ar": "تأكيد إضافي لصفقة مهمة في قطاع الذكاء الاصطناعي السعودي، دون معلومات تقنية جديدة.",
    "tags": [
-    "Synthetic Data",
-    "SDAIA",
-    "Saudi AI"
+    "Aramco",
+    "HUMAIN",
+    "Investment"
    ],
    "importance": 3,
-   "pillar": "research"
+   "pillar": "vc"
   },
   {
-   "id": "c7f05a6fd1b5",
-   "title": "علوم وتقنيات / دراسة لـ\"سدايا\" تستعرض دور البيانات المصطنعة في تطوير تطبيقات الذكاء الاصطناعي وتعزيز الابتكار - وكالة الأنباء السعودية",
-   "url": "https://news.google.com/rss/articles/CBMiRkFVX3lxTE9vR05jckZqUVVIdFFLbVM5czB6RHhRUjZLY1poZE9mTG9rWGlFM0JoS0JsN0lNVVpMX1dOWDREWnJ6a3hrMUE?oc=5",
+   "id": "cbe87743600d",
+   "title": "جامعة طيبة تنظم مؤتمر الذكاء الاصطناعي الدولي السادس بـ142 بحثًا - صحيفة أحوال الإلكترونية",
+   "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTFAxdVM2T2h0RWF5bHVSQXpZVGg5Rk9VSUtjeEhTQ2YwWDNGcENpX1ZJdEp5ZkY3dlVnVjU4aUZiTk5ZUTdnR244?oc=5",
    "source": "أخبار: الذكاء الاصطناعي في السعودية",
    "category": "saudi",
-   "published": "2026-10-31T14:15:26+00:00",
-   "snippet": "علوم وتقنيات / دراسة لـ\"سدايا\" تستعرض دور البيانات المصطنعة في تطوير تطبيقات الذكاء الاصطناعي وتعزيز الابتكار وكالة الأنباء السعودية",
-   "title_ar": "دراسة سدايا عن البيانات المصطنعة وتعزيز الابتكار",
-   "summary_ar": "وكالة الأنباء السعودية تنشر خبراً عن دراسة لسدايا حول دور البيانات المصطنعة في تطوير تطبيقات الذكاء الاصطناعي وتعزيز الابتكار. النص لا يتضمن تفاصيل إضافية.",
-   "why_ar": "مصدر رسمي لنفس الدراسة، مفيد للرجوع إليه عند كتابة ورقة بحثية أو تصميم POC يعتمد على بيانات مصطنعة.",
+   "published": "2026-11-01T10:01:39+00:00",
+   "snippet": "جامعة طيبة تنظم مؤتمر الذكاء الاصطناعي الدولي السادس بـ142 بحثًا صحيفة أحوال الإلكترونية",
+   "title_ar": "جامعة طيبة تنظم المؤتمر الدولي السادس للذكاء الاصطناعي",
+   "summary_ar": "تنظم جامعة طيبة مؤتمر الذكاء الاصطناعي الدولي في نسخته السادسة، ويضم 142 بحثاً. الخبر يقدم عدد الأبحاث المقبولة دون تفاصيل عن المحاور أو مواعيد التقديم.",
+   "why_ar": "إذا كنت تخطط للنشر، فهذا المؤتمر قد يكون فرصة لتقديم بحث، لكن يلزم التحقق من شروط التقديم والمواعيد.",
    "tags": [
-    "Synthetic Data",
-    "SDAIA",
-    "Innovation"
+    "Conference",
+    "Taibah University",
+    "Research"
    ],
    "importance": 3,
    "pillar": "research"
@@ -399,13 +432,32 @@
    "category": "tech",
    "published": "2026-10-31T22:10:01+00:00",
    "snippet": "Release: datasette-llm 0.1a9 I have some big upgrades to Datasette Agent in the pipeline, but in the meantime here's a tiny user experience improvement to the underlying datasette-llm plugin. It now picks up the default model used by LLM , which means you can start using Datasette Agent without needing to explicitly configure a default model: uvx --with datasette-agent datasette content.db --internal internal.db Previously you would also need to specify a model with -s plugins.datasette-agent.de",
-   "title_ar": "إصدار datasette-llm 0.1a9 يلتقط النموذج الافتراضي تلقائياً",
-   "summary_ar": "أصدر المشروع النسخة 0.1a9 من إضافة datasette-llm. الإضافة تقرأ الآن النموذج الافتراضي المستخدم في LLM، فيمكن تشغيل Datasette Agent دون ضبط نموذج افتراضي يدوياً. التحسين صغير لكنه يسهّل التجربة.",
-   "why_ar": "يسهّل تجربة استعلام البيانات باللغة الطبيعية في نموذج أولي سريع دون إعدادات معقدة.",
+   "title_ar": "إصدار datasette-llm 0.1a9 يدعم النموذج الافتراضي من LLM تلقائياً",
+   "summary_ar": "أضاف الإصدار قدرة الإضافة على التقاط النموذج الافتراضي المستخدم في LLM، لذلك يمكن تشغيل Datasette Agent دون ضبط نموذج افتراضي يدوياً. يوضح النص أمر التشغيل عبر uvx مع ملف قاعدة بيانات داخلي.",
+   "why_ar": "يسهّل هذا التحديث بناء POC سريع لاستكشاف البيانات الداخلية باستخدام واجهة Datasette دون إعدادات إضافية.",
    "tags": [
-    "datasette",
+    "Datasette",
     "LLM",
     "plugin"
+   ],
+   "importance": 2,
+   "pillar": "poc"
+  },
+  {
+   "id": "85c82f0a9571",
+   "title": "ChatGPT and Codex usage limits merging",
+   "url": "https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits",
+   "source": "Hacker News (139 pts)",
+   "category": "tech",
+   "published": "2026-10-31T21:49:07Z",
+   "snippet": "",
+   "title_ar": "دمج حدود الاستخدام بين ChatGPT وCodex",
+   "summary_ar": "يفيد العنوان بأن حدود الاستخدام الخاصة بـ ChatGPT وCodex ستُدمج معاً. النص غير متوفر، ولا توجد تفاصيل عن الخطط أو التوقيت أو الأثر على الأسعار.",
+   "why_ar": "يؤثر هذا التغيير على حساب تكلفة الأدوات المستخدمة في التجارب، لذا يستحق المتابعة عند التخطيط لميزانية POC.",
+   "tags": [
+    "ChatGPT",
+    "Codex",
+    "pricing"
    ],
    "importance": 2,
    "pillar": "tech"
@@ -418,12 +470,13 @@
    "category": "tech",
    "published": "2026-10-31T21:41:00+00:00",
    "snippet": "Apple's new CEO defended the company's current position in the AI landscape.",
-   "title_ar": "Apple: لا نريد إطلاق ميزات ذكاء اصطناعي لمجرد الذكاء الاصطناعي",
-   "summary_ar": "دافع الرئيس التنفيذي الجديد لشركة Apple عن موقف الشركة الحالي في مجال الذكاء الاصطناعي. قال إن الشركة لا تريد إطلاق منتجات ذكاء اصطناعي لمجرد الإعلان عنها. النص المتاح قصير جداً ولا يذكر تفاصيل إضافية.",
-   "why_ar": "خلفية عامة عن توجه أحد اللاعبين الكبار، ولا تستدعي إجراءً عملياً مباشراً.",
+   "title_ar": "الرئيس التنفيذي لآبل: لا نريد إطلاق الذكاء الاصطناعي من أجل الذكاء الاصطناعي",
+   "summary_ar": "دافع الرئيس التنفيذي الجديد لآبل عن موقف الشركة الحالي في مشهد الذكاء الاصطناعي. قال إن الشركة لا تريد إطلاق منتجات ذكاء اصطناعي لمجرد إطلاقها.",
+   "why_ar": "إشارة عامة عن توجه السوق نحو فائدة المنتج لا الضجيج، وهي مفيدة لتحديد أولويات الحلول، لكن أثرها المباشر على عمل المهندس محدود.",
    "tags": [
     "Apple",
-    "AI strategy"
+    "strategy",
+    "AI"
    ],
    "importance": 2,
    "pillar": "tech"
@@ -437,12 +490,12 @@
    "published": "2026-10-31T21:17:03+00:00",
    "snippet": "An NAACP lawsuit accuses the SpaceX-owned AI company of violating the Clean Air Act.",
    "title_ar": "قاضٍ يسمح بمضي دعوى NAACP ضد تلوث مراكز بيانات xAI",
-   "summary_ar": "سمح قاضٍ بمضي دعوى رفعتها NAACP ضد شركة xAI المملوكة لـ SpaceX. تتهم الدعوى الشركة بمخالفة قانون الهواء النظيف بسبب التلوث المرتبط بمركز بيانات. النص المتاح قصير ولا يقدم تفاصيل إضافية.",
-   "why_ar": "يوضح أن الأثر البيئي لمراكز بيانات الذكاء الاصطناعي أصبح قضية قانونية، وهو مهم عند التخطيط للبنية التحتية.",
+   "summary_ar": "قبل القاضي متابعة دعوى رفعتها NAACP ضد شركة xAI المملوكة لـ SpaceX، تتهمها فيها بمخالفة قانون الهواء النظيف الأمريكي. النص مختصر ولا يتضمن تفاصيل إضافية عن الأدلة أو الغرامات.",
+   "why_ar": "يوضح هذا الخبر أن البنية التحتية الضخمة للذكاء الاصطناعي قد تواجه مخاطر تنظيمية وبيئية يجب أخذها في الحسبان عند تقييم الموردين.",
    "tags": [
-    "xAI",
     "regulation",
-    "data center"
+    "xAI",
+    "environment"
    ],
    "importance": 2,
    "pillar": "tech"
@@ -451,77 +504,20 @@
    "id": "71145972f162",
    "title": "Anthropic takes steps to block Claude from reverse-engineering video games",
    "url": "https://mashable.com/tech/anthropic-takes-steps-to-block-video-game-cloning-and-reverse-engineering",
-   "source": "Hacker News (90 pts)",
+   "source": "Hacker News (149 pts)",
    "category": "tech",
    "published": "2026-10-31T21:07:58Z",
    "snippet": "",
-   "title_ar": "Anthropic تتخذ خطوات لمنع Claude من عكس هندسة ألعاب الفيديو",
-   "summary_ar": "يشير العنوان إلى أن Anthropic تتخذ خطوات لمنع Claude من عكس هندسة ألعاب الفيديو. النص فارغ، لذلك لا توجد تفاصيل عن طبيعة القيود أو نطاقها.",
-   "why_ar": "مؤشر على قيود سياسات الاستخدام التي قد تؤثر على تجارب الأدوات في بعض الحالات.",
+   "title_ar": "Anthropic تتخذ خطوات لمنع Claude من الهندسة العكسية لألعاب الفيديو",
+   "summary_ar": "يشير العنوان إلى أن Anthropic اتخذت إجراءات لمنع Claude من تنفيذ الهندسة العكسية على ألعاب الفيديو. النص غير متوفر، لذا لا توجد تفاصيل عن طبيعة الإجراءات أو نطاقها.",
+   "why_ar": "يهم هذا الخبر من يبني وكلاء يتعاملون مع برمجيات طرف ثالث، لأن سياسات الاستخدام قد تحد من بعض المهام.",
    "tags": [
     "Anthropic",
-    "Claude",
-    "policy"
+    "policy",
+    "Claude"
    ],
    "importance": 2,
    "pillar": "tech"
-  },
-  {
-   "id": "e07ec5d69c95",
-   "title": "Anthropic blocks users for anything touching training larger models",
-   "url": "https://twitter.com/jiahaoshao1/status/2116475922190922088",
-   "source": "Hacker News (163 pts)",
-   "category": "tech",
-   "published": "2026-10-31T19:39:19Z",
-   "snippet": "",
-   "title_ar": "Anthropic تحظر مستخدمين عند الاقتراب من تدريب نماذج أكبر",
-   "summary_ar": "يفيد العنوان بأن Anthropic تحظر مستخدمين عندما يتعلق نشاطهم بتدريب نماذج أكبر. النص فارغ، ولا توجد تفاصيل تؤكد الشروط أو نطاق الحظر.",
-   "why_ar": "إن صحّ الخبر فهو يؤثر على حدود الاستخدام المسموح عند تجربة النماذج، ويحتاج إلى تحقق من المصدر قبل الاعتماد عليه.",
-   "tags": [
-    "Anthropic",
-    "model training",
-    "policy"
-   ],
-   "importance": 2,
-   "pillar": "tech"
-  },
-  {
-   "id": "b9de5465dae2",
-   "title": "GPT-5.6 Sol can beat Factorio on peaceful mode",
-   "url": "https://ryanmadden.net/gpt-56-beats-factorio/",
-   "source": "Hacker News (153 pts)",
-   "category": "tech",
-   "published": "2026-10-31T18:50:34Z",
-   "snippet": "",
-   "title_ar": "نموذج GPT-5.6 Sol يتجاوز لعبة Factorio في الوضع السلمي",
-   "summary_ar": "يفيد العنوان بأن نموذجاً باسم GPT-5.6 Sol استطاع تجاوز لعبة Factorio في الوضع السلمي. النص فارغ، ولا توجد تفاصيل عن طريقة التقييم أو مستوى الإنجاز.",
-   "why_ar": "مثال على قدرة النماذج على التخطيط متعدد الخطوات، لكنه لا يكفي وحده لتقييم قدرة عملية.",
-   "tags": [
-    "GPT",
-    "benchmark",
-    "agents"
-   ],
-   "importance": 2,
-   "pillar": "research"
-  },
-  {
-   "id": "344dcf79744a",
-   "title": "OpenAI reportedly lowers funding target for new round",
-   "url": "https://techcrunch.com/2026/10/31/openai-reportedly-lowers-funding-target-for-new-round/",
-   "source": "TechCrunch AI",
-   "category": "tech",
-   "published": "2026-10-31T16:12:55+00:00",
-   "snippet": "OpenAI’s latest funding round doesn't seem to be living up to expectations.",
-   "title_ar": "تقارير: OpenAI تخفض هدف جولة التمويل الجديدة",
-   "summary_ar": "تفيد تقارير بأن جولة التمويل الأخيرة لشركة OpenAI لا تبدو بمستوى التوقعات، ولذلك خُفض الهدف المستهدف. النص المتاح قصير ولا يذكر الأرقام.",
-   "why_ar": "مؤشر على حالة سوق التمويل الجريء لشركات الذكاء الاصطناعي الكبرى.",
-   "tags": [
-    "OpenAI",
-    "funding",
-    "VC"
-   ],
-   "importance": 2,
-   "pillar": "vc"
   },
   {
    "id": "9e5c9d9f241b",
@@ -531,16 +527,16 @@
    "category": "research",
    "published": "2026-10-29T19:19:16+00:00",
    "snippet": "Host Sowbhagya Suresh shares some of the latest news and cutting-edge research from across Microsoft—from understanding the challenges facing coding agents to uncovering how people use AI at work and improving extended-range weather forecasting. The post Microsoft Research Focus – Edition #97 appeared first on Microsoft Research .",
-   "title_ar": "نشرة Microsoft Research Focus رقم 97 وأبرز أخبارها",
-   "summary_ar": "حلقة نشرة من Microsoft Research تستعرض أحدث الأخبار والأبحاث من الشركة. تتناول تحديات وكلاء البرمجة، وكيف يستخدم الناس الذكاء الاصطناعي في العمل، وتحسين التنبؤ بالطقس لمدى زمني أطول. النص المتاح موجز ولا يحتوي على تفاصيل النتائج.",
-   "why_ar": "مرجع عام سريع لمتابعة اتجاهات أبحاث Microsoft دون الحاجة لقراءة كل ورقة بحثية.",
+   "title_ar": "أبرز أخبار أبحاث Microsoft في الحلقة 97",
+   "summary_ar": "حلقة نشرة Microsoft Research Focus تستعرض أحدث الأخبار والأبحاث من Microsoft. تتناول تحديات وكلاء البرمجة، وكيف يستخدم الناس الذكاء الاصطناعي في العمل، وتحسين التنبؤ الجوي بمدى ممتد. النص المتاح موجز ولا يفصل النتائج.",
+   "why_ar": "هي مرجع سريع لمتابعة اتجاهات أبحاث وكلاء البرمجة واستخدام الذكاء الاصطناعي في بيئة العمل.",
    "tags": [
     "Microsoft-Research",
-    "newsletter",
-    "coding-agents"
+    "coding-agents",
+    "AI-at-work"
    ],
    "importance": 2,
-   "pillar": "research"
+   "pillar": "tech"
   },
   {
    "id": "8a95b9b04938",
@@ -550,36 +546,79 @@
    "category": "research",
    "published": "2026-10-28T20:00:00.000Z",
    "snippet": "Formula-Driven Supervised Learning (FDSL) enables vision pre-training without real images, but existing methods cast pre-training as classification on discretized labels, discarding continuity in the generative process. We propose Formula-Driven Supervised Metric Learning (FDSML), which derives relational supervision from image-generation parameters beyond discrete class labels. FDSML combines FineFractalDB, our refined fractal dataset with higher intra-class variation and more stable structures, with a Parameter-Aware Triplet (PA-Triplet) Loss that assigns positives and negatives according to distances in the underlying Iterated Function System parameter space. This objective trains embeddi",
-   "title_ar": "تعلم المقاييس الخاضع للإشراف من صيغ توليد الصور الفراكتالية",
-   "summary_ar": "تقدم الورقة FDSML، وهي طريقة تدريب مسبق للرؤية الحاسوبية بدون صور حقيقية، تعتمد على صيغ رياضية. تستخدم مجموعة بيانات FineFractalDB مع خسارة Triplet تعتمد على مسافات في فضاء معاملات نظام الدوال المتكررة. النتيجة تعلم تمثيلات أكثر استمرارية من التصنيف المتقطع.",
-   "why_ar": "قد تكون مفيدة إذا احتجت تدريباً مسبقاً لنماذج رؤية دون بيانات صور حساسة، لكنها بحثية وبعيدة عن الاستخدام المباشر.",
+   "title_ar": "تعلم المقاييس الإشرافي المعتمد على الصيغ",
+   "summary_ar": "يقدم المقال FDSML، وهو إطار لتدريب نماذج الرؤية مسبقاً دون صور حقيقية باستخدام صيغ توليدية. يجمع بين مجموعة بيانات FineFractalDB المحسّنة ودالة خسارة PA-Triplet التي تحدد الإيجابيات والسلبيات حسب المسافات في فضاء معاملات نظام الدوال المتكررة. النص المتاح مقتطع ولا يعرض النتائج كاملة.",
+   "why_ar": "قد يهمك إذا كنت تبحث عن طرق تدريب بيانات اصطناعية للرؤية الحاسوبية حين تكون الصور الحقيقية محدودة أو حساسة.",
    "tags": [
-    "formula-driven",
     "metric-learning",
     "fractal",
-    "pretraining"
+    "pretraining",
+    "computer-vision"
    ],
    "importance": 2,
    "pillar": "research"
   },
   {
+   "id": "97c28dfefe84",
+   "title": "ccch1mneyyy/dsh-Go",
+   "url": "https://github.com/ccch1mneyyy/dsh-Go",
+   "source": "GitHub ★4,134",
+   "category": "github",
+   "published": "2026-11-01T10:16:55Z",
+   "snippet": "dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。",
+   "stars": 4134,
+   "lang": "Dart",
+   "title_ar": "dsh-Go: تشغيل DeepSeek Harness على الهاتف والتحكم بالحاسوب",
+   "summary_ar": "مشروع مفتوح المصدر يهدف إلى تشغيل DeepSeek Harness محلياً على الهاتف. بحسب الوصف، يمكن من خلاله التحكم بالحاسوب عن بُعد. المعلومات المتاحة مختصرة ولا تحدد التفاصيل التقنية.",
+   "why_ar": "قد يفيدك كمثال عملي لبناء وكيل محلي يعمل على الأجهزة، لكن يلزم فحص الكود قبل أي استخدام في بيئة البنك.",
+   "tags": [
+    "Go",
+    "DeepSeek",
+    "local-agent",
+    "GitHub"
+   ],
+   "importance": 2,
+   "pillar": "tech"
+  },
+  {
+   "id": "82f98a0b31c2",
+   "title": "jackwener/DSH-Android",
+   "url": "https://github.com/jackwener/DSH-Android",
+   "source": "GitHub ★659",
+   "category": "github",
+   "published": "2026-11-01T09:54:01Z",
+   "snippet": "免 ROOT 免 Termux，一个 APK 在安卓手机上跑 DeepSeek Harness。引擎内嵌 App 进程 · 读屏操作 App · 改系统设置 · 定时/条件自动化 · 可选 Shizuku",
+   "stars": 659,
+   "lang": "Kotlin",
+   "title_ar": "DSH-Android: تشغيل DeepSeek Harness على أندرويد بدون روت",
+   "summary_ar": "مشروع يتيح تشغيل DeepSeek Harness على هواتف أندرويد عبر ملف APK واحد، دون الحاجة إلى روت أو Termux. بحسب الوصف، يدعم قراءة الشاشة وتنفيذ العمليات داخل التطبيقات وتعديل إعدادات النظام وأتمتة مجدولة، مع خيار استخدام Shizuku. الوصف مختصر ولا يوضح تفاصيل الأمان.",
+   "why_ar": "هو مثال عملي على وكلاء الهاتف، لكن صلاحياته الواسعة تستدعي حذراً شديداً قبل أي تجربة داخلية.",
+   "tags": [
+    "Android",
+    "agent",
+    "automation",
+    "GitHub"
+   ],
+   "importance": 2,
+   "pillar": "tech"
+  },
+  {
    "id": "11cb032ec08e",
    "title": "liuda30201/AI-Coding",
    "url": "https://github.com/liuda30201/AI-Coding",
-   "source": "GitHub ★592",
+   "source": "GitHub ★594",
    "category": "github",
-   "published": "2026-11-01T00:07:20Z",
+   "published": "2026-11-01T05:59:40Z",
    "snippet": "AI 编程福利导航：汇总 Claude Code、Codex、Cursor 中转站与公益站，整理免费额度、注册福利、签到活动和评测记录，提供可视化看板与 Python 数据采集工具。",
-   "stars": 592,
+   "stars": 594,
    "lang": "HTML",
-   "title_ar": "مستودع يجمع عروض وحصص أدوات البرمجة بالذكاء الاصطناعي",
-   "summary_ar": "مشروع مفتوح المصدر يجمع معلومات عن الأدوات مثل Claude Code وCodex وCursor، بما في ذلك محطات الوسيط والمبادرات المجانية. يوفر لوحة مرئية وأدوات Python لجمع البيانات. النص الأصلي بالصينية، والمحتوى يركز على الحصص والعروض لا على الجانب التقني العميق.",
-   "why_ar": "مفيد لمتابعة خيارات الأدوات المتاحة للمطورين، لكن استخدام محطات وسيطة غير رسمية قد يتعارض مع سياسات الأمن البنكية، فيجب مراجعته قبل أي استخدام.",
+   "title_ar": "دليل مجمّع لعروض أدوات البرمجة بالذكاء الاصطناعي",
+   "summary_ar": "مستودع AI-Coding يجمع معلومات عن العروض المجانية والتسجيلات وفعاليات أدوات مثل Claude Code وCodex وCursor، مع لوحة مرئية وأداة Python لجمع البيانات. المحتوى موجه للوصول إلى الموارد المجانية وليس لتقنية جديدة.",
+   "why_ar": "قد يفيد في تقليل تكلفة تجربة أدوات البرمجة بالذكاء الاصطناعي، لكن يجب التحقق من شروط الاستخدام قبل استخدام أي خدمة في العمل.",
    "tags": [
-    "AI-coding",
+    "ai-coding",
     "developer-tools",
-    "dashboard",
-    "Python"
+    "resources"
    ],
    "importance": 2,
    "pillar": "tech"
@@ -588,40 +627,19 @@
    "id": "81c23db71773",
    "title": "kitlangton/scrawl",
    "url": "https://github.com/kitlangton/scrawl",
-   "source": "GitHub ★824",
+   "source": "GitHub ★833",
    "category": "github",
-   "published": "2026-10-31T22:44:01Z",
+   "published": "2026-11-01T04:01:54Z",
    "snippet": "Show an agent a problem: mark up, record, send",
-   "stars": 824,
+   "stars": 833,
    "lang": "Rust",
-   "title_ar": "أداة scrawl لعرض المشكلة على الوكيل الذكي",
-   "summary_ar": "مشروع scrawl يتيح لك إظهار مشكلة لوكيل ذكي عبر التعليق على الشاشة وتسجيلها ثم إرسالها. الوصف المتاح قصير جداً، ولا توجد تفاصيل تقنية كافية عن طريقة العمل.",
-   "why_ar": "قد يكون مفيداً كنموذج لتجربة إدخال بصري لوكلاء الذكاء الاصطناعي في POC داخلي، بعد مراجعة الكود.",
+   "title_ar": "scrawl: شرح المشكلة للوكيل بالتعليق والتسجيل",
+   "summary_ar": "مشروع scrawl يتيح عرض مشكلة على وكيل ذكاء اصطناعي عبر التعليق على الشاشة أو التسجيل ثم الإرسال. الوصف المتاح مختصر جداً ولا يوضح التفاصيل التقنية.",
+   "why_ar": "قد يكون فكرة مفيدة لتصميم واجهة تفاعلية لوكلاء الدعم أو تصحيح الأخطاء، مع الحاجة إلى مراجعة المشروع لفهم آليته.",
    "tags": [
-    "ai-agent",
-    "developer-tools",
-    "screen-annotation"
-   ],
-   "importance": 2,
-   "pillar": "tech"
-  },
-  {
-   "id": "baffc898b4fc",
-   "title": "deeplethe/solid-glass",
-   "url": "https://github.com/deeplethe/solid-glass",
-   "source": "GitHub ★2,020",
-   "category": "github",
-   "published": "2026-10-31T22:37:07Z",
-   "snippet": "A design system for AI applications. Material, physical, tactile, technical.",
-   "stars": 2020,
-   "lang": "TypeScript",
-   "title_ar": "نظام تصميم solid-glass لتطبيقات الذكاء الاصطناعي",
-   "summary_ar": "solid-glass هو نظام تصميم مخصص لتطبيقات الذكاء الاصطناعي. يقدم عناصر بصرية تتوزع على أربعة محاور هي المادية والملمسية والتقنية. وحصل المستودع على نحو 2020 نجمة.",
-   "why_ar": "يساعد في توحيد واجهات POCs الداخلية للذكاء الاصطناعي بشكل احترافي دون بناء تصميم من الصفر.",
-   "tags": [
-    "design-system",
-    "ui",
-    "ai-apps"
+    "agent-ux",
+    "multimodal",
+    "developer-tools"
    ],
    "importance": 2,
    "pillar": "poc"
@@ -634,92 +652,91 @@
    "category": "banking",
    "published": "2026-11-05T15:00:00+00:00",
    "snippet": "Turning fraud from a cost centre to a growth lever.",
-   "title_ar": "شركات معالجة المدفوعات تحوّل معلومات الاحتيال إلى مصدر دخل",
-   "summary_ar": "يتناول المقال كيف يبدأ المستحوذون بتسويق معلومات مكافحة الاحتيال تجارياً. الفكرة الأساسية أن الاحتيال يتحول من بند تكلفة إلى محرك للنمو. النص المتاح موجز جداً.",
-   "why_ar": "قد يفيد في فهم نماذج الأعمال المرتبطة ببيانات الاحتيال، وهو موضوع مرتبط بعمل الفريق المصرفي.",
+   "title_ar": "كيف تحوّل شركات المعالجة معلومات الاحتيال إلى إيراد",
+   "summary_ar": "يتناول المقال طريقة تحويل شركات معالجة المدفوعات لمعلومات مكافحة الاحتيال من مركز تكلفة إلى مصدر نمو. النص المتاح موجز ولا يذكر نماذج أو منتجات محددة.",
+   "why_ar": "يوضح كيف يمكن للبيانات المتعلقة بالاحتيال أن تصبح منتجاً تجارياً، وهو مدخل مفيد لفكرة POC في البنك.",
    "tags": [
     "fraud-intelligence",
     "payments",
-    "acquiring"
+    "monetization"
    ],
    "importance": 2,
    "pillar": "banking"
   },
   {
-   "id": "da504771a07f",
-   "title": "Conversations on Central Banking: Macroeconomy in the Age of Artificial Intelligence - Federal Reserve Bank of Cleveland",
-   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNMVFhLVpydXJQblZEVmtiaHZ3cXVmSUZ2TlBqSGM3ZTRYTkQwZzdINllrWkVsWkRtOEhERWRfV2pQNFEzOENQVGYyc19GQ0E5SGpjZFNXUjBEV0lneURYU0M1OVFiUnRkZmgyLVNQMHdVQ3ByQlhHSGtPdG9Kek5GYTMxMzNpRnM?oc=5",
-   "source": "Google News: AI Banking",
+   "id": "ba9bfa5ff3ec",
+   "title": "Mind the gap: What’s missing from modern resilience?",
+   "url": "https://www.finextra.com/event-info/639/mind-the-gap-whats-missing-from-modern-resilience?utm_medium=rssfinextra&utm_source=finextrafeed",
+   "source": "Finextra AI",
    "category": "banking",
-   "published": "2026-10-31T07:07:30+00:00",
-   "snippet": "Conversations on Central Banking: Macroeconomy in the Age of Artificial Intelligence Federal Reserve Bank of Cleveland",
-   "title_ar": "الاقتصاد الكلي في عصر الذكاء الاصطناعي عبر بنك الاحتياطي الفيدرالي في كليفلاند",
-   "summary_ar": "مادة حوارية من بنك الاحتياطي الفيدرالي في كليفلاند تتناول أثر الذكاء الاصطناعي على الاقتصاد الكلي والسياسة النقدية. المحتوى المتاح في النص قصير ولا يتضمن تفاصيل تحليلية محددة، لذا يُعتمد على العنوان فقط.",
-   "why_ar": "قد يفيد في فهم النقاش المؤسسي حول أثر الذكاء الاصطناعي على الاقتصاد والقطاع المالي، وهو مدخل لأبحاث مستقبلية.",
+   "published": "2026-11-03T15:00:00+00:00",
+   "snippet": "A roadmap towards engineering resilience into the technology estate from the outset.",
+   "title_ar": "ما الناقص في مفهوم المرونة التقنية الحديث؟",
+   "summary_ar": "يقدم المقال خارطة طريق لبناء المرونة التقنية في البنية التقنية منذ البداية. النص المتاح قصير ولا يوضح الأدوات أو المنهجيات المقترحة.",
+   "why_ar": "يهم المهندس الذي يصمم أنظمة ذكاء اصطناعي تحتاج إلى استمرارية عالية داخل بيئة بنكية.",
    "tags": [
-    "Central Banking",
-    "Macroeconomy",
-    "AI Policy"
-   ],
-   "importance": 2,
-   "pillar": "research"
-  },
-  {
-   "id": "30409366ff24",
-   "title": "7th Global Fintech Fest 2026 - www.pib.gov.in",
-   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBzdFYxU21kenhSOGRXR0VISlhReVdLcWZtQV94dGxRTDNScGNuVldrSV9RWnJEeVBWaURQNDJKYUJlQVBqTjZ3UnBOcXR5SWtUbTJsNk9GMkZQc0NiTW9lMHlINDhHTkNXSE5YSFk1b29YOXhkRkc0?oc=5",
-   "source": "Google News: AI Banking",
-   "category": "banking",
-   "published": "2026-10-31T03:21:43+00:00",
-   "snippet": "7th Global Fintech Fest 2026 www.pib.gov.in",
-   "title_ar": "انطلاق النسخة السابعة من Global Fintech Fest 2026",
-   "summary_ar": "تُعلن الجهات الرسمية الهندية عن النسخة السابعة من مؤتمر Global Fintech Fest لعام 2026. النص المتاح لا يذكر تفاصيل إضافية عن البرنامج أو المواعيد.",
-   "why_ar": "مؤتمر فintech عالمي قد يكون فرصة للاطلاع على حلول البنوك والذكاء الاصطناعي المالي ومتابعة المنافسين.",
-   "tags": [
-    "Fintech",
-    "Conference",
-    "India"
+    "resilience",
+    "architecture",
+    "banking"
    ],
    "importance": 2,
    "pillar": "banking"
   },
   {
-   "id": "3a4c2e58d0d9",
-   "title": "هيوماين تعلن عن استثمار استراتيجي في شركة الذكاء الاصطناعي السعودية مُزن - ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
-   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBhRVh2TGlNTEpnUU16OE1WQS1oRzFHUFN3cTZqM1IwcE52RnBDbXNzWEhJOThMeE56eXczd3dhQm5mUXRLM2N4VEdIUExHTnNCTGJLb3JXanRRTTEtaGdEbjdQdV9lS0wzZlE?oc=5",
+   "id": "d8a80197aa23",
+   "title": "برأسمال 5 مليارات دولار.. «أفريكسم بنك» يطلق بنكًا أفريقيًا لسد فجوة تمويل مشروعات الطاقة - جريدة المال",
+   "url": "https://news.google.com/rss/articles/CBMi5wJBVV95cUxNLVJBY0hoNkJrQy15NUZQM19JME5XNVViM3duZENKNVJpOHRzTGZnT3Q1RWl1QkxtMk9qcXJKZXg5NTIyZGxZRzZOSjJJM21XRnJjbDlEN0ttUVJaTjBfOUxCSURBLVFON1M2eWY3TG16SV9McFNMaHYwdzFNX2NlVG1kTU54VGdGb3NnVExZZ1ZlTE5vOGI4UDZraHZ2bHJpQU1ndUx6Qjk0TG50SGRzRnZad05ySE5zOWJ3Z05xc0dhS1NVOGswQ0tISFZvMXF3REhSU3o1ZmdmSGNGMmwxTkxXLVk1MDRodFMzd1VyS2gtNlp6czJzRGFtUElPOTIwR3E0QUZuMjFXcjhrLWE0MlJMQ3l6SUJXbGxwbkN2Y05sZ1hWOVI2emZMdXhvNjk5SVBpMjhnZVc4MHJHSnFNNjdiX09qeFhWMGZEdzdrbG1qUXVtcHU4N1p2cHdfNUI1bDA2Q0h0RQ?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي والبنوك",
+   "category": "banking",
+   "published": "2026-10-31T16:39:39+00:00",
+   "snippet": "برأسمال 5 مليارات دولار.. «أفريكسم بنك» يطلق بنكًا أفريقيًا لسد فجوة تمويل مشروعات الطاقة جريدة المال",
+   "title_ar": "أفريكسم بنك يطلق بنكاً أفريقياً برأسمال 5 مليارات دولار",
+   "summary_ar": "أعلن أفريكسم بنك عن إطلاق بنك أفريقي برأسمال 5 مليارات دولار. يهدف البنك إلى سد فجوة تمويل مشروعات الطاقة في القارة. النص المتاح مختصر ولا يذكر تفاصيل عن نموذج العمل أو دور الذكاء الاصطناعي.",
+   "why_ar": "خبر تمويلي عام قد يفيدك في فهم سوق تمويل الطاقة الأفريقي، لكنه لا يرتبط مباشرة بعملك التقني.",
+   "tags": [
+    "AfreximBank",
+    "Energy Finance",
+    "Africa"
+   ],
+   "importance": 2,
+   "pillar": "banking"
+  },
+  {
+   "id": "35674f3b4cb1",
+   "title": "تُحدث البنوك الرقمية تحولاً جذرياً في رحلة الحصول على الائتمان وإدارته. - Vietnam.vn",
+   "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQckJJbVROUHBfSTF4cUl2VXVzN29KTjRsOGl0bl9lSGVhaFhSMldpLTFtS2NWRGFXLU05ajVuaC1HQWRjTkJncFBWdVlQc3hJcmxsVjZ2UDdZNDc0M2VNVkhYOS1Eb2tzOHV5WFVTLXVDWVpmVVJSWWRJTnp3WlhSV2lJUE1ucFpVOEE?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي والبنوك",
+   "category": "banking",
+   "published": "2026-10-31T01:10:24+00:00",
+   "snippet": "تُحدث البنوك الرقمية تحولاً جذرياً في رحلة الحصول على الائتمان وإدارته. Vietnam.vn",
+   "title_ar": "البنوك الرقمية تعيد تشكيل الحصول على الائتمان وإدارته",
+   "summary_ar": "يشير المقال إلى أن البنوك الرقمية تحدث تحولاً جذرياً في رحلة الحصول على الائتمان وإدارته. النص المتاح قصير جداً ولا يقدم أرقاماً أو أمثلة محددة.",
+   "why_ar": "موضوع عام حول الإقراض الرقمي قد يلهمك فكرة POC في تقييم الائتمان، لكن يلزم مصدر أكثر تفصيلاً.",
+   "tags": [
+    "Digital Banking",
+    "Credit",
+    "Lending"
+   ],
+   "importance": 2,
+   "pillar": "banking"
+  },
+  {
+   "id": "d2b2be7f9628",
+   "title": "أرامكو السعودية تستكمل صفقة استحواذ في شركة عالمية - الطاقة - أول منصة عربية متخصصة في أخبار الطاقة",
+   "url": "https://news.google.com/rss/articles/CBMizAJBVV95cUxPUDAyc1NtWExVME9zWWNKYXFrdmF4LV9BNEhMWXB5N2NySFdlU3VfdllGSUVDRUk4Y2FCWmozT1R6YkhaMXJXRUVSQl9fOFgwUV9MdUFSQ0hqdlV0VVRkTmZxWlNrS0phQndDV0xSXzR0OFJPTFd4a0twdkJRRVBNTlZ5YzlIRTQ2bE5VLWJxSkFzU2tlT0ROUm5GNkFJOFdBRVhLbXVvcWYxSUw4NWpFQU53ZFRraDQwMHJVeDczVURrTkhGWk45Ml9mZmRTMHV6NVlhRWcyV0E3QjgxRHg3VTVoVUZvTFZVaGlJWlpGcTR2eENpSE5CbXdsa3dpX1llTDBlcmJSWFp3SFd0OEZkRTViSC05ZjBxRGpXbG4tcENyQXU5NFhNZnp6dHVGR051THp1ZkdIVy1LRThFUmRLaDJEQjFCRVZ3Qm5LUQ?oc=5",
    "source": "أخبار: الذكاء الاصطناعي في السعودية",
    "category": "saudi",
-   "published": "2026-10-31T12:48:06+00:00",
-   "snippet": "هيوماين تعلن عن استثمار استراتيجي في شركة الذكاء الاصطناعي السعودية مُزن ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
-   "title_ar": "هيوماين تستثمر استراتيجياً في شركة مُزن للذكاء الاصطناعي",
-   "summary_ar": "تعلن شركة هيوماين عن استثمار استراتيجي في شركة مُزن السعودية للذكاء الاصطناعي. النص المتاح لا يذكر قيمة الاستثمار أو تفاصيله.",
-   "why_ar": "يهم متابعة الاستثمار الجريء في شركات الذكاء الاصطناعي السعودية، وقد يشير إلى شركاء أو حلول محتملة.",
+   "published": "2026-11-01T10:21:09+00:00",
+   "snippet": "أرامكو السعودية تستكمل صفقة استحواذ في شركة عالمية الطاقة - أول منصة عربية متخصصة في أخبار الطاقة",
+   "title_ar": "أرامكو تستكمل صفقة استحواذ في شركة عالمية",
+   "summary_ar": "أعلنت أرامكو السعودية استكمال صفقة استحواذ في شركة عالمية. النص المتاح لا يذكر اسم الشركة ولا تفاصيل الصفقة.",
+   "why_ar": "الخبر غير محدد، ويحتاج متابعة للتأكد من ارتباطه بشركة ذكاء اصطناعي.",
    "tags": [
-    "Venture Capital",
-    "Saudi AI",
-    "Investment"
+    "Aramco",
+    "M&A"
    ],
    "importance": 2,
    "pillar": "vc"
-  },
-  {
-   "id": "46c7c4d8fc6d",
-   "title": "الكونغرس يطالب ترامب بحفظ محادثاته مع روبوتات الذكاء الاصطناعي - https://alsaudi.news/",
-   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9DQV93MmR5VEFMWjdxaVhLUjMzWEwzMzZrZ214dEtoY29fLUJzMnlySXdXMU9VWk1ocllYUl80bldrbU1Hc2pvcmtKMHJpdTFSYXZQZmhjYVNMX0E?oc=5",
-   "source": "أخبار: الذكاء الاصطناعي في السعودية",
-   "category": "saudi",
-   "published": "2026-10-31T11:00:32+00:00",
-   "snippet": "الكونغرس يطالب ترامب بحفظ محادثاته مع روبوتات الذكاء الاصطناعي https://alsaudi.news/",
-   "title_ar": "الكونغرس يطالب ترامب بحفظ محادثاته مع روبوتات الذكاء الاصطناعي",
-   "summary_ar": "طلب من الكونغرس الأمريكي من الرئيس ترامب الاحتفاظ بمحادثاته مع روبوتات الذكاء الاصطناعي. النص المتاح لا يوضح تفاصيل الطلب أو أسبابه.",
-   "why_ar": "يرتبط بالحوكمة وحفظ السجلات في أنظمة الذكاء الاصطناعي، وهو موضوع مهم لأي بنك يبني روبوتات محادثة.",
-   "tags": [
-    "AI Governance",
-    "Compliance",
-    "Chatbots"
-   ],
-   "importance": 2,
-   "pillar": "tech"
   },
   {
    "id": "cefcb0bd2478",
@@ -729,9 +746,9 @@
    "category": "tech",
    "published": "2026-10-31T21:36:07+00:00",
    "snippet": "On November 4 at Boston’s SoWa Power Station, get ready for a full day packed with meaningful networking opportunities, actionable insights, and connections that could change the trajectory of your idea and startup. Register before all prices go up at the door.",
-   "title_ar": "مؤتمر TechCrunch Founder Summit في بوسطن قبل ارتفاع الأسعار",
-   "summary_ar": "يُعقد مؤتمر TechCrunch Founder Summit في 4 نوفمبر في بوسطن، ويركز على التواصل وفرص الشركات الناشئة. التسجيل المبكر أرخص قبل رفع الأسعار عند البوابة.",
-   "why_ar": "فعالية مرتبطة بالشركات الناشئة والاستثمار، وقد تفيد متابعة الاستثمار الجريء بشكل ثانوي.",
+   "title_ar": "قبل 4 أيام: قمة مؤسسي TechCrunch في بوسطن",
+   "summary_ar": "حدث لشبكات التواصل للمؤسسين يقام في 4 نوفمبر في SoWa Power Station ببوسطن. النص إعلان تسجيل، ويحث على التسجيل قبل رفع الأسعار عند الباب.",
+   "why_ar": "الحدث لا يرتبط مباشرة بعمل المهندس، وقد يهم فقط من يتابع الاستثمار الجريء بشكل ثانوي.",
    "tags": [
     "event",
     "startups",
@@ -741,42 +758,23 @@
    "pillar": "vc"
   },
   {
-   "id": "ed0268fa6e32",
-   "title": "I built an AI Tamagotchi before Meta could",
-   "url": "https://www.theverge.com/gadgets/1013375/muse-charm-gadgets-preview-waveshare-esp32-claude-vibe-code",
-   "source": "The Verge AI",
-   "category": "tech",
-   "published": "2026-10-31T16:05:00+00:00",
-   "snippet": "Mark Zuckerberg's Meta made AI look so stinking cute by giving it a squishy little face - and this holiday season, he wants to sell you a Muse Charm so you can carry your jolly AI helper around like a Tamagotchi. But I won't be buying one, because we have Muse Charm at home. It […]",
-   "title_ar": "كاتب يبني نسخة ذكاء اصطناعي من Tamagotchi قبل Meta",
-   "summary_ar": "يصف كاتب في The Verge تجربته ببناء مساعد ذكاء اصطناعي شبيه بـ Tamagotchi. يشير المقال إلى منتج Muse Charm من Meta الذي يُباع كرفيق ذكاء اصطناعي محمول. النص مقطوع، لذلك لا تتوفر كل التفاصيل.",
-   "why_ar": "قد يلهم تجربة POC لتفاعل المستخدم مع شخصية ذكاء اصطناعي مرئية، لكنه ليس أولوية عالية.",
+   "id": "03c1e5247bcf",
+   "title": "الذكاء الاصطناعي وسوق الشغل.. البنك الدولي يرى فرصة للإنتاجية ويحذر من ثلاث فجوات - أنوار بريس",
+   "url": "https://news.google.com/rss/articles/CBMiREFVX3lxTE4xNFM0aG1IbEtPVUp5aXJqNTdvWXB3RnZtS0pZdWJLWHlpb2Itek1KMVNvVDhUWFhvZUk1SUozdVRwNktI?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي والبنوك",
+   "category": "banking",
+   "published": "2026-11-01T02:38:25+00:00",
+   "snippet": "الذكاء الاصطناعي وسوق الشغل.. البنك الدولي يرى فرصة للإنتاجية ويحذر من ثلاث فجوات أنوار بريس",
+   "title_ar": "البنك الدولي: فرصة إنتاجية وثلاث فجوات في سوق العمل",
+   "summary_ar": "يشير خبر من موقع أنوار بريس إلى أن البنك الدولي يرى في الذكاء الاصطناعي فرصة لرفع الإنتاجية، ويحذر في الوقت نفسه من ثلاث فجوات في سوق العمل. النص المتاح لا يفصل هذه الفجوات.",
+   "why_ar": "خلفية اقتصادية مفيدة عند كتابة أبحاث أو عروض عن أثر الذكاء الاصطناعي على الوظائف في السعودية والمنطقة.",
    "tags": [
-    "consumer AI",
-    "hardware",
-    "demo"
+    "world-bank",
+    "labor-market",
+    "productivity"
    ],
    "importance": 1,
-   "pillar": "tech"
-  },
-  {
-   "id": "a4867f5019cb",
-   "title": "تقرير دولي يربط سباق الذكاء الاصطناعي بتفاقم الصراع في الكونغو الديمقراطية - https://alsaudi.news/",
-   "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5RUURjcDlpcVgzQXBSbnJxLXRpdHlSTkt2MzlGS0lud0hvcE5EUWZzdXNVV2hWcnFyM08xd0V1allxekk5cVJ6UjNUTnJkWTBUSXhQNU9TTmkwRWs?oc=5",
-   "source": "أخبار: الذكاء الاصطناعي في السعودية",
-   "category": "saudi",
-   "published": "2026-10-31T15:00:21+00:00",
-   "snippet": "تقرير دولي يربط سباق الذكاء الاصطناعي بتفاقم الصراع في الكونغو الديمقراطية https://alsaudi.news/",
-   "title_ar": "تقرير دولي يربط سباق الذكاء الاصطناعي بتفاقم الصراع في الكونغو",
-   "summary_ar": "تقرير دولي يربط سباق تطوير الذكاء الاصطناعي بتفاقم الصراع في جمهورية الكونغو الديمقراطية. النص المتاح لا يتضمن تفاصيل التقرير.",
-   "why_ar": "خبر عام ذو طابع اجتماعي وجيوسياسي، ولا يرتبط مباشرة بعمل المهندس في POCs أو الأبحاث التقنية.",
-   "tags": [
-    "AI Ethics",
-    "Geopolitics",
-    "Supply Chain"
-   ],
-   "importance": 1,
-   "pillar": "tech"
+   "pillar": "research"
   }
  ]
 }
