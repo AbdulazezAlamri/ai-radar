@@ -1,6 +1,6 @@
 {
  "date": "2026-11-01",
- "generated_at": "2026-11-01T00:30:12.191794+00:00",
+ "generated_at": "2026-11-01T00:32:25.918724+00:00",
  "count": 35,
  "pillars": {
   "tech": "تقنيات جديدة",
@@ -12,20 +12,20 @@
  },
  "items": [
   {
-   "id": "381223935ae3",
-   "title": "Do the math: How we took over ChatGPT accounts",
-   "url": "https://www.parameter.ai/labs/we-found-a-gap-at-openai",
-   "source": "Hacker News (299 pts)",
+   "id": "5be14df72cef",
+   "title": "Malware uses LLMs to rank victims by how much they're worth",
+   "url": "https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/",
+   "source": "Hacker News (229 pts)",
    "category": "tech",
-   "published": "2026-10-31T10:30:11Z",
+   "published": "2026-10-31T14:29:03Z",
    "snippet": "",
-   "title_ar": "كيف استولى الباحثون على حسابات ChatGPT",
-   "summary_ar": "يعرض المقال، بحسب العنوان فقط، طريقة الاستيلاء على حسابات ChatGPT. النص غير متوفر، فلا تتوفر تفاصيل عن الثغرة أو نطاقها.",
-   "why_ar": "يهم فريق الأمن وحوكمة الوصول عند اعتماد أدوات الذكاء الاصطناعي داخل المؤسسة.",
+   "title_ar": "برمجية خبيثة تستخدم LLMs لترتيب الضحايا حسب قيمتهم",
+   "summary_ar": "وفق عنوان الخبر فقط، تستخدم برمجية خبيثة نماذج لغوية كبيرة لتقييم الضحايا وترتيبهم حسب مدى قيمتهم. لم يتوفر نص تفصيلي يوضح الآلية أو حجم الأثر.",
+   "why_ar": "يهم هذا المهندس لأنه يكشف مخاطر أمنية محتملة عند دمج نماذج لغوية في أنظمة البنك ويستدعي مراجعة تصميم الحماية.",
    "tags": [
     "security",
-    "ChatGPT",
-    "account takeover"
+    "LLM",
+    "malware"
    ],
    "importance": 4,
    "pillar": "tech"
@@ -38,34 +38,13 @@
    "category": "research",
    "published": "2026-10-27T20:00:00.000Z",
    "snippet": "We present EasyProver, a Lean proving system built from recursive agents with isolated contexts, asynchronous search, parallel tactic probing, and an elastic elaboration service. Using an off-the-shelf frontier model with no additional training, it proves 669/672 PutnamBench problems and all six IMO 2026 formalizations and resolves 597/600 NTP4VC verification conditions and all 189 VERINA tasks by proof or refutation. Because these benchmarks are close to saturation, we also introduce Aegis, which converts competitive programming problems into much harder verification tasks over real implementations. The pipeline writes safe Rust solutions, translates them into Lean with Aeneas, generates sp",
-   "title_ar": "EasyProver: إثبات نظريات Lean بوكلاء متعددين دون تدريب إضافي",
-   "summary_ar": "قدّم الباحثون EasyProver، نظام إثبات بلغة Lean مبني على وكلاء متكررين بسياقات معزولة وبحث غير متزامن. يستخدم نموذجاً جاهزاً دون تدريب إضافي، ويثبت 669 من 672 مسألة في PutnamBench وكل تنسيقات IMO 2026 الستة. كما أدخلوا Aegis لتحويل مسائل البرمجة التنافسية إلى مهام تحقق أصعب على تطبيقات Rust حقيقية.",
-   "why_ar": "يفيد مهندس الذكاء الاصطناعي في فهم كيف يمكن استخدام الوكلاء للتحقق الرسمي من الكود، وهو موضوع قد يصلح لبحث أو POC في جودة البرمجيات.",
+   "title_ar": "EasyProver يثبت النظريات الرياضية على نطاق واسع باستخدام Lean",
+   "summary_ar": "يقدم الباحثون EasyProver وهو نظام إثبات مبني على Lean يعتمد على وكلاء متكررين وبحث غير متزامن، ويستخدم نموذجاً جاهزاً دون تدريب إضافي. يحل النظام 669 من أصل 672 مسألة في PutnamBench وكل صيغ IMO 2026 المذكورة، ويعالج 597 من 600 شرط تحقق في NTP4VC. كما يقدم Aegis الذي يحول مسائل البرمجة التنافسية إلى مهام تحقق أصعب على تطبيقات حقيقية مكتوبة بلغة Rust.",
+   "why_ar": "فكرة قابلة للتجربة في التحقق الرسمي من الكود الحقيقي، وموضوع مناسب لورقة بحثية.",
    "tags": [
-    "Lean",
+    "lean",
     "formal-verification",
-    "agents",
-    "Rust"
-   ],
-   "importance": 4,
-   "pillar": "research"
-  },
-  {
-   "id": "e889ea0803d5",
-   "title": "Matched Capabilities, Different Behaviors: A Controlled Study of MCP and CLI Interfaces for Language Agents",
-   "url": "https://huggingface.co/papers/2610.34298",
-   "source": "HF Papers 👍4",
-   "category": "research",
-   "published": "2026-10-24T20:00:00.000Z",
-   "snippet": "Language agents increasingly act through external tools and interactive environments, making the interface between the model and its executable capabilities part of the decision process. Model Context Protocol (MCP) and command-line interfaces (CLI) can expose the same semantic operations through markedly different model-facing representations. We study whether these representational differences change agent behavior when executable capabilities are matched. We introduce Matched Interface Comparison and Analysis (MICA), which renders MCP and CLI from a shared semantic action contract and routes decoded actions through the same runtime. Across six models and three interactive environments, ma",
-   "title_ar": "MCP مقابل CLI: هل تغيّر واجهة الأداة سلوك الوكيل؟",
-   "summary_ar": "يدرس البحث ما إذا كانت الفروق في تمثيل الأدوات، بين بروتوكول Model Context Protocol وواجهات سطر الأوامر، تغيّر سلوك وكلاء اللغة عندما تكون القدرات التنفيذية متطابقة. يقدم الباحثون إطار MICA الذي يعرض الواجهتين من عقد دلالي مشترك ويوجه الأفعال عبر نفس بيئة التشغيل. تغطي الدراسة ستة نماذج وثلاث بيئات تفاعلية.",
-   "why_ar": "إذا كنت تبني وكلاء أو أدوات داخلية، فاختيار واجهة الأداة قد يؤثر على الأداء، وهذا يستحق التجربة أو يصلح موضوعاً بحثياً.",
-   "tags": [
-    "MCP",
-    "CLI",
-    "agents",
-    "tool-use"
+    "theorem-proving"
    ],
    "importance": 4,
    "pillar": "research"
@@ -78,36 +57,73 @@
    "category": "research",
    "published": "2026-10-24T20:00:00.000Z",
    "snippet": "Developers download quantized large language models (LLMs) from public registries to run them locally. None of the registries we examined documented functional testing of their files. We tested all 305 eligible code-capable GGUF tags (the llama.cpp format) across 15 model lines in the official Ollama library, plus 22 popular Hugging Face community files. A 15-task code screen identified suspects, which we retested on all 164 HumanEval+ tasks. Seven official tags (2.3%) solved at most six of them. All were low-bit quantizations of models with at most four billion parameters. We rebuilt five suspect files from the original weights. All five registry files matched our uncalibrated rebuilds tens",
-   "title_ar": "نماذج GGUF المكمّمة المنشورة قد لا تعمل وظيفياً",
-   "summary_ar": "فحص الباحثون 305 وسوم GGUF مناسبة للبرمجة في مكتبة Ollama الرسمية، إضافة إلى 22 ملفاً شائعاً من مجتمع Hugging Face. وجدوا سبعة وسوم رسمية (2.3%) حلّت ستة مسائل كحد أقصى من 164 مسألة HumanEval+، وكلها تكميمات منخفضة البتات لنماذج لا تتجاوز أربعة مليارات معامل. كما أعادوا بناء خمسة ملفات مشبوهة من الأوزان الأصلية وأكدوا أن ملفات السجل تطابق نسخهم المعايرة.",
-   "why_ar": "إذا كنت تشغّل نماذج محلية للبرمجة أو تبني POC يعتمد على النماذج المكمّمة، فيجب اختبار الملف قبل الاعتماد عليه.",
+   "title_ar": "نماذج GGUF المكمّاة المنشورة قد تكون غير صالحة للاستخدام",
+   "summary_ar": "فحص الباحثون 305 وسوم GGUF قادرة على البرمجة عبر 15 نموذجاً في مكتبة Ollama الرسمية، إضافة إلى 22 ملفاً شائعاً من مجتمع Hugging Face. وجدوا سبعة وسوم رسمية (2.3%) لم تحل إلا ستة مسائل على الأكثر من أصل 164 في HumanEval+، وكلها تكميات منخفضة البت لنماذج لا تتجاوز أربعة مليارات معامل. وأعادوا بناء خمسة من هذه الملفات من الأوزان الأصلية، وتطابقت الملفات المنشورة مع نسخ أعيد بناؤها.",
+   "why_ar": "قبل تجربة أي نموذج مكمّى في POC يجب اختباره وظيفياً، فالملف المنشور قد لا يعمل كما ينبغي.",
    "tags": [
     "quantization",
     "GGUF",
-    "LLM-evaluation",
-    "Ollama"
+    "model-registry"
    ],
    "importance": 4,
-   "pillar": "tech"
+   "pillar": "research"
   },
   {
-   "id": "5be14df72cef",
-   "title": "Malware uses LLMs to rank victims by how much they're worth",
-   "url": "https://blog.talosintelligence.com/appraisal-by-ai-model-driven-victim-prioritization-in-the-volta-infostealer/",
-   "source": "Hacker News (229 pts)",
+   "id": "e5507d4ec853",
+   "title": "بصمة خفية داخل نصوص «Claude» لتعقب المحتوى المولد بالذكاء الاصطناعي - الشرق الأوسط",
+   "url": "https://news.google.com/rss/articles/CBMirgRBVV95cUxPZm9wbURZU1lob0tkbkNfWUIyQ0tIbWIwTFRVYVBMZk1VZHBMMW5hRjFRRWFfcDdUaUE1TVNaX1JESHZ5UVNlOV9xS1FUYXdsLWF3OHZXVFNRaFNKc1h1S3FSUWRPN0M1LWpPNU56TUx3R2pkT1pERDFCT3RrODNSLXN0VkVDaURZMnotVmxzbkgxeklFN2tOV2RuTWF5NVFpenZVWlRhd3hQTE1pVDdSNHlZb3gyWENyREVDd3NsMVMzQllJdWJPV1BZV0ROdVk0cUttOTlFZEFta1BMRnlaa05faTZmeFBMdGdycGxwU3U4X05IVDI3T0xaLVhSTk9MNXBaellkeE5ESmtOR0h2N3VPZ3lqN0hBRGswZ3oya3NLTzNiVEloWlJMbTdrLXlQdG5HSDFYZFNDdm0wTXlCX1M0QUFUSUZqUTlZU1F0YjRoenZJSHp5eGVuS0pwR3BDbWVRTVB0SWFwS3JUXzdMeF9YSk1XVEdYdWtDS09VVHlHb3Y4em5pTzNLd2k0N0ROYmkzYk1jN2p3MGpkQk1YN1dnOFJyaUNXN2tRMzE1Vzh6dFdRLUNZQkxlRVExRUJ5RktuSmJENWk0Rjg4OG05clNRVjhPMkRQdW1tUE8tRlNua2FHcHJGWEZoZzFfR1NNb0o4NUhpRUZ2eFB1d0s3TE9neS1sM1JSQl9QWE1uRWlpd2hjeFNjNVl4eGJiTlJRamhxc090QTZpYW9VNGc?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي في السعودية",
+   "category": "saudi",
+   "published": "2026-10-30T16:27:33+00:00",
+   "snippet": "بصمة خفية داخل نصوص «Claude» لتعقب المحتوى المولد بالذكاء الاصطناعي الشرق الأوسط",
+   "title_ar": "بصمة خفية في نصوص Claude لتعقب المحتوى المولد بالذكاء الاصطناعي",
+   "summary_ar": "يشير العنوان إلى وجود بصمة خفية مدمجة في نصوص مولدة بواسطة نموذج Claude تتيح تتبع المحتوى الناتج عنه. النص المتاح لا يوضح آلية العمل أو مدى دقتها.",
+   "why_ar": "تهم هذه التقنية أي مشروع يحتاج إلى التحقق من أصل المحتوى المولد، كما قد تكون موضوعاً لبحث في الحوكمة وكشف المحتوى الاصطناعي.",
+   "tags": [
+    "Claude",
+    "Watermarking",
+    "AI Content Detection"
+   ],
+   "importance": 4,
+   "pillar": "research"
+  },
+  {
+   "id": "381223935ae3",
+   "title": "Do the math: How we took over ChatGPT accounts",
+   "url": "https://www.parameter.ai/labs/we-found-a-gap-at-openai",
+   "source": "Hacker News (300 pts)",
    "category": "tech",
-   "published": "2026-10-31T14:29:03Z",
+   "published": "2026-10-31T10:30:11Z",
    "snippet": "",
-   "title_ar": "برمجية خبيثة تستخدم نماذج اللغة لترتيب الضحايا حسب قيمتهم",
-   "summary_ar": "تشير عناوين الخبر إلى أن برمجية خبيثة تستعين بنماذج لغوية كبيرة لتقييم الضحايا وترتيبهم حسب مدى قيمتهم. النص الكامل غير متوفر، لذلك لا تتوفر تفاصيل تقنية عن طريقة العمل.",
-   "why_ar": "يهم لفهم طرق إساءة استخدام LLMs في الهجمات، وهو مدخل مفيد عند تقييم مخاطر الأمن في مشاريع البنك.",
+   "title_ar": "كيف استولى الفريق على حسابات ChatGPT؟",
+   "summary_ar": "وفق العنوان فقط، يشرح المقال كيفية الاستيلاء على حسابات ChatGPT. لم يتوفر نص كافٍ لمعرفة التقنية المستخدمة أو مدى تكرارها.",
+   "why_ar": "يفيد هذا المهندس في فهم نقاط الضعف في حماية الحسابات عند استخدام خدمات الذكاء الاصطناعي السحابية.",
    "tags": [
     "security",
-    "LLM misuse",
-    "malware"
+    "ChatGPT",
+    "accounts"
    ],
    "importance": 3,
    "pillar": "tech"
+  },
+  {
+   "id": "b112e6ada6a0",
+   "title": "OpenAI raises less than half of $30B target",
+   "url": "https://www.wsj.com/tech/ai/openai-raises-less-than-half-of-30-billion-target-in-latest-round-91aecdc5",
+   "source": "Hacker News (181 pts)",
+   "category": "tech",
+   "published": "2026-10-31T03:22:44Z",
+   "snippet": "",
+   "title_ar": "OpenAI تجمع أقل من نصف هدف 30 مليار دولار",
+   "summary_ar": "وفق العنوان فقط، لم تحقق OpenAI سوى أقل من نصف هدف جمع التمويل البالغ 30 مليار دولار. لا يتوفر نص يوضح المستثمرين أو الأسباب.",
+   "why_ar": "يهم هذا المهندس بشكل ثانوي لأنه يؤثر في مشهد الاستثمار في شركات الذكاء الاصطناعي وأسعار الخدمات مستقبلاً.",
+   "tags": [
+    "OpenAI",
+    "funding",
+    "VC"
+   ],
+   "importance": 3,
+   "pillar": "vc"
   },
   {
    "id": "6336aff37e57",
@@ -117,32 +133,70 @@
    "category": "tech",
    "published": "2026-10-31T01:20:05+00:00",
    "snippet": "When investors get nervous about AI spending, it helps to have the chipmaker that sells the chips offer to cosign the loan.",
-   "title_ar": "إنفيديا تدرس ضمان قرض مركز بيانات Nscale في فرجينيا الغربية",
-   "summary_ar": "تدرس Nvidia تقديم ضمان مشترك لقرض يموّل مركز بيانات للذكاء الاصطناعي تطوره Nscale في West Virginia، وذلك لطمأنة المستثمرين القلقين من الإنفاق على الذكاء الاصطناعي. الخبر لا يزال في طور الدراسة.",
-   "why_ar": "يوضح كيف تُمول البنية التحتية للذكاء الاصطناعي، وهو سياق مفيد للقطاع المصرفي.",
+   "title_ar": "Nvidia تدرس ضمان قرض مركز بيانات Nscale في فرجينيا الغربية",
+   "summary_ar": "تدرس شركة Nvidia أن تكون كفيلاً لقرض مخصص لمركز بيانات الذكاء الاصطناعي لشركة Nscale في ولاية فرجينيا الغربية. يأتي ذلك في وقت يزداد فيه قلق المستثمرين من الإنفاق على الذكاء الاصطناعي.",
+   "why_ar": "يهم هذا المهندس بشكل ثانوي لأنه يعكس ديناميكيات تمويل البنية التحتية للذكاء الاصطناعي وتكلفتها.",
    "tags": [
     "Nvidia",
-    "data center",
+    "data-center",
     "financing"
    ],
    "importance": 3,
-   "pillar": "banking"
+   "pillar": "vc"
   },
   {
-   "id": "1649c5dd0704",
-   "title": "dbreunig/nesformer",
-   "url": "https://simonwillison.net/2026/Oct/30/nesformer/",
-   "source": "Simon Willison",
+   "id": "60ba719a0574",
+   "title": "Anthropic to receive high 'junk' rating from credit agencies following IPO",
+   "url": "https://techcrunch.com/2026/10/30/anthropic-expected-to-receive-high-junk-rating-from-credit-agencies-following-ipo-report-says/",
+   "source": "Hacker News (99 pts)",
    "category": "tech",
-   "published": "2026-10-30T21:59:22+00:00",
-   "snippet": "dbreunig/nesformer Inspired by qwenputer by Divyansh Agrawal, Drew Breunig baked a working emulator for a Nintendo Entertainment System 6502 CPU into the weights of Qwen3.5-4B. You can now play NES ROMs such as Super Mario Bros (very slowly) running inside Qwen! In a comment on Hacker News Drew reveals the Opus 5.5 prompts he used to build this system: Read this article and any relevant source code: https://divagr.com/blog/qwenputer. Then explore if you could emulate the chip and ram in a Ninten",
-   "title_ar": "nesformer: تشغيل محاكي NES داخل أوزان نموذج Qwen",
-   "summary_ar": "طوّر Drew Breunig محاكياً لمعالج NES 6502 مدمجاً في أوزان نموذج Qwen3.5-4B، ويمكن تشغيل ألعاب مثل Super Mario Bros داخله ببطء. المشروع مستوحى من qwenputer، وتوضح الإشارة إلى HN أن المطور استخدم Opus 5.5 في بنائه.",
-   "why_ar": "تجربة إبداعية تكشف حدود النماذج اللغوية وتفتح فكرة تنفيذ الحوسبة داخل الأوزان، وتصلح كمادة تجريبية أو مرجع بحثي.",
+   "published": "2026-10-30T23:08:12Z",
+   "snippet": "",
+   "title_ar": "وكالات التصنيف تمنح Anthropic تصنيفاً منخفضاً بعد الطرح",
+   "summary_ar": "وفق العنوان فقط، من المتوقع أن تمنح وكالات التصنيف الائتماني شركة Anthropic تصنيف 'junk' بعد طرحها في البورصة. لا يتوفر نص يوضح الأسباب أو الجهات.",
+   "why_ar": "يهم هذا المهندس بشكل ثانوي لأنه يؤثر على تقييم شركات الذكاء الاصطناعي الكبرى وتكلفة تمويلها.",
    "tags": [
-    "Qwen",
-    "emulation",
-    "LLM weights"
+    "Anthropic",
+    "IPO",
+    "ratings"
+   ],
+   "importance": 3,
+   "pillar": "vc"
+  },
+  {
+   "id": "011fdc062b2b",
+   "title": "Apple Intelligence is finally coming to China with iOS 27.3",
+   "url": "https://www.theverge.com/tech/1023974/apple-intelligence-china-ios-27-3",
+   "source": "The Verge AI",
+   "category": "tech",
+   "published": "2026-10-30T22:32:53+00:00",
+   "snippet": "Apple will launch Apple Intelligence in China with iOS 27.3, the company announced on its Chinese newsroom website, as reported by MacRumors. The Apple Intelligence features will be available first in an iOS 27.3 beta that's set to launch on November 4th, with a full iOS 27.3 release scheduled for December. This launch doesn't bring […]",
+   "title_ar": "Apple Intelligence تصل إلى الصين مع iOS 27.3",
+   "summary_ar": "ستطلق Apple ميزات Apple Intelligence في الصين عبر iOS 27.3، وفق ما أعلنته على موقعها الصيني. ستتوفر الميزات أولاً في نسخة تجريبية تبدأ في 4 نوفمبر، والإصدار الكامل مقرر في ديسمبر.",
+   "why_ar": "يهم هذا المهندس لأنه يوضح مسار إطلاق ميزات الذكاء الاصطناعي في أسواق تخضع لقيود تنظيمية خاصة.",
+   "tags": [
+    "Apple",
+    "iOS",
+    "China"
+   ],
+   "importance": 3,
+   "pillar": "tech"
+  },
+  {
+   "id": "e889ea0803d5",
+   "title": "Matched Capabilities, Different Behaviors: A Controlled Study of MCP and CLI Interfaces for Language Agents",
+   "url": "https://huggingface.co/papers/2610.34298",
+   "source": "HF Papers 👍4",
+   "category": "research",
+   "published": "2026-10-24T20:00:00.000Z",
+   "snippet": "Language agents increasingly act through external tools and interactive environments, making the interface between the model and its executable capabilities part of the decision process. Model Context Protocol (MCP) and command-line interfaces (CLI) can expose the same semantic operations through markedly different model-facing representations. We study whether these representational differences change agent behavior when executable capabilities are matched. We introduce Matched Interface Comparison and Analysis (MICA), which renders MCP and CLI from a shared semantic action contract and routes decoded actions through the same runtime. Across six models and three interactive environments, ma",
+   "title_ar": "MCP مقابل CLI: هل تغيّر واجهة الأداة سلوك الوكيل؟",
+   "summary_ar": "دراسة مضبوطة تقارن واجهتي MCP وCLI لوكلاء اللغة، وتعرض إطار MICA الذي يبني الواجهتين من عقد إجراءات دلالي مشترك ويمرر الإجراءات عبر بيئة تشغيل واحدة. تغطي الدراسة ستة نماذج وثلاث بيئات تفاعلية، وتبحث في تأثير اختلاف التمثيل على سلوك الوكيل عند تطابق القدرات التنفيذية.",
+   "why_ar": "مهم عند تصميم أدوات الوكلاء في مشاريع البنك، لأن اختيار الواجهة قد يؤثر على القرار.",
+   "tags": [
+    "MCP",
+    "agents",
+    "tool-use"
    ],
    "importance": 3,
    "pillar": "research"
@@ -156,77 +210,33 @@
    "published": "2026-10-15T20:00:00.000Z",
    "snippet": "Blockchain forensics is adversarial and open-ended: money launderers split, swap, and bridge funds, cut their trail at mixers or custodial services, and change tactics from one incident to the next. Investigators must keep adapting their tracing in response. Yet the immutability of public ledgers preserves every recorded movement in public view, making much of the investigation independently verifiable. We introduce ABF-Bench, an interactive benchmark that makes evidence-backed fund tracing a verifiable agent task, in which every claimed movement must cite ledger records the agent retrieved. A case-to-task pipeline builds well-posed tasks across ledgers: conservative rules halt tracing where",
    "title_ar": "ABF-Bench: معيار قابل للتحقق لتتبع الأموال على البلوكتشين",
-   "summary_ar": "يقدم الباحثون ABF-Bench، وهو معيار تفاعلي يجعل تتبع الأموال على البلوكتشين مهمة وكيل قابلة للتحقق. يجب على الوكيل أن يستشهد بسجلات دفتر الأستاذ التي استرجعها لكل حركة يدّعيها. يبني المعيار مهامه من حالات حقيقية عبر دفاتر متعددة بقواعد متحفظة تتوقف عند نقاط الغموض.",
-   "why_ar": "قد يفيد هذا العمل في تقييم وكلاء التحقيق المالي ومكافحة غسيل الأموال إذا كان ضمن أولويات البنك، وهو خارج المسار الأساسي لكنه مرتبط بالامتثال.",
+   "summary_ar": "يقدم الباحثون ABF-Bench، وهو معيار تفاعلي يجعل تتبع الأموال المدعوم بالأدلة مهمة وكيل قابلة للتحقق. يلزم المعيار الوكيل بالاستشهاد بسجلات دفتر الأستاذ التي استرجعها لكل حركة أموال يدّعيها. ويبني خط أنابيب من الحالات إلى المهام مهام محددة عبر عدة دفاتر، مع قواعد محافظة توقف التتبع عند حدود معينة.",
+   "why_ar": "موضوع بحثي وتقييمي قد يفيد في فهم قدرات الوكلاء في مجال الامتثال ومكافحة غسل الأموال.",
    "tags": [
     "blockchain",
-    "forensics",
-    "agents",
-    "benchmark"
+    "benchmark",
+    "agents"
    ],
    "importance": 3,
    "pillar": "research"
   },
   {
-   "id": "17bd4145ec30",
-   "title": "reason-machines/reason-network",
-   "url": "https://github.com/reason-machines/reason-network",
-   "source": "GitHub ★1,411",
-   "category": "github",
-   "published": "2026-10-31T08:09:39Z",
-   "snippet": "Reason Network: your team's coding agents, talking to each other. The engine behind `reason network`.",
-   "stars": 1411,
-   "lang": "Rust",
-   "title_ar": "Reason Network: وكلاء البرمجة في الفريق يتواصلون فيما بينهم",
-   "summary_ar": "مشروع Reason Network يتيح لوكلاء البرمجة في فريق واحد التواصل مع بعضهم البعض. وهو المحرك الذي يعمل خلف الأمر reason network.",
-   "why_ar": "قد يفيد في تجربة تعاون الوكلاء ضمن فريق التطوير، لكن الوصف المتاح قصير ولا يكفي لتقييم عمق المشروع.",
-   "tags": [
-    "multi-agent",
-    "coding-agents",
-    "collaboration"
-   ],
-   "importance": 3,
-   "pillar": "tech"
-  },
-  {
-   "id": "64f90e478751",
-   "title": "Zfinix/eleven",
-   "url": "https://github.com/Zfinix/eleven",
-   "source": "GitHub ★945",
-   "category": "github",
-   "published": "2026-10-31T04:16:12Z",
-   "snippet": "Agent-first reverse engineering for macOS, Windows and Linux: any ACP agent reads, renames and patches binaries, Android apps and GPU kernels next to you.",
-   "stars": 945,
-   "lang": "TypeScript",
-   "title_ar": "Eleven: وكلاء ACP لهندسة عكسية للبرمجيات والنوى الرسومية",
-   "summary_ar": "أداة هندسة عكسية تعتمد على الوكلاء لأنظمة macOS وWindows وLinux، تتيح لأي وكيل ACP قراءة الملفات الثنائية وتطبيقات أندرويد ونوى GPU وإعادة تسميتها وترقيعها. تعمل بجانب المستخدم.",
-   "why_ar": "قد تفيد مهندس الذكاء الاصطناعي في فهم أدوات الوكلاء الموجهة لتحليل البرمجيات، وهي مفيدة لفرق الأمن ضمن سياق أوسع.",
-   "tags": [
-    "reverse-engineering",
-    "ACP",
-    "agents",
-    "security"
-   ],
-   "importance": 3,
-   "pillar": "tech"
-  },
-  {
    "id": "dff922dfd8a8",
    "title": "zhuyansen/new-term-radar",
    "url": "https://github.com/zhuyansen/new-term-radar",
-   "source": "GitHub ★2,001",
+   "source": "GitHub ★2,002",
    "category": "github",
    "published": "2026-10-28T11:48:20Z",
    "snippet": "Daily radar for new AI terms: names of new models, products and repos, caught on X, Hugging Face, GitHub and sitemaps before keyword tools list them.",
-   "stars": 2001,
+   "stars": 2002,
    "lang": "Python",
-   "title_ar": "رادار يرصد أسماء الذكاء الاصطناعي الجديدة قبل أدوات الكلمات المفتاحية",
-   "summary_ar": "مشروع مفتوح المصدر على GitHub يرصد يومياً أسماء الموديلات والمنتجات والريبوهات الجديدة في مجال الذكاء الاصطناعي. يجمع المعلومات من X وHugging Face وGitHub وخرائط المواقع. هدفه اكتشاف المصطلحات قبل أن تظهر في أدوات تتبع الكلمات المفتاحية.",
-   "why_ar": "يساعدك على اكتشاف التقنيات الجديدة مبكراً ومتابعتها دون جهد يدوي كبير.",
+   "title_ar": "رادار يرصد أسماء الموديلات والأدوات الجديدة في الذكاء الاصطناعي",
+   "summary_ar": "ريبو zhuyansen/new-term-radar يقدم رادارًا يوميًا لرصد أسماء الموديلات والمنتجات والريبوهات الجديدة في الذكاء الاصطناعي. يعتمد على مراقبة X وHugging Face وGitHub وخرائط المواقع قبل أن تظهر في أدوات تتبع الكلمات المفتاحية.",
+   "why_ar": "يساعدك على اكتشاف التقنيات الجديدة مبكرًا لتقييمها قبل أن تنتشر وتصبح جزءًا من خطط تجارب POC.",
    "tags": [
     "GitHub",
     "trend-monitoring",
-    "open-source"
+    "AI-tools"
    ],
    "importance": 3,
    "pillar": "tech"
@@ -240,92 +250,34 @@
    "published": "2026-10-30T16:35:33+00:00",
    "snippet": "«مي حجازي» تكتب: من شرائح العملاء إلى العميل الواحد.. كيف يقود الذكاء الاصطناعي تحولًا جديدًا في النمو المصرفي؟ بوابة التكنولوجيا المالية",
    "title_ar": "من شرائح العملاء إلى العميل الواحد في النمو المصرفي",
-   "summary_ar": "مقالة لمي حجازي تتناول كيف يدفع الذكاء الاصطناعي البنوك للانتقال من تقسيم العملاء إلى شرائح عامة نحو التعامل مع كل عميل بشكل فردي. يهدف التحول إلى تعزيز النمو المصرفي. النص المتاح لا يوضح التفاصيل التنفيذية.",
-   "why_ar": "يعطيك تصوراً لاتجاه التخصيص الفردي للعملاء، وهو مجال مناسب لأفكار POC في البنوك.",
+   "summary_ar": "مقال لمي حجازي يتناول كيف يقود الذكاء الاصطناعي تحولًا من تقسيم العملاء إلى شرائح نحو التعامل مع كل عميل بشكل فردي. النص المتاح موجز ولا يتضمن أمثلة أو أرقامًا.",
+   "why_ar": "يعطيك تصورًا عن التخصيص على مستوى العميل الواحد، وهو اتجاه يصلح لأفكار POC في التسويق المصرفي.",
    "tags": [
-    "personalization",
     "banking",
-    "customer-growth"
+    "personalization",
+    "customer-analytics"
    ],
    "importance": 3,
    "pillar": "banking"
   },
   {
-   "id": "c2347a4cefe1",
-   "title": "How Younger Customers Are Spearheading the Rise of the ‘Switchable Middle’",
-   "url": "https://www.finextra.com/videoarticle/3630/how-younger-customers-are-spearheading-the-rise-of-the-switchable-middle?utm_medium=rssfinextra&utm_source=finextrafeed",
-   "source": "Finextra AI",
-   "category": "banking",
-   "published": "2026-10-30T15:16:00+00:00",
-   "snippet": "At Sibos 2026, Temenos' William Moroney shares insights from a survey that reveals a widening gap between customer expectations shaped by digital experiences and the service banks currently deliver.",
-   "title_ar": "العملاء الأصغر سناً يقودون ظاهرة الوسط القابل للتحول",
-   "summary_ar": "من مؤتمر Sibos 2026، يعرض ممثل Temenos نتائج مسح يظهر اتساع الفجوة بين توقعات العملاء المتأثرة بالتجارب الرقمية وما تقدمه البنوك حالياً. يركز الخبر على فئة العملاء القابلين للانتقال بين البنوك.",
-   "why_ar": "يوضح الفجوة في تجربة العميل الرقمية، ما يفتح مجالاً لتجارب POC تحسن الخدمة وتقلل خسارة العملاء.",
-   "tags": [
-    "customer-experience",
-    "Sibos",
-    "Temenos",
-    "survey"
-   ],
-   "importance": 3,
-   "pillar": "banking"
-  },
-  {
-   "id": "b90b981c0a37",
-   "title": "من الذكاء الاصطناعي إلى تعريب المعرفة.. «جائزة محمد بن راشد» تحتفي بصنّاع مستقبل العربية - 25H",
-   "url": "https://news.google.com/rss/articles/CBMiyAJBVV95cUxOd005SzBkNEludDB0QWlVN2gtV290S0hDak45alhiWXBJYklrZU5YWFJEaG1BanZqa29HcFUzUzRNYnlXRDZlYU5TZkhtZFpTdEFsR2g0XzNMajE2MXdnb3FOLUtzQ0RSOHk3bkUzb0lhbEtUWVpJbWxlMk9vV25OeDZ5Qy1YVGNWQ3BHekNpZW9JdTF4a1BGN2x0WmhydEJzT3NsckJRTnVBTG5HQVpMZG5nQnVSS0RybE84OTA0RVlXYkpFY0NLTmwtZ3A4VFJWZVZKRkE2bFpvNmRFdXFLMUVKLTE1OTUxbms2SnlaQWJhbFRFdFc0UlR4QVZUWTRGSngxVmlMQWNqaWpOX1Z4eFJ6aE1OTHc5LS1ZNnN5eWkxQWNFRl90aUJ0WHQ3ckZsUFJoSGc5ZkZidC1aS1pGMVRLRzRsM05P?oc=5",
-   "source": "أخبار: هاكاثونات ومسابقات السعودية",
+   "id": "a28113c717a4",
+   "title": "السعودية تطلق 5 أطر لبناء القدرات في البيانات والذكاء الاصطناعي - الشرق الأوسط",
+   "url": "https://news.google.com/rss/articles/CBMivwRBVV95cUxOZzZCT3pIdTdTMHk3RUJBazM3eHVhLVpycGYxclNiQm9iRVVJM0RUdUc1Wlk5TXZBcjJma1BJRVo5S2JHZlgtek9DcUpBdm9zaUNFX2QwOXdVd1ZwSl9wN1JFdVpRc0FMcnVRYkZOMzl4aEstN1lJNjBoM0RXWklZODVMZW5kWW1Ia0x2WktqVkxSbG5NZlY2ZDBzaVpBV3U2dWpzNmlwN1N1NE1FVWdORlY2clBlVHNneW5JWWc2TEpyT3pPMFVVOFRYT29mU1lLVVdpNm1sVDM4d2x4TWRVOHIwVDRrakFDeUt6SG01dFRldUpoTlJvMm0wMDdfc1pzZjhEdEExU0VxRng4a0RPN0JqXzdDQU9kRTVCQS05aXZiVlRRSFl6Qmd2RnFfQ0JMUDZaNGJrOTB4RHBxYW9MaTI3cmxSVks0SzYyYXlHeW9KU2Fjam9aaFE0U2dReWhaNU1GNm5CTW1aX1V5eWt4Sm5UeGtWeGxuZ1F5d3FUa25TZXYzYUtLbzhuX3Y4LWlDY3FBOGotTVk4aF9OQVc2QkhEOGhZZElQcDQ5dXVMUl9fTHBqMzRjQTN0ZmY1MWFlZ0hkRGhFM2gxdHBjM0xQVU9nbUprclJldUtsOGxQNWZoamFzMlVtV2J1SWp4Z2QxUTJWUFFoUEpUYV95U1VqMnJGTjZxakc5MnItWEh6elhWa3NHNjBlbGtrTF9OSWJtUVQxU01QQlpjeFctci1BUjVzbXdOeUZXWW1YMlRxOA?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي في السعودية",
    "category": "saudi",
-   "published": "2026-10-29T17:31:35+00:00",
-   "snippet": "من الذكاء الاصطناعي إلى تعريب المعرفة.. «جائزة محمد بن راشد» تحتفي بصنّاع مستقبل العربية 25H",
-   "title_ar": "جائزة محمد بن راشد تحتفي بصناع مستقبل العربية",
-   "summary_ar": "تحتفي جائزة محمد بن راشد بالمساهمين في تعريب المعرفة ومن يعملون على الذكاء الاصطناعي باللغة العربية. النص المتاح لا يذكر شروط الترشح أو المواعيد أو قيمة الجائزة.",
-   "why_ar": "قد يكون مفيداً إذا كانت هناك فئة للذكاء الاصطناعي العربي تناسب مشروعاً بحثياً أو تجريبياً لديك.",
+   "published": "2026-10-30T22:01:33+00:00",
+   "snippet": "السعودية تطلق 5 أطر لبناء القدرات في البيانات والذكاء الاصطناعي الشرق الأوسط",
+   "title_ar": "السعودية تطلق 5 أطر لبناء القدرات في البيانات والذكاء الاصطناعي",
+   "summary_ar": "أعلنت السعودية عن إطلاق خمسة أطر لبناء القدرات في مجالي البيانات والذكاء الاصطناعي. النص المتاح مختصر ولا يوضح تفاصيل هذه الأطر أو جهاتها أو مدة تطبيقها.",
+   "why_ar": "قد تفتح هذه الأطر مسارات تدريب أو شراكات تفيد في تطوير مهاراتك في مشاريع الذكاء الاصطناعي داخل البنك.",
    "tags": [
-    "Arabic AI",
-    "Award",
-    "NLP"
+    "Saudi Arabia",
+    "AI Capacity Building",
+    "Data"
    ],
    "importance": 3,
    "pillar": "competition"
-  },
-  {
-   "id": "b112e6ada6a0",
-   "title": "OpenAI raises less than half of $30B target",
-   "url": "https://www.wsj.com/tech/ai/openai-raises-less-than-half-of-30-billion-target-in-latest-round-91aecdc5",
-   "source": "Hacker News (181 pts)",
-   "category": "tech",
-   "published": "2026-10-31T03:22:44Z",
-   "snippet": "",
-   "title_ar": "OpenAI تجمع أقل من نصف هدفها البالغ 30 مليار دولار",
-   "summary_ar": "تشير الأخبار إلى أن OpenAI جمعت أقل من نصف مستهدفها البالغ 30 مليار دولار. النص الكامل غير متوفر.",
-   "why_ar": "مؤشر على حالة سوق تمويل الذكاء الاصطناعي، وهو مرتبط باهتمامك الثانوي بالاستثمار الجريء.",
-   "tags": [
-    "OpenAI",
-    "funding",
-    "AI market"
-   ],
-   "importance": 2,
-   "pillar": "vc"
-  },
-  {
-   "id": "60ba719a0574",
-   "title": "Anthropic to receive high 'junk' rating from credit agencies following IPO",
-   "url": "https://techcrunch.com/2026/10/30/anthropic-expected-to-receive-high-junk-rating-from-credit-agencies-following-ipo-report-says/",
-   "source": "Hacker News (99 pts)",
-   "category": "tech",
-   "published": "2026-10-30T23:08:12Z",
-   "snippet": "",
-   "title_ar": "Anthropic قد تحصل على تصنيف ائتماني منخفض بعد الطرح العام",
-   "summary_ar": "بحسب العنوان، قد تحصل Anthropic على تصنيف 'جنك' من وكالات التصنيف الائتماني بعد طرحها للاكتتاب. النص غير متوفر.",
-   "why_ar": "مؤشر مهم لمن يتابع المخاطر الائتمانية والاستثمارية لشركات الذكاء الاصطناعي.",
-   "tags": [
-    "Anthropic",
-    "IPO",
-    "credit rating"
-   ],
-   "importance": 2,
-   "pillar": "vc"
   },
   {
    "id": "43523836c604",
@@ -335,35 +287,35 @@
    "category": "tech",
    "published": "2026-10-30T22:56:13+00:00",
    "snippet": "As an increasing number of AI assistants flood the market, the founder of Ollie, an assistant that respected its users' privacy, says it will be shutting down in a week.",
-   "title_ar": "Ollie، المساعد الذكي المهتم بالخصوصية، يغلق خدماته",
-   "summary_ar": "يعلن مؤسس Ollie، وهو مساعد ذكي يحترم خصوصية مستخدميه، أن الخدمة ستُغلق خلال أسبوع بسبب كثرة المساعدين الجدد في السوق. النص مختصر ولا يذكر أسباباً تفصيلية أخرى.",
-   "why_ar": "درس عملي عن صعوبة تمييز منتجات الذكاء الاصطناعي التي تركز على الخصوصية وتمويلها.",
+   "title_ar": "إغلاق Ollie، مساعد الذكاء الاصطناعي المهتم بالخصوصية",
+   "summary_ar": "يعلن مؤسس Ollie أن المساعد الذكي الذي يحترم خصوصية مستخدميه سيُغلق خلال أسبوع. يأتي الإغلاق مع تزايد عدد المساعدين الأذكياء في السوق.",
+   "why_ar": "يُظهر الخبر صعوبة المنافسة للمنتجات الناشئة، وهو درس ثانوي عند التفكير في منتجات تركز على الخصوصية.",
    "tags": [
     "privacy",
-    "AI assistant",
+    "AI-assistant",
     "startup"
    ],
    "importance": 2,
-   "pillar": "vc"
+   "pillar": "tech"
   },
   {
-   "id": "011fdc062b2b",
-   "title": "Apple Intelligence is finally coming to China with iOS 27.3",
-   "url": "https://www.theverge.com/tech/1023974/apple-intelligence-china-ios-27-3",
-   "source": "The Verge AI",
+   "id": "1649c5dd0704",
+   "title": "dbreunig/nesformer",
+   "url": "https://simonwillison.net/2026/Oct/30/nesformer/",
+   "source": "Simon Willison",
    "category": "tech",
-   "published": "2026-10-30T22:32:53+00:00",
-   "snippet": "Apple will launch Apple Intelligence in China with iOS 27.3, the company announced on its Chinese newsroom website, as reported by MacRumors. The Apple Intelligence features will be available first in an iOS 27.3 beta that's set to launch on November 4th, with a full iOS 27.3 release scheduled for December. This launch doesn't bring […]",
-   "title_ar": "Apple Intelligence تصل أخيراً إلى الصين مع iOS 27.3",
-   "summary_ar": "أعلنت Apple عبر موقعها الصيني أن Apple Intelligence ستصل إلى الصين مع iOS 27.3، وستتوفر أولاً في نسخة تجريبية تُطلق في 4 نوفمبر، ثم الإصدار الكامل في ديسمبر. النص مقتطع ولم يكتمل توضيح كل القيود.",
-   "why_ar": "تغيير في توفر ميزات الذكاء الاصطناعي على الأجهزة، ومفيد لمتابعة منصات الأجهزة والخصوصية.",
+   "published": "2026-10-30T21:59:22+00:00",
+   "snippet": "dbreunig/nesformer Inspired by qwenputer by Divyansh Agrawal, Drew Breunig baked a working emulator for a Nintendo Entertainment System 6502 CPU into the weights of Qwen3.5-4B. You can now play NES ROMs such as Super Mario Bros (very slowly) running inside Qwen! In a comment on Hacker News Drew reveals the Opus 5.5 prompts he used to build this system: Read this article and any relevant source code: https://divagr.com/blog/qwenputer. Then explore if you could emulate the chip and ram in a Ninten",
+   "title_ar": "nesformer: محاكي NES مدمج في أوزان Qwen",
+   "summary_ar": "طوّر Drew Breunig محاكياً لمعالج NES من نوع 6502 مدمجاً في أوزان نموذج Qwen3.5-4B، مستوحى من مشروع qwenputer. وفق المقتطف، يمكن تشغيل ألعاب مثل Super Mario Bros ببطء داخل النموذج.",
+   "why_ar": "تجربة إبداعية تُظهر حدود استخدام النماذج اللغوية كحاسوب، وقد تلهم فكرة POC غير تقليدية لاختبار قدرات النماذج.",
    "tags": [
-    "Apple Intelligence",
-    "iOS",
-    "China"
+    "Qwen",
+    "emulation",
+    "experiment"
    ],
    "importance": 2,
-   "pillar": "tech"
+   "pillar": "poc"
   },
   {
    "id": "82f98a0b31c2",
@@ -375,79 +327,54 @@
    "snippet": "免 ROOT 免 Termux，一个 APK 在安卓手机上跑 DeepSeek Harness。引擎内嵌 App 进程 · 读屏操作 App · 改系统设置 · 定时/条件自动化 · 可选 Shizuku",
    "stars": 631,
    "lang": "Kotlin",
-   "title_ar": "DSH-Android: تشغيل Harness لـ DeepSeek على أندرويد بتطبيق واحد",
-   "summary_ar": "مشروع يتيح تشغيل DeepSeek Harness على هواتف أندرويد عبر تطبيق APK واحد دون الحاجة لصلاحيات الجذر أو Termux. يدعم قراءة الشاشة وتنفيذ العمليات داخل التطبيقات وتعديل إعدادات النظام وأتمتة مجدولة أو شرطية، مع خيار استخدام Shizuku.",
-   "why_ar": "مشروع تجريبي للمهندس المهتم بالوكلاء على الأجهزة المحمولة، لكنه ليس أولوية للعمل البنكي المباشر.",
+   "title_ar": "DSH-Android: مساعد DeepSeek يعمل على أندرويد بتطبيق واحد",
+   "summary_ar": "مشروع مفتوح يشغّل DeepSeek Harness على هاتف أندرويد عبر ملف APK واحد دون صلاحيات الجذر أو Termux. يتضمن المشروع قراءة الشاشة وتنفيذ عمليات داخل التطبيقات وتعديل إعدادات النظام، مع أتمتة مجدولة أو مشروطة وخيار استخدام Shizuku.",
+   "why_ar": "تقنية جانبية لتجربة وكلاء الذكاء الاصطناعي على الجوال، وأهميتها محدودة لعمل البنك.",
    "tags": [
     "Android",
     "DeepSeek",
-    "agents",
-    "automation"
+    "agents"
    ],
    "importance": 2,
    "pillar": "tech"
   },
   {
-   "id": "f855d447f31b",
-   "title": "x18n-dev/x18n",
-   "url": "https://github.com/x18n-dev/x18n",
-   "source": "GitHub ★601",
+   "id": "17bd4145ec30",
+   "title": "reason-machines/reason-network",
+   "url": "https://github.com/reason-machines/reason-network",
+   "source": "GitHub ★1,411",
    "category": "github",
-   "published": "2026-10-30T22:45:15Z",
-   "snippet": "Universal toolkits for linting, viewing and managing i18n for any frameworks.",
-   "stars": 601,
+   "published": "2026-10-31T08:09:39Z",
+   "snippet": "Reason Network: your team's coding agents, talking to each other. The engine behind `reason network`.",
+   "stars": 1411,
+   "lang": "Rust",
+   "title_ar": "Reason Network: شبكة تربط وكلاء البرمجة داخل الفريق",
+   "summary_ar": "مشروع يتيح لوكلاء البرمجة في فريق واحد التواصل فيما بينهم، وهو المحرك الخلفي للأمر reason network. النص المتاح قصير ولا يذكر تفاصيل تقنية إضافية.",
+   "why_ar": "قد يفيد في تجربة تنسيق عدة وكلاء برمجة داخل فريق التطوير.",
+   "tags": [
+    "coding-agents",
+    "multi-agent"
+   ],
+   "importance": 2,
+   "pillar": "tech"
+  },
+  {
+   "id": "64f90e478751",
+   "title": "Zfinix/eleven",
+   "url": "https://github.com/Zfinix/eleven",
+   "source": "GitHub ★945",
+   "category": "github",
+   "published": "2026-10-31T04:16:12Z",
+   "snippet": "Agent-first reverse engineering for macOS, Windows and Linux: any ACP agent reads, renames and patches binaries, Android apps and GPU kernels next to you.",
+   "stars": 945,
    "lang": "TypeScript",
-   "title_ar": "x18n: أدوات فحص وإدارة الترجمة لأي إطار عمل",
-   "summary_ar": "مجموعة أدوات عامة لفحص وعرض وإدارة ملفات الترجمة i18n لمختلف أطر العمل البرمجية.",
-   "why_ar": "مفيد إذا كانت واجهات التطبيقات الداخلية تحتاج دعماً متعدد اللغات، لكنه ليس أولوية في الغالب.",
+   "title_ar": "Eleven: هندسة عكسية يقودها وكلاء ACP",
+   "summary_ar": "أداة هندسة عكسية تعمل على macOS وWindows وLinux، تتيح لأي وكيل بروتوكول ACP قراءة الملفات الثنائية وتطبيقات أندرويد ونوى GPU وإعادة تسميتها وترقيعها. تعمل الأداة إلى جانب المستخدم داخل بيئة العمل.",
+   "why_ar": "مفيدة لمهندس يحتاج تحليل ملفات ثنائية أو تطبيقات ضمن أعمال أمنية أو تقييمية.",
    "tags": [
-    "i18n",
-    "linting",
-    "localization"
-   ],
-   "importance": 2,
-   "pillar": "tech"
-  },
-  {
-   "id": "1a44d03684b9",
-   "title": "EL4CTEO/blender-skills",
-   "url": "https://github.com/EL4CTEO/blender-skills",
-   "source": "GitHub ★624",
-   "category": "github",
-   "published": "2026-10-30T20:35:01Z",
-   "snippet": "Professional Blender 5.2 workflows as Agent Skills for Claude Code, Codex, Gemini CLI, Copilot and Cursor: modeling, UVs, PBR, baking, rigging, animation, export and QA.",
-   "stars": 624,
-   "lang": "Python",
-   "title_ar": "blender-skills: مهارات وكلاء لسير عمل Blender الاحترافي",
-   "summary_ar": "مجموعة مهارات وكلاء لسير عمل Blender 5.2 تغطي النمذجة وUVs وPBR والخبز والربط والتحريك والتصدير والمراجعة، وتعمل مع Claude Code وCodex وGemini CLI وCopilot وCursor.",
-   "why_ar": "يهم بشكل ثانوي إذا احتجت لإنتاج محتوى ثلاثي الأبعاد أو تصميم عروض بصرية، ويوضح نمط بناء مهارات الوكلاء.",
-   "tags": [
-    "Blender",
-    "agent-skills",
-    "3D",
-    "Claude-Code"
-   ],
-   "importance": 2,
-   "pillar": "tech"
-  },
-  {
-   "id": "537bd3ea8f73",
-   "title": "daveebbelaar/bama",
-   "url": "https://github.com/daveebbelaar/bama",
-   "source": "GitHub ★1,089",
-   "category": "github",
-   "published": "2026-10-29T13:05:44Z",
-   "snippet": "BAMA: Build Any Mac App. Agent skills to research, clone, design, build, optimize, and test native macOS apps with Swift and SwiftUI.",
-   "stars": 1089,
-   "lang": "Swift",
-   "title_ar": "bama: مهارات وكلاء لبناء تطبيقات macOS أصلية",
-   "summary_ar": "مجموعة مهارات وكلاء لبحث واستنساخ وتصميم وبناء واختبار تطبيقات macOS أصلية بلغة Swift وSwiftUI.",
-   "why_ar": "مفيدة إذا كان هناك توجه لبناء أدوات داخلية لأجهزة Mac، وتعكس اتجاه استخدام المهارات في توليد البرمجيات.",
-   "tags": [
-    "macOS",
-    "Swift",
-    "SwiftUI",
-    "agent-skills"
+    "reverse-engineering",
+    "agents",
+    "ACP"
    ],
    "importance": 2,
    "pillar": "tech"
@@ -462,71 +389,52 @@
    "snippet": "Motion capture for any creature from one AI video: two cameras in one frame, a DINOv2 joint reader, the rig fitted in both views, a GLB out.",
    "stars": 448,
    "lang": "Python",
-   "title_ar": "التقاط حركة أي كائن من فيديو واحد بالذكاء الاصطناعي",
-   "summary_ar": "ريبو anymove يستخرج حركة أي مخلوق من فيديو واحد مولّد بالذكاء الاصطناعي. يستخدم كاميرتين داخل الإطار الواحد وقارئ مفاصل مبني على DINOv2، ثم يركّب الهيكل العظمي في المنظورين. النتيجة ملف بصيغة GLB.",
-   "why_ar": "تقنية مفيدة لتجربة POC في الرسوم المتحركة أو المحاكاة إن احتجت تحويل فيديو إلى بيانات حركة ثلاثية الأبعاد.",
+   "title_ar": "التقاط حركة أي كائن من فيديو ذكاء اصطناعي واحد",
+   "summary_ar": "مشروع patch-gg/anymove يستخرج حركة أي مخلوق من فيديو واحد مولّد بالذكاء الاصطناعي. يستخدم كاميرتين داخل إطار واحد، وقارئ مفاصل مبني على DINOv2، ثم يركّب الهيكل في الإطارين ويخرج ملف GLB.",
+   "why_ar": "تقنية مفيدة إن أردت تجربة استخلاص الحركة من الفيديو للتطبيقات البصرية، لكن لا يوجد في النص تفاصيل عن الأداء أو الترخيص.",
    "tags": [
+    "GitHub",
     "computer-vision",
     "DINOv2",
-    "3D",
     "motion-capture"
    ],
    "importance": 2,
-   "pillar": "poc"
+   "pillar": "tech"
   },
   {
-   "id": "da504771a07f",
-   "title": "Conversations on Central Banking: Macroeconomy in the Age of Artificial Intelligence - Federal Reserve Bank of Cleveland",
-   "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNMVFhLVpydXJQblZEVmtiaHZ3cXVmSUZ2TlBqSGM3ZTRYTkQwZzdINllrWkVsWkRtOEhERWRfV2pQNFEzOENQVGYyc19GQ0E5SGpjZFNXUjBEV0lneURYU0M1OVFiUnRkZmgyLVNQMHdVQ3ByQlhHSGtPdG9Kek5GYTMxMzNpRnM?oc=5",
-   "source": "Google News: AI Banking",
+   "id": "9a50b60ee3e0",
+   "title": "البنك المركزي الأوروبي: تبنّي الذكاء الاصطناعي يدعم النمو والإنتاجية في منطقة اليورو - Traders Union",
+   "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPSmxmUWt1SkZtU1ZTcHUyQ0VTWmc4a1FTSlJ0MzBHSWZjSFpHZ1hXOGtTRzdlZC1YU2w4RVg0Z19fMTA0WDUySmZkeEMxV2wxRTBhNVlXbzVkMEY5T2dRdlVyMHltV01vWnJmS051akplUWlSV1RMTlF6cXFGcHMtWjBQeXA5UzFZcHVZSEhLcmNqdw?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي والبنوك",
    "category": "banking",
-   "published": "2026-10-31T07:07:30+00:00",
-   "snippet": "Conversations on Central Banking: Macroeconomy in the Age of Artificial Intelligence Federal Reserve Bank of Cleveland",
-   "title_ar": "ندوة بنك كليفلاند الاحتياطي حول الاقتصاد الكلي والذكاء الاصطناعي",
-   "summary_ar": "سلسلة حوارات من بنك كليفلاند الاحتياطي بعنوان الاقتصاد الكلي في عصر الذكاء الاصطناعي. النص المتاح في الخبر قصير جداً ولا يتضمن تفاصيل عن المحتوى.",
-   "why_ar": "مرجع محتمل لفهم أثر الذكاء الاصطناعي على الاقتصاد الكلي وصلته بالسياسة النقدية، وقد يصلح مادة خلفية لبحث.",
+   "published": "2026-10-30T16:23:26+00:00",
+   "snippet": "البنك المركزي الأوروبي: تبنّي الذكاء الاصطناعي يدعم النمو والإنتاجية في منطقة اليورو Traders Union",
+   "title_ar": "البنك المركزي الأوروبي يرى أن الذكاء الاصطناعي يدعم الإنتاجية",
+   "summary_ar": "يشير خبر إلى أن البنك المركزي الأوروبي يرى أن تبنّي الذكاء الاصطناعي يدعم النمو والإنتاجية في منطقة اليورو. لا يتوفر في العنوان تفاصيل إضافية عن الأرقام أو الإجراءات.",
+   "why_ar": "مؤشر على اهتمام الجهات الرقابية بالذكاء الاصطناعي، وقد يفيدك في خلفية الحوكمة والتقارير.",
    "tags": [
-    "central-banking",
-    "macroeconomics",
-    "AI-policy"
-   ],
-   "importance": 2,
-   "pillar": "research"
-  },
-  {
-   "id": "30409366ff24",
-   "title": "7th Global Fintech Fest 2026 - www.pib.gov.in",
-   "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBzdFYxU21kenhSOGRXR0VISlhReVdLcWZtQV94dGxRTDNScGNuVldrSV9RWnJEeVBWaURQNDJKYUJlQVBqTjZ3UnBOcXR5SWtUbTJsNk9GMkZQc0NiTW9lMHlINDhHTkNXSE5YSFk1b29YOXhkRkc0?oc=5",
-   "source": "Google News: AI Banking",
-   "category": "banking",
-   "published": "2026-10-31T03:21:43+00:00",
-   "snippet": "7th Global Fintech Fest 2026 www.pib.gov.in",
-   "title_ar": "مؤتمر Global Fintech Fest 2026 في الهند",
-   "summary_ar": "خبر من موقع الحكومة الهندية يذكر الدورة السابعة من مؤتمر Global Fintech Fest لعام 2026. النص لا يتضمن تفاصيل إضافية عن الفعاليات أو المحاور.",
-   "why_ar": "فرصة لمتابعة أحدث توجهات التكنولوجيا المالية وحضور أو تتبع نقاشات البنوك حول الذكاء الاصطناعي.",
-   "tags": [
-    "fintech",
-    "conference",
-    "India"
+    "central-bank",
+    "AI-adoption",
+    "Europe"
    ],
    "importance": 2,
    "pillar": "banking"
   },
   {
-   "id": "a0daf2a930f3",
-   "title": "Achieving a Collective Defence: How to Tackle Cybercrime in 2027",
-   "url": "https://www.finextra.com/videoarticle/3636/achieving-a-collective-defence-how-to-tackle-cybercrime-in-2027?utm_medium=rssfinextra&utm_source=finextrafeed",
+   "id": "c2347a4cefe1",
+   "title": "How Younger Customers Are Spearheading the Rise of the ‘Switchable Middle’",
+   "url": "https://www.finextra.com/videoarticle/3630/how-younger-customers-are-spearheading-the-rise-of-the-switchable-middle?utm_medium=rssfinextra&utm_source=finextrafeed",
    "source": "Finextra AI",
    "category": "banking",
-   "published": "2026-10-30T15:00:00+00:00",
-   "snippet": "In this interview from RiskX, Mastercard's Ranjita Iyer joined FinextraTV to discuss about cyber-crime.",
-   "title_ar": "الدفاع الجماعي ضد الجرائم الإلكترونية في القطاع المالي",
-   "summary_ar": "مقابلة مصورة من RiskX يناقش فيها ممثل Mastercard الجرائم الإلكترونية وطرق التصدي لها بشكل جماعي. النص المتاح قصير ولا يقدم تفاصيل عن الحلول المطروحة.",
-   "why_ar": "الأمن السيبراني والاحتيال من مجالات يمكن أن تستفيد من نماذج الذكاء الاصطناعي في الكشف المبكر.",
+   "published": "2026-10-30T15:16:00+00:00",
+   "snippet": "At Sibos 2026, Temenos' William Moroney shares insights from a survey that reveals a widening gap between customer expectations shaped by digital experiences and the service banks currently deliver.",
+   "title_ar": "العملاء الأصغر سنًا يقودون ظاهرة الشريحة القابلة للتحويل",
+   "summary_ar": "في Sibos 2026 يعرض William Moroney من Temenos نتائج مسح يظهر فجوة متزايدة بين توقعات العملاء المتأثرة بالتجارب الرقمية وما تقدمه البنوك حاليًا. النص المتاح قصير ولا يذكر أرقامًا محددة.",
+   "why_ar": "يوضح الفجوة في تجربة العميل التي قد تكون مجالًا لحلول POC تعتمد على الذكاء الاصطناعي.",
    "tags": [
-    "cybersecurity",
-    "fraud",
-    "Mastercard"
+    "Temenos",
+    "customer-experience",
+    "Sibos"
    ],
    "importance": 2,
    "pillar": "banking"
@@ -539,9 +447,9 @@
    "category": "banking",
    "published": "2026-10-30T12:28:00+00:00",
    "snippet": "Team 8: Wonky Harvest and Team 9: Lloyds Banking Group have been crowned the winners of the Sustainable Finance Hackathon 2026.",
-   "title_ar": "فريقان يفوزان بهاكathon التمويل المستدام 2026",
-   "summary_ar": "أعلن فوز الفريق 8 بقيادة Wonky Harvest والفريق 9 من مجموعة Lloyds Banking في هاكاثون التمويل المستدام 2026. النص لا يذكر تفاصيل المشاريع الفائزة.",
-   "why_ar": "يعكس نوع المشاريع التي تفوز في الهاكاثونات المالية، ما قد يلهمك لفكرة مسابقة أو POC في التمويل المستدام.",
+   "title_ar": "فريق Lloyds Banking Group يفوز بهاكاثون التمويل المستدام 2026",
+   "summary_ar": "أعلن فوز الفريق 8 Wonky Harvest والفريق 9 من Lloyds Banking Group بلقب هاكاثون التمويل المستدام 2026. النص لا يذكر تفاصيل الحلول الفائزة.",
+   "why_ar": "يعطيك فكرة عن نوع التحديات في هاكاثونات البنوك، وهي مؤشر مفيد لاختيار مسابقات مماثلة.",
    "tags": [
     "hackathon",
     "sustainable-finance",
@@ -551,37 +459,76 @@
    "pillar": "competition"
   },
   {
-   "id": "0cf6ce93de22",
-   "title": "وزارة الحج والعمرة تحصد جائزة \"أفضل مؤسسة حكومية متميزة رقميا\" - اليوم السابع",
-   "url": "https://news.google.com/rss/articles/CBMi_wNBVV95cUxQSEtValZndTllTFJ0ZXJXdDZ5SjZYVi1LUFBvVnU3Sm5RZlI5ZUVaVnRkTm5HR3JLQ0RwaGVsWW5EX01RdmFoTGY0VFpNN0lrNEpYOWJoeFVDWDFCeVlJcVlidVMtOE5KWVZFZW5VWWRyZnFJclhvbjlBOW5yT2JXQXNIU2NiNXNta3dwR1JRd042QmlsRlRhZER4N1hmZlVIMEZQcG56RFpKUnM0TjcxQVRhTy1LSXp0bnYzcFNDWWxnMHVrbjRCWFRvZmxEdUVVdUgxZWVBTkU2clV3ejZsYm9OUThIWDNiQU9sWmtHR2RqVXZoRjFDdXhQSXA0WDJSLUxYTEZhcUtDWHZMQUZqa1pRQmRVU2VIb20tY1BpZS1kVGVQWFk2ak9JblJab08yQjZIbEh1bzJyZHBXUmJ0ZVN6dUNxY0lNbjYwZDNlRlRSTXZfSkxVeUtzNFExSTI2cmlkV3NOZ3VxZ1pSWkhqNGRWYVdxZTlSWHlNX0J3UkNjWVU0SzN6LUtiS3llZVR6ckNDdmZvcGJ5QVNaREFmRi1obGFfQkcwbU5lMVZ2WmFXYmE4bWEzRjZfOGtjR0JHUE5vTDZjQWJmNkpqNE1oZDdkMElBa0VMVDRzV2FmSGFpdnFPNnh4MlNmREk1WmRvZVFZdks3X2V3QUM4bzR30gH6A0FVX3lxTE55YUoyR1ZzREtNeXZ1X2xtWGpLWHB0YVJZWmVwRXc0V3FsZ1BvTWdLMTQ1RVRHdV83NkpfUjBpRV82cnlPRXZfaFJhNHhOOExDc3hsOS1TMjdfQW1uSmtuckg5ckE2dDFwaXBGQkxmbGRCdXdrU29Oa3VxVnp2WXI2MmQzOG1VTUlEMWZfNVF4NURrVXVQM19LZ3FEaHJacVJjSXE0QnFqLWZfUG5MQkc4V25lVkNzWllZQlktaXlSaWZ6UGxoZ2QyU0oySG1sTzVoU3lfRHdqSE1XTUtnUHlxQkZJUkJtNVRpZWNydkZoOEE1VThwaXE4WFZNbGdzTER4T3VudVFMTWNfMjJ1cXJZQVFSWHljNU1kWVhTNm1oTE53RVFwbHlnWnNlNEM0MUFiS2l2d2RUQ1c1UjZyd0VodW9VUXR0Nm5oWDFHb0RBeU15WmxsUlJ0cVNQOGpqYkxUc3p6WHdzWi0yZXhvY01fZlRFeERmeHZpdUwxLXM3UFJPVlN1RE43SFktRFBGVzUwVWVsOG0zczd3SW41S2NrN19LMjEzZlBCTm9BMUdQalFLMDhfLUtDQWhWdHFzNzNtaGZPRHhiYU9UWmJUVTBkQTdtVW90RkZfRlJsT0t2blZPamtaU3BaTHVOZk1KN3A3U1NXRnBiMElR?oc=5",
-   "source": "أخبار: هاكاثونات ومسابقات السعودية",
+   "id": "de24430397d9",
+   "title": "السعودية تدعو دول العالم للشراكة لسد فجوات الذكاء الاصطناعي - الشرق الأوسط",
+   "url": "https://news.google.com/rss/articles/CBMirARBVV95cUxPNE1FajROSVFHblhhbk9USGQtZ2JROTZld1R2RG9KMklvSmZIVUtKUUxmLWt0SnI1RkV1TlVGdGtkQXpJMngtR1BmNnJpdzNVNnZpSkNlM2RJUGp4bjVvYVZESDlnbEVxS1YtcTJkaWt5MXowMk92aEMxc0tkZGg3LVB0TjFNUVJpUkZwNk5yTmNJNnV4N0QzcFlJc192djVvbHUxZDRFa3N2bDhMNnJKdkV4Uk9YZmRXbWxJM0FEN1pCclVHOFNyRjNCQXZHbnktNzhGNW1BVlVEeWZtTUZRN01vbVhDLXM2ZEZhak1GbDFtSEVKMDA1YmZuQjZWT3BoekM4bWRUdXEzSnBDTFFKNldKTExMSkZYMnc5NVJONURBLWJqemxUbXNXTlhIWl9IUl9IMEg0cWZ0QXZodW9yV2xOOFcxQ1prdjBpNDA0VFVkTTBVaThScUQyZ1FtOWFrc1RzNmVnTnBaNUNZVG9od05pQ3dSOVlHejg3bGdSSk5sUXhTTkZkNW5LN01zWGxSLURNNFdBb1h2WlNWOGMxTFJUTDV0bTZ1Y2dYVmxTR09pYTl4WmVHTFA0Q3hUUHdWM3FCd3A1UlRPMkgwYUZocDMyc3hsa2dIQnEyVTJ5emZUc1V1elAxdEpqQ1NTdWJnbXhrM2QxLVZpV2JVa1JuNFgwY1VwUXpsZGNXUU42RXVwU0prX0NjZHJpY1JPLWlpTTZLYzBKRTNOVVV6?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي في السعودية",
    "category": "saudi",
-   "published": "2026-10-29T09:30:00+00:00",
-   "snippet": "وزارة الحج والعمرة تحصد جائزة \"أفضل مؤسسة حكومية متميزة رقميا\" اليوم السابع",
-   "title_ar": "وزارة الحج والعمرة تفوز بجائزة التميز الرقمي",
-   "summary_ar": "حصلت وزارة الحج والعمرة على جائزة أفضل مؤسسة حكومية متميزة رقمياً وفق ما ذكرته صحيفة اليوم السابع. النص المتاح لا يوضح الجهة المانحة ولا معايير التقييم.",
-   "why_ar": "خبر عن التحول الرقمي الحكومي في السعودية قد يفيد في فهم أولويات القطاع العام وفرص التعاون التقني.",
+   "published": "2026-10-30T23:18:31+00:00",
+   "snippet": "السعودية تدعو دول العالم للشراكة لسد فجوات الذكاء الاصطناعي الشرق الأوسط",
+   "title_ar": "السعودية تدعو الدول للشراكة لسد فجوات الذكاء الاصطناعي",
+   "summary_ar": "تدعو السعودية دول العالم إلى الشراكة لسد الفجوات في مجال الذكاء الاصطناعي. العنوان لا يوضح آليات أو برامج محددة لهذه الشراكة.",
+   "why_ar": "يعكس توجه المملكة الدولي في الذكاء الاصطناعي، وقد يفيدك لفهم السياق الوطني للمبادرات والفرص المستقبلية.",
    "tags": [
-    "Digital Government",
-    "Saudi"
+    "Saudi Arabia",
+    "AI-policy",
+    "partnership"
    ],
    "importance": 2,
-   "pillar": "banking"
+   "pillar": "competition"
+  },
+  {
+   "id": "b0ce1248fc72",
+   "title": "«سيسكو» لـ«الشرق الأوسط»: الذكاء الاصطناعي يعزز قيمة الشبكات اللاسلكية في السعودية رغم التعقيد - الشرق الأوسط",
+   "url": "https://news.google.com/rss/articles/CBMiyAVBVV95cUxQUFFhakp2am9aVk9jdnRCeE1pTXU0WmdHOHk5Z1ltcEQ4Qy1LSHpUY3R0U2U1cGNLeTdmN0FTOFZhRldlZjNlZDM1b182ZjZwVTZNVTN6R0Z6Xzc0R2VpSlJudF9tV0VpMVJmaXhBSnhPSTVkWl9OdGZUbmVoR2FZaWFkaWxrRU9DX2h6SjI2eWVkLWdsMkx6V2VmMkxYd1cwV3lwUmhDVlZXQmx0cDQyNGpGaU1XRlNSZFNaUGJERVkyUjJQTW9qVUNVS1A5LVlvc3pHbFZFSDhPQ2ZzZnlaSXlQQXlHOUQtQzZTbzdScE9yZ1JKZF9sMmo0a2RiM3FFUUg2LUN5QzhubEYyczJkRURIMWFQZVg0cFFxcS1rdTdEdzZfMXF6RXJpQjluS1hBOVlNRVh5bXVpQXVFVjdYRzhqY1YyeFZUMEZ4LWtLLTJ3WTJXaHRMb3NWa00wdDBUTzlYMzhMU2FTenZkZUpmZWktX1JfRk1NRXdMajRyV29OWE10anNSSjhrc240MWVKMFptazhkN3M5R2dBZG51a1owWE01azltamgwTEk3aGc2RW9OMENRZUp1cGdRUk9tZVBRbGVTMTluWUhUM0tleW1IeFlvYTBaa3BnbWFSaVUtejUtZW5VVHl3N0g0bkFSX1BLVl9jLXpRU0VNT0IwRzdHX2gxY1BHckdfT2I1YWlZaGdXZWVMbDdlNC1fQWhtODBHdVRWX21pMEE5UlpsbEFCQkJ0bk82SlEtMWJTSmJPTXFPLUNNWGVQOHkyMEo4QmtCempUelZ5cmtoeHVhTm54N2N3LXpEdVpZSWU5azJhSFBkU04wMUNnV2JqelFuX251dlRnVG1iX2Z5dm1vNHdqaTYxbEZoUUtIOERKd25tUkRSRWptczBxRmhvRzZMak1MNEhqdElTTzNtbUFVcy1NakRsQWt1?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي في السعودية",
+   "category": "saudi",
+   "published": "2026-10-30T13:28:18+00:00",
+   "snippet": "«سيسكو» لـ«الشرق الأوسط»: الذكاء الاصطناعي يعزز قيمة الشبكات اللاسلكية في السعودية رغم التعقيد الشرق الأوسط",
+   "title_ar": "سيسكو: الذكاء الاصطناعي يعزز قيمة الشبكات اللاسلكية في السعودية",
+   "summary_ar": "تحدثت شركة سيسكو لصحيفة الشرق الأوسط عن دور الذكاء الاصطناعي في تعزيز قيمة الشبكات اللاسلكية في السعودية رغم ما تنطوي عليه من تعقيد. النص المتاح لا يتضمن أرقاماً أو تفاصيل تقنية محددة.",
+   "why_ar": "قد يفيدك هذا الخبر في فهم توجهات البنية التحتية الشبكية التي تدعم نشر حلول الذكاء الاصطناعي في القطاع المصرفي.",
+   "tags": [
+    "Cisco",
+    "Wireless Networks",
+    "AI Infrastructure"
+   ],
+   "importance": 2,
+   "pillar": "tech"
+  },
+  {
+   "id": "8b5c2af177ef",
+   "title": "السواحه يبحث تعزيز شراكات المملكة في الذكاء الاصطناعي والاستثمار التقني - ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
+   "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1mNlFFdV9oTk0tUEtEN2lNR0FLc2xocmpNQXpxMFA5VTlVUG5xZktieU9ZTV9aSE5ndmFhdENJRy1fRjZQM2FwNXItZjRETUlUNlpBYmQ1VzNZbnJUVU5QU3NrbS1OWHBrQ1E?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي في السعودية",
+   "category": "saudi",
+   "published": "2026-10-30T05:46:56+00:00",
+   "snippet": "السواحه يبحث تعزيز شراكات المملكة في الذكاء الاصطناعي والاستثمار التقني ارقام : اخبار ومعلومات سوق الأسهم السعودي - تاسي",
+   "title_ar": "السواحه يبحث تعزيز شراكات المملكة في الذكاء الاصطناعي والاستثمار التقني",
+   "summary_ar": "يتناول الخبر مساعي بحث تعزيز شراكات المملكة في مجال الذكاء الاصطناعي والاستثمار التقني. النص المتاح قصير جداً ولا يوضح طبيعة الشراكات أو أطرافها.",
+   "why_ar": "يشير الخبر إلى توجهات الاستثمار التقني في المملكة، وهو متابعة ثانوية مفيدة لاهتماماتك في الاستثمار الجريء.",
+   "tags": [
+    "Saudi Arabia",
+    "AI Partnerships",
+    "Tech Investment"
+   ],
+   "importance": 2,
+   "pillar": "vc"
   },
   {
    "id": "6077c6ca1c53",
    "title": "Retired professor arrested for blocking delivery robot. Will do it again",
    "url": "https://www.cnn.com/2026/10/31/us/philadelphia-woman-delivery-robots-cec",
-   "source": "Hacker News (82 pts)",
+   "source": "Hacker News (83 pts)",
    "category": "tech",
    "published": "2026-10-31T13:39:57Z",
    "snippet": "",
-   "title_ar": "اعتقال أستاذ جامعي متقاعد بعد عرقلته روبوت توصيل",
-   "summary_ar": "يتناول الخبر اعتقال أستاذ جامعي متقاعد بعد أن عرقل روبوت توصيل، مع قوله إنه سيكرر الفعل. النص الكامل غير متوفر.",
-   "why_ar": "خبر عام لا يرتبط مباشرة بعمل المهندس، ويصلح خلفية عن تقبّل المجتمع للروبوتات.",
+   "title_ar": "اعتقال أستاذ متقاعد بعد عرقلته روبوت توصيل",
+   "summary_ar": "وفق العنوان فقط، اعتُقل أستاذ جامعي متقاعد بعد أن عرقل روبوت توصيل، وصرّح بأنه سيفعل ذلك مرة أخرى. لا يتوفر نص إضافي للتفاصيل.",
+   "why_ar": "خبر عام لا يرتبط مباشرة بعمل المهندس، لذلك يمكن تجاهله بأمان في الغالب.",
    "tags": [
     "robotics",
-    "society"
+    "news"
    ],
    "importance": 1,
    "pillar": "tech"
@@ -594,34 +541,135 @@
    "category": "tech",
    "published": "2026-10-31T10:21:30Z",
    "snippet": "",
-   "title_ar": "صربيا تنتخب برلماناً وُصف بأنه الأذكى في العالم",
-   "summary_ar": "يشير العنوان إلى أن البرلمان الجديد في صربيا وُصف بأنه الأذكى عالمياً. النص غير متوفر لتوضيح المعيار المستخدم.",
-   "why_ar": "خبر عام لا علاقة مباشرة له بعمل المهندس، ويمكن تجاهله.",
+   "title_ar": "صربيا تنتخب أذكى برلمان في العالم",
+   "summary_ar": "وفق العنوان فقط، وصف الخبر البرلمان الصربي الجديد بأنه الأذكى عالمياً. لا يتوفر نص يوضح معايير هذا الوصف.",
+   "why_ar": "خبر سياسي عام لا يرتبط مباشرة بعمل المهندس، وأهميته محدودة له.",
    "tags": [
     "politics",
-    "news"
+    "Serbia"
    ],
    "importance": 1,
    "pillar": "tech"
   },
   {
-   "id": "dfa70be1a4b0",
-   "title": "استقرار الين قبيل قرار بنك اليابان، ومخاوف الذكاء الاصطناعي تضغط على الدولار الأمريكي - IDNFinancials",
-   "url": "https://news.google.com/rss/articles/CBMipwVBVV95cUxPTTUwc3ljX0luTEVMWW1NZjFUdzA2YUdzTFhqTVFTOXlxWVJoZG9RNXdZYzVKS0YzdEVaeDRMcEVCd0Q0VWRQWWhaWEpsUEJYVWR5U1RMeTJXM0drcGxuX0hZZFl5QXVoUXNDazU4RHFkMFl3WHQweThKdlFvT3BhYUUtY1puUVZDUnB1TEMzQS1ONGNHUjRUVm9QSVVJUk1KRlJOcmtUbjNNM2ZHZWRicDFYQkJUMUZ2d0Z0ZUxtOHFfQ3BpRHVYMnBjU3poTWpwNS1pd1ZtSThyR09lQXNpNnJZeTVkUm9lY1FfZ1pfdzN2bF8zQVh1TFZ5MFBLLU5vQkkwdno5S3dTbmNNdmJ1dDNRRUlzSF8zcTN6WFI1c3dRbUM5UUdUSHpkb3hYbXEtUlhJNGNDY1VaYXAtTEtseE5fZ3RtSENKZEhDYWw4UFZBcW1DUG9PdmVCdnFscFZfR0ZuZldRSWJvcjFmZ0RRTjdzd2Z3VGFrM3ZWVC1EcXo2alB2WV9weUo4ZGVDTTFxbnVkWFNpN2VaSnVnbTlmUmZVVVBxdVJYTmdYbFJxWXhYOEphbkRkY2VvNG1qRmVBcFA1S2JOQ0Zscm1fRFhpcFlyR2tqMHFoX2ZicWJBYUxEUDZfUFFCNUNUX29qcXo5S21Ka1ZSd09qSU0yYkNtYk1pWDJYUEtXLTA5X3kwdVYxWlM3MFZrZWxNV3JMZlVRdm1kSGJxWHJSNnZfZHg4OWxBMmtFSXpPRWRfVHBCdzNzT0dxYU1Qblh5eHNpWDROMG9Qc3VqODBGbGNOVVpZSnF2SWJaeWJXcDVOeXlTQ1hCRC1Wd0tiVFNOZUI0d3BrNGloU2ZOOTk2Y3JYclZ4aGdzQkxVd1hhSm1BMW9salB1LVBYNWpZ?oc=5",
-   "source": "أخبار: الذكاء الاصطناعي والبنوك",
-   "category": "banking",
-   "published": "2026-10-30T11:40:00+00:00",
-   "snippet": "استقرار الين قبيل قرار بنك اليابان، ومخاوف الذكاء الاصطناعي تضغط على الدولار الأمريكي IDNFinancials",
-   "title_ar": "الين مستقر والدولار تحت ضغط مخاوف الذكاء الاصطناعي",
-   "summary_ar": "خبر اقتصادي يذكر استقرار الين الياباني قبل قرار بنك اليابان، مع ضغط مخاوف الذكاء الاصطناعي على الدولار الأمريكي. النص المتاح لا يوضح طبيعة هذه المخاوف.",
-   "why_ar": "خبر سوقي عام قد يكون مفيداً كسياق لفهم تأثير الذكاء الاصطناعي على الأسواق، لكنه ليس موضوعاً تقنياً مباشراً.",
+   "id": "f855d447f31b",
+   "title": "x18n-dev/x18n",
+   "url": "https://github.com/x18n-dev/x18n",
+   "source": "GitHub ★601",
+   "category": "github",
+   "published": "2026-10-30T22:45:15Z",
+   "snippet": "Universal toolkits for linting, viewing and managing i18n for any frameworks.",
+   "stars": 601,
+   "lang": "TypeScript",
+   "title_ar": "x18n: أدوات موحدة لفحص وإدارة الترجمة i18n",
+   "summary_ar": "مشروع يقدم أدوات عامة لفحص وعرض وإدارة توطين الواجهات i18n لأطر عمل متعددة. النص المتاح موجز ولا يحدد التفاصيل التقنية.",
+   "why_ar": "قد يفيد عند بناء واجهات عربية وإنجليزية لمنتجات داخلية.",
    "tags": [
-    "forex",
-    "market-news",
-    "AI-impact"
+    "i18n",
+    "linting",
+    "localization"
    ],
    "importance": 1,
-   "pillar": "vc"
+   "pillar": "tech"
+  },
+  {
+   "id": "1a44d03684b9",
+   "title": "EL4CTEO/blender-skills",
+   "url": "https://github.com/EL4CTEO/blender-skills",
+   "source": "GitHub ★624",
+   "category": "github",
+   "published": "2026-10-30T20:35:01Z",
+   "snippet": "Professional Blender 5.2 workflows as Agent Skills for Claude Code, Codex, Gemini CLI, Copilot and Cursor: modeling, UVs, PBR, baking, rigging, animation, export and QA.",
+   "stars": 624,
+   "lang": "Python",
+   "title_ar": "blender-skills: مهارات وكلاء لسير عمل Blender الاحترافي",
+   "summary_ar": "مجموعة مهارات وكلاء لبرنامج Blender 5.2 تغطي النمذجة وUV وPBR والتخبيز والهيكلة والحركة والتصدير وضبط الجودة. تعمل مع Claude Code وCodex وGemini CLI وCopilot وCursor.",
+   "why_ar": "خارج نطاق عمل البنك غالباً، لكن نمط Agent Skills قابل للتطبيق في أدوات داخلية.",
+   "tags": [
+    "agent-skills",
+    "Blender",
+    "Claude-Code"
+   ],
+   "importance": 1,
+   "pillar": "tech"
+  },
+  {
+   "id": "537bd3ea8f73",
+   "title": "daveebbelaar/bama",
+   "url": "https://github.com/daveebbelaar/bama",
+   "source": "GitHub ★1,089",
+   "category": "github",
+   "published": "2026-10-29T13:05:44Z",
+   "snippet": "BAMA: Build Any Mac App. Agent skills to research, clone, design, build, optimize, and test native macOS apps with Swift and SwiftUI.",
+   "stars": 1089,
+   "lang": "Swift",
+   "title_ar": "BAMA: مهارات وكلاء لبناء تطبيقات macOS أصلية",
+   "summary_ar": "مجموعة مهارات وكلاء تساعد في البحث والاستنساخ والتصميم والبناء والتحسين والاختبار لتطبيقات macOS أصلية مكتوبة بلغة Swift وSwiftUI.",
+   "why_ar": "نمط مفيد لتسريع بناء أدوات مكتبية داخلية، مع أهمية محدودة حالياً.",
+   "tags": [
+    "agent-skills",
+    "macOS",
+    "SwiftUI"
+   ],
+   "importance": 1,
+   "pillar": "tech"
+  },
+  {
+   "id": "d8a80197aa23",
+   "title": "برأسمال 5 مليارات دولار.. «أفريكسم بنك» يطلق بنكًا أفريقيًا لسد فجوة تمويل مشروعات الطاقة - جريدة المال",
+   "url": "https://news.google.com/rss/articles/CBMi5wJBVV95cUxNLVJBY0hoNkJrQy15NUZQM19JME5XNVViM3duZENKNVJpOHRzTGZnT3Q1RWl1QkxtMk9qcXJKZXg5NTIyZGxZRzZOSjJJM21XRnJjbDlEN0ttUVJaTjBfOUxCSURBLVFON1M2eWY3TG16SV9McFNMaHYwdzFNX2NlVG1kTU54VGdGb3NnVExZZ1ZlTE5vOGI4UDZraHZ2bHJpQU1ndUx6Qjk0TG50SGRzRnZad05ySE5zOWJ3Z05xc0dhS1NVOGswQ0tISFZvMXF3REhSU3o1ZmdmSGNGMmwxTkxXLVk1MDRodFMzd1VyS2gtNlp6czJzRGFtUElPOTIwR3E0QUZuMjFXcjhrLWE0MlJMQ3l6SUJXbGxwbkN2Y05sZ1hWOVI2emZMdXhvNjk5SVBpMjhnZVc4MHJHSnFNNjdiX09qeFhWMGZEdzdrbG1qUXVtcHU4N1p2cHdfNUI1bDA2Q0h0RQ?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي والبنوك",
+   "category": "banking",
+   "published": "2026-10-31T16:39:39+00:00",
+   "snippet": "برأسمال 5 مليارات دولار.. «أفريكسم بنك» يطلق بنكًا أفريقيًا لسد فجوة تمويل مشروعات الطاقة جريدة المال",
+   "title_ar": "أفريكسم بنك يطلق بنكًا أفريقيًا برأسمال 5 مليارات دولار",
+   "summary_ar": "أعلن أفريكسم بنك عن إطلاق بنك أفريقي برأسمال 5 مليارات دولار يهدف إلى سد فجوة تمويل مشروعات الطاقة. المعلومات المتاحة في العنوان لا تذكر تفاصيل عن دور الذكاء الاصطناعي.",
+   "why_ar": "خبر تمويلي عام في القطاع المصرفي الإقليمي، وقد يهم فريقك فقط إن كانت هناك مبادرات تمويل طاقة تحتاج حلولًا ذكية.",
+   "tags": [
+    "banking",
+    "energy-finance",
+    "Africa"
+   ],
+   "importance": 1,
+   "pillar": "banking"
+  },
+  {
+   "id": "a0daf2a930f3",
+   "title": "Achieving a Collective Defence: How to Tackle Cybercrime in 2027",
+   "url": "https://www.finextra.com/videoarticle/3636/achieving-a-collective-defence-how-to-tackle-cybercrime-in-2027?utm_medium=rssfinextra&utm_source=finextrafeed",
+   "source": "Finextra AI",
+   "category": "banking",
+   "published": "2026-10-30T15:00:00+00:00",
+   "snippet": "In this interview from RiskX, Mastercard's Ranjita Iyer joined FinextraTV to discuss about cyber-crime.",
+   "title_ar": "الدفاع الجماعي ضد الجرائم الإلكترونية في القطاع المالي",
+   "summary_ar": "مقابلة من RiskX يشارك فيها Ranjita Iyer من Mastercard لمناقشة الجرائم الإلكترونية. النص المتاح موجز جدًا ولا يحتوي على تفاصيل تقنية.",
+   "why_ar": "موضوع أمن مالي عام قد يهمك كخلفية، لكن المعلومات غير كافية لاستخلاص تقنية محددة للتجربة.",
+   "tags": [
+    "cybersecurity",
+    "fraud",
+    "Mastercard"
+   ],
+   "importance": 1,
+   "pillar": "banking"
+  },
+  {
+   "id": "a4b6db00f961",
+   "title": "«الإمارات دبي الوطني» شريك مصرفي متميز لقمة دبي للتكنولوجيا المالية - البيان",
+   "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBoVU9tNWU3RndzYUs5cGdxZk12UVhyUEtnelNNN1NLZGZzekFpWW5uTFg2N0NTeF84bzhZaC1lUXdhS01BNjE3Y1BRSGdmakU?oc=5",
+   "source": "أخبار: الذكاء الاصطناعي والبنوك",
+   "category": "banking",
+   "published": "2026-10-30T11:44:00+00:00",
+   "snippet": "«الإمارات دبي الوطني» شريك مصرفي متميز لقمة دبي للتكنولوجيا المالية البيان",
+   "title_ar": "الإمارات دبي الوطني شريك مصرفي لقمة دبي للتكنولوجيا المالية",
+   "summary_ar": "أعلن بنك الإمارات دبي الوطني أنه شريك مصرفي متميز لقمة دبي للتكنولوجيا المالية. النص لا يتضمن تفاصيل عن برامج أو مبادرات محددة.",
+   "why_ar": "خبر حضور مصرفي في فعالية تقنية مالية، وقد يفيدك لمتابعة الفعاليات الإقليمية للتواصل المهني.",
+   "tags": [
+    "fintech",
+    "Dubai",
+    "event"
+   ],
+   "importance": 1,
+   "pillar": "banking"
   },
   {
    "id": "bd11407bde4e",
@@ -631,70 +679,15 @@
    "category": "saudi",
    "published": "2026-10-30T00:07:43+00:00",
    "snippet": "التعليم السعودي يفتح آفاقًا جديدة أمام الذكاء الاصطناعي جريدة الجزيرة",
-   "title_ar": "التعليم السعودي يفتح آفاقاً جديدة للذكاء الاصطناعي",
-   "summary_ar": "خبر من جريدة الجزيرة يشير إلى أن التعليم في السعودية يفتح مجالات جديدة أمام الذكاء الاصطناعي. النص المتاح لا يتضمن تفاصيل عن البرامج أو المبادرات.",
-   "why_ar": "يعطي مؤشراً عاماً على التوجه الوطني نحو الذكاء الاصطناعي، وقد يكشف عن مسابقات أو برامج تدريبية لاحقاً.",
+   "title_ar": "التعليم السعودي يفتح آفاقاً جديدة أمام الذكاء الاصطناعي",
+   "summary_ar": "يتناول الخبر توجه المنظومة التعليمية السعودية نحو إدماج الذكاء الاصطناعي. النص المتاح عنوان فقط دون تفاصيل عن البرامج أو المبادرات المحددة.",
+   "why_ar": "قد يكون مؤشراً على توفر برامج تدريبية أو كفاءات جديدة يمكن الاستفادة منها في بناء الفرق التقنية مستقبلاً.",
    "tags": [
-    "Saudi",
-    "education",
-    "AI-policy"
+    "Saudi Arabia",
+    "AI Education"
    ],
    "importance": 1,
    "pillar": "competition"
-  },
-  {
-   "id": "6f415e84d304",
-   "title": "الصناعة السعودية.. نحو اقتصاد إنتاجي أكثر تنوعاً - جريدة الجزيرة",
-   "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9kSXZfb2drWWJZSzlGVkFEbTZvMk9CREl5VktBU19mWUwyNmdkdF9kRU5mSk9PaDdlWnBLdVhYZUVPX2U2MHExRks0eE9ZZDNmVGxZX3VvdGFveFpU?oc=5",
-   "source": "أخبار: الذكاء الاصطناعي في السعودية",
-   "category": "saudi",
-   "published": "2026-10-30T00:07:37+00:00",
-   "snippet": "الصناعة السعودية.. نحو اقتصاد إنتاجي أكثر تنوعاً جريدة الجزيرة",
-   "title_ar": "الصناعة السعودية نحو اقتصاد إنتاجي أكثر تنوعاً",
-   "summary_ar": "تناول مقال في جريدة الجزيرة توجه الصناعة السعودية نحو اقتصاد إنتاجي أكثر تنوعاً. النص المتاح قصير ولا يتضمن تفاصيل عن مبادرات أو أرقام محددة.",
-   "why_ar": "خبر اقتصادي عام قد يفيد في فهم سياق التحول الصناعي الذي يمكن أن تخدمه حلول الذكاء الاصطناعي لاحقاً.",
-   "tags": [
-    "Saudi Industry",
-    "Economy"
-   ],
-   "importance": 1,
-   "pillar": "banking"
-  },
-  {
-   "id": "d33239a2a4d6",
-   "title": "توقعات الذكاء الاصطناعي لمباراة الاتحاد ضد أبها في الدوري السعودي - 365Scores",
-   "url": "https://news.google.com/rss/articles/CBMi3wJBVV95cUxQSG9oN2JENXA3eVlTWXdOS2ppWnRYLW5YRW02cDlER0xRRFJxOVZhT1RoZDVVR0ZQMUNyWm9QenItRmM5b1FvaWd0SVdTNmtUeDRPcVFDLXlYWFNmRDFKZE4tZTNicUhnQWRiU2JtQlMtd29vOTdxTWdRV1lYVkkwVXV1M2dMcWJFUU5KcnEyZ2hMYTJKUlFtek5Ga2IwN3E3ZXlkS1VJREFtZkhhdVZXbGRBM0xWR1ZiZHptVXJRYUp5MEhYak1CdXpFbDVVa19ieU9qWmo4Yi1rMF9TQ3VDcmRocmYtMFJ6WjZvbUR4M0d0WW01em1YbG9icXNOMWdZODNmQ0NZTmRUNktRY3FrRWxWWEhscFpnX0hNMHZ3UzJaamE5d2dTQUFfUWw4ZnlqV3QweVVKYnFzcXoyWmtKdUJONDFoNk9kS2p5WENmY05sMFVsWXdBcmJiTktRRmM?oc=5",
-   "source": "أخبار: الذكاء الاصطناعي في السعودية",
-   "category": "saudi",
-   "published": "2026-10-29T17:22:15+00:00",
-   "snippet": "توقعات الذكاء الاصطناعي لمباراة الاتحاد ضد أبها في الدوري السعودي 365Scores",
-   "title_ar": "توقعات الذكاء الاصطناعي لمباراة الاتحاد وأبها",
-   "summary_ar": "نشر موقع 365Scores توقعات لمباراة الاتحاد ضد أبها في الدوري السعودي اعتماداً على الذكاء الاصطناعي. النص المتاح لا يوضح المنهجية ولا الدقة المتوقعة.",
-   "why_ar": "مثال استهلاكي على التنبؤ الرياضي، وقد يصلح كمرجع عام لكنه لا يضيف قيمة مباشرة لعملك في البنك.",
-   "tags": [
-    "Sports Prediction",
-    "Consumer AI"
-   ],
-   "importance": 1,
-   "pillar": "tech"
-  },
-  {
-   "id": "a9acaf7ad8ba",
-   "title": "نتيجة مباراة الأهلي ضد الشباب.. الذكاء الاصطناعي يتوقع الفائز في قمة الدوري السعودي - 365Scores",
-   "url": "https://news.google.com/rss/articles/CBMi3wJBVV95cUxOdkdHVWdHR2s0THpISEJlbGpDX1NyNTU4eXNVOGxLNllMRUxZOUUxQmhidUpQcE9OWl93QTloTXp3ZnhLTDZiREtkSG9zd3djNENuYks5enZmWGhiNUlnTHBlaDlMR3p1Uk95cWkzUHZBNmplRUs3VDEwVkRFR1JmOGNHYVlidXFib1ZmN3RsNnJlZDFXRmV6ZGhBWDRNeFFEb2ZXbEhvcFgzaS02ckFpczZtNzJFLTl6anZPbklQUXhvVjRhU2M2M1AtMVE5enNqa1ctNzBNa1VWb0Mxc0RaY1dOd05HZzc4cml2NXdnNjRGemNONlFaRzV6N043QWJFbC10QTY2OUk1d0NUbVh3Y0YwSWhIOU1tMGRvZmxhRDdNenRXelZ6R2FNeXVFTEk0aWNuakF3M2lSdnJBVUoxcHBZSWtkdW40czRvck5MWFJON0xSRFFQeDB1R0dTVGc?oc=5",
-   "source": "أخبار: الذكاء الاصطناعي في السعودية",
-   "category": "saudi",
-   "published": "2026-10-29T17:13:29+00:00",
-   "snippet": "نتيجة مباراة الأهلي ضد الشباب.. الذكاء الاصطناعي يتوقع الفائز في قمة الدوري السعودي 365Scores",
-   "title_ar": "الذكاء الاصطناعي يتوقع نتيجة قمة الأهلي والشباب",
-   "summary_ar": "نشر موقع 365Scores توقعاً بنتيجة مباراة الأهلي ضد الشباب في الدوري السعودي باستخدام الذكاء الاصطناعي. النص المتاح لا يقدم تفاصيل تقنية عن النموذج أو البيانات المستخدمة.",
-   "why_ar": "تطبيق استهلاكي لا يتصل مباشرة بمهامك في POCs أو الأبحاث، ويمكن تجاهله.",
-   "tags": [
-    "Sports Prediction",
-    "Consumer AI"
-   ],
-   "importance": 1,
-   "pillar": "tech"
   }
  ]
 }
