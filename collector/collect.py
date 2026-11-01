@@ -246,6 +246,10 @@ def main():
     seen = json.loads(seen_path.read_text(encoding="utf-8")) if seen_path.exists() else {}
     cutoff = (NOW - timedelta(days=14)).isoformat()
     seen = {k: v for k, v in seen.items() if v > cutoff}
+    today_path = DATA / f"{TODAY}.json"
+    if today_path.exists():  # re-run on the same day: rebuild today's set instead of hiding it
+        for it in json.loads(today_path.read_text(encoding="utf-8")).get("items", []):
+            seen.pop(it["id"], None)
 
     items = fetch_rss() + fetch_hn() + fetch_github() + fetch_hf_papers()
     items = cap(dedupe(items, set(seen)))
