@@ -1,0 +1,24 @@
+{
+  "rss": [
+    {"name": "OpenAI", "url": "https://openai.com/news/rss.xml", "category": "tech"},
+    {"name": "Google DeepMind", "url": "https://deepmind.google/blog/rss.xml", "category": "tech"},
+    {"name": "Hugging Face Blog", "url": "https://huggingface.co/blog/feed.xml", "category": "tech"},
+    {"name": "Microsoft Research", "url": "https://www.microsoft.com/en-us/research/feed/", "category": "research", "max_age_hours": 168},
+    {"name": "MIT Technology Review", "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed", "category": "tech"},
+    {"name": "TechCrunch AI", "url": "https://techcrunch.com/category/artificial-intelligence/feed/", "category": "tech"},
+    {"name": "VentureBeat AI", "url": "https://venturebeat.com/category/ai/feed/", "category": "tech"},
+    {"name": "The Verge AI", "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", "category": "tech"},
+    {"name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/", "category": "tech"},
+    {"name": "Finextra AI", "url": "https://www.finextra.com/rss/channel.aspx?channel=ai", "category": "banking"},
+    {"name": "Google News: AI Banking", "url": "https://news.google.com/rss/search?q=%22artificial+intelligence%22+(bank+OR+banking+OR+fintech)&hl=en-US&gl=US&ceid=US:en", "category": "banking"},
+    {"name": "أخبار: الذكاء الاصطناعي والبنوك", "url": "https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1+%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A+%D8%A7%D9%84%D8%A8%D9%86%D9%88%D9%83&hl=ar&gl=SA&ceid=SA:ar", "category": "banking"},
+    {"name": "أخبار: هاكاثونات ومسابقات السعودية", "url": "https://news.google.com/rss/search?q=(%D9%87%D8%A7%D9%83%D8%A7%D8%AB%D9%88%D9%86+OR+%D9%85%D8%B3%D8%A7%D8%A8%D9%82%D8%A9+OR+%D8%AC%D8%A7%D8%A6%D8%B2%D8%A9)+%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1+%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A+%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9&hl=ar&gl=SA&ceid=SA:ar", "category": "saudi", "max_age_hours": 168},
+    {"name": "Google News: Saudi AI", "url": "https://news.google.com/rss/search?q=Saudi+(AI+OR+%22artificial+intelligence%22)+(hackathon+OR+competition+OR+SDAIA+OR+HUMAIN+OR+award)&hl=en-US&gl=US&ceid=US:en", "category": "saudi", "max_age_hours": 168},
+    {"name": "أخبار: الذكاء الاصطناعي في السعودية", "url": "https://news.google.com/rss/search?q=%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1+%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A+%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9&hl=ar&gl=SA&ceid=SA:ar", "category": "saudi", "max_age_hours": 168},
+    {"name": "TechCrunch Venture", "url": "https://techcrunch.com/category/venture/feed/", "category": "vc", "keywords": ["AI", "artificial intelligence", "LLM", "machine learning", "agent"]}
+  ],
+  "hackernews": {"min_points": 80, "keywords": ["AI", "LLM", "GPT", "Claude", "Gemini", "model", "agent", "machine learning", "neural", "transformer", "diffusion", "open source model", "inference", "RAG", "MCP", "Llama", "Mistral", "DeepSeek", "Qwen", "OpenAI", "Anthropic"]},
+  "github": {"topics": ["llm", "ai-agents", "generative-ai", "machine-learning", "rag", "mcp"], "days": 21, "min_stars": 300, "per_topic": 8},
+  "hf_papers": {"limit": 10},
+  "limits": {"tech": 10, "research": 8, "github": 8, "banking": 7, "saudi": 6, "vc": 4, "max_age_hours": 48}
+}

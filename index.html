@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f17">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<title>رادار الذكاء الاصطناعي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0f17; --card: #121826; --card2: #182033; --text: #e8ecf4; --muted: #8b95a8;
+    --line: #232c3d; --accent: #4f8cff; --accent2: #22c55e; --chip: #1c2538;
+    --tech: #4f8cff; --research: #a78bfa; --banking: #22c55e; --competition: #f59e0b; --vc: #ec4899; --poc: #06b6d4;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+    font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", Tahoma, sans-serif; }
+  header { position: sticky; top: 0; z-index: 10; background: rgba(11,15,23,.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line); padding: calc(10px + env(safe-area-inset-top)) 16px 8px; }
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  h1 { font-size: 18px; margin: 0; font-weight: 700; }
+  h1 small { color: var(--muted); font-weight: 400; font-size: 12px; margin-inline-start: 8px; }
+  select { background: var(--chip); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 6px 10px; font: inherit; font-size: 13px; }
+  .tabs { display: flex; gap: 6px; margin-top: 10px; }
+  .tab { flex: 1; text-align: center; padding: 8px; border-radius: 10px; background: var(--chip); color: var(--muted); font-size: 14px; cursor: pointer; border: 1px solid transparent; }
+  .tab.active { color: var(--text); border-color: var(--accent); background: #15203a; }
+  .filters { display: flex; gap: 6px; overflow-x: auto; padding: 10px 0 2px; scrollbar-width: none; }
+  .filters::-webkit-scrollbar { display: none; }
+  .chip { flex: 0 0 auto; padding: 5px 12px; border-radius: 999px; background: var(--chip); color: var(--muted); font-size: 13px; cursor: pointer; border: 1px solid transparent; white-space: nowrap; }
+  .chip.active { color: var(--text); border-color: var(--muted); }
+  main { padding: 12px 16px calc(24px + env(safe-area-inset-bottom)); max-width: 680px; margin: 0 auto; }
+  .feed { display: flex; flex-direction: column; gap: 14px; }
+  .card { background: linear-gradient(180deg, var(--card), var(--card2)); border: 1px solid var(--line); border-radius: 18px; padding: 16px; position: relative; overflow: hidden; }
+  .card.read { opacity: .55; }
+  .card::before { content: ""; position: absolute; inset-inline-start: 0; top: 0; bottom: 0; width: 4px; background: var(--c, var(--accent)); }
+  .meta { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); flex-wrap: wrap; }
+  .pill { padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: color-mix(in srgb, var(--c, var(--accent)) 18%, transparent); color: var(--c, var(--accent)); }
+  .stars { color: var(--competition); }
+  .card h2 { font-size: 17px; margin: 10px 0 8px; line-height: 1.5; font-weight: 700; }
+  .card p { margin: 0; font-size: 15px; line-height: 1.8; color: #cfd6e4; }
+  .why { margin-top: 10px !important; font-size: 14px !important; color: var(--muted) !important; border-inline-start: 2px solid var(--line); padding-inline-start: 10px; }
+  .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .tag { font-size: 11px; color: var(--muted); background: var(--chip); padding: 2px 8px; border-radius: 6px; direction: ltr; }
+  .orig { font-size: 12px; color: var(--muted); margin-top: 8px; direction: ltr; text-align: left; word-break: break-word; }
+  .actions { display: flex; gap: 8px; margin-top: 14px; }
+  .btn { flex: 1; text-align: center; padding: 10px; border-radius: 12px; font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer; border: 1px solid var(--line); background: var(--chip); color: var(--text); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.deep { background: #14301f; border-color: #1f5a37; color: #7ee2a3; }
+  .btn.done { background: var(--chip); color: var(--muted); }
+  .imp { display: inline-flex; gap: 1px; }
+  .imp i { width: 6px; height: 6px; border-radius: 50%; background: var(--line); display: inline-block; }
+  .imp i.on { background: var(--c, var(--accent)); }
+  .empty { text-align: center; color: var(--muted); padding: 60px 20px; line-height: 1.8; }
+  .issue { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+  .issue a { color: var(--text); text-decoration: none; font-weight: 600; }
+  .issue .meta { margin-top: 6px; }
+  .summary { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <h1>رادار الذكاء الاصطناعي <small id="count"></small></h1>
+    <select id="date"></select>
+  </div>
+  <div class="tabs">
+    <div class="tab active" data-tab="feed">اليوم</div>
+    <div class="tab" data-tab="deep">تعمّقاتي</div>
+  </div>
+  <div class="filters" id="filters"></div>
+</header>
+<main>
+  <div class="summary" id="summary"></div>
+  <div class="feed" id="feed"></div>
+</main>
+<footer>يُحدَّث تلقائياً كل صباح الساعة 6:30 بتوقيت الرياض · <a id="repo-link" href="#" target="_blank">المستودع</a></footer>
+
+<script>
+const REPO = (location.hostname.endsWith("github.io") && location.pathname.split("/")[1])
+  ? `${location.hostname.split(".")[0]}/${location.pathname.split("/")[1]}` : "AbdulazezAlamri/ai-radar";
+document.getElementById("repo-link").href = `https://github.com/${REPO}`;
+
+const PILLAR_AR = { poc: "فكرة POC", tech: "تقنية جديدة", research: "بحث", banking: "بنوك", competition: "مسابقة / جائزة", vc: "استثمار" };
+const COLORS = { poc: "var(--poc)", tech: "var(--tech)", research: "var(--research)", banking: "var(--banking)", competition: "var(--competition)", vc: "var(--vc)" };
+
+let state = { tab: "feed", filter: "all", day: null, dates: [] };
+const ls = (k, v) => { try { return v === undefined ? JSON.parse(localStorage.getItem(k) || "null") : localStorage.setItem(k, JSON.stringify(v)); } catch { return null; } };
+let read = new Set(ls("read") || []);
+let deep = new Set(ls("deep") || []);
+
+const esc = s => (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const ago = iso => { if (!iso) return ""; const h = Math.round((Date.now() - new Date(iso)) / 36e5); return h < 1 ? "الآن" : h < 24 ? `قبل ${h} س` : `قبل ${Math.round(h / 24)} ي`; };
+
+async function loadIndex() {
+  try {
+    const r = await fetch("data/index.json", { cache: "no-store" });
+    state.dates = (await r.json()).dates || [];
+  } catch { state.dates = []; }
+  const sel = document.getElementById("date");
+  sel.innerHTML = state.dates.map((d, i) => `<option value="${d}">${i === 0 ? "اليوم · " : ""}${d}</option>`).join("") || `<option>لا توجد بيانات بعد</option>`;
+  sel.onchange = () => loadDay(sel.value);
+  if (state.dates[0]) loadDay(state.dates[0]);
+  else document.getElementById("feed").innerHTML = `<div class="empty">لم يتم تشغيل الجمع بعد.<br>شغّل الـ workflow من GitHub Actions أو انتظر صباح الغد.</div>`;
+}
+
+async function loadDay(d) {
+  const r = await fetch(`data/${d}.json`, { cache: "no-store" });
+  state.day = await r.json();
+  renderFilters(); render();
+}
+
+function renderFilters() {
+  const f = document.getElementById("filters");
+  const counts = {};
+  (state.day?.items || []).forEach(i => counts[i.pillar] = (counts[i.pillar] || 0) + 1);
+  f.innerHTML = [`<div class="chip ${state.filter === "all" ? "active" : ""}" data-f="all">الكل (${state.day?.count || 0})</div>`]
+    .concat(Object.keys(PILLAR_AR).filter(k => counts[k]).map(k =>
+      `<div class="chip ${state.filter === k ? "active" : ""}" data-f="${k}" style="--c:${COLORS[k]}">${PILLAR_AR[k]} (${counts[k]})</div>`)).join("");
+  f.querySelectorAll(".chip").forEach(c => c.onclick = () => { state.filter = c.dataset.f; renderFilters(); render(); });
+}
+
+function issueUrl(it) {
+  const title = `[تعمّق] ${it.title_ar || it.title}`;
+  const body = [`**المصدر:** ${it.source}`, `**الرابط:** ${it.url}`, "", `**الملخص:** ${it.summary_ar || ""}`, "",
+    it.why_ar ? `**لماذا يهم:** ${it.why_ar}` : "", "", "---", "## ملاحظاتي", "- [ ] قرأت المصدر الأصلي", "- [ ] جرّبته / حللته", "- [ ] الخلاصة والقرار:", ""].join("\n");
+  return `https://github.com/${REPO}/issues/new?labels=deep-dive,${it.pillar}&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
+}
+
+function render() {
+  const feed = document.getElementById("feed");
+  document.getElementById("summary").textContent = "";
+  if (state.tab === "deep") return renderDeep();
+  const items = (state.day?.items || []).filter(i => state.filter === "all" || i.pillar === state.filter);
+  document.getElementById("count").textContent = state.day ? `${items.length} عنصر` : "";
+  if (!items.length) { feed.innerHTML = `<div class="empty">لا توجد عناصر في هذا التصنيف اليوم.</div>`; return; }
+  feed.innerHTML = items.map(it => {
+    const c = COLORS[it.pillar] || "var(--accent)";
+    const isRead = read.has(it.id), isDeep = deep.has(it.id);
+    return `<article class="card ${isRead ? "read" : ""}" style="--c:${c}" data-id="${it.id}">
+      <div class="meta">
+        <span class="pill">${PILLAR_AR[it.pillar] || it.pillar}</span>
+        <span>${esc(it.source)}</span>
+        <span>· ${ago(it.published)}</span>
+        <span class="imp" title="الأهمية">${[1,2,3,4,5].map(n => `<i class="${n <= (it.importance || 3) ? "on" : ""}"></i>`).join("")}</span>
+      </div>
+      <h2>${esc(it.title_ar || it.title)}</h2>
+      <p>${esc(it.summary_ar)}</p>
+      ${it.why_ar ? `<p class="why">${esc(it.why_ar)}</p>` : ""}
+      ${(it.tags || []).length ? `<div class="tags">${it.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>` : ""}
+      ${it.title_ar && it.title_ar !== it.title ? `<div class="orig">${esc(it.title)}</div>` : ""}
+      <div class="actions">
+        <a class="btn primary" href="${esc(it.url)}" target="_blank" rel="noopener" data-act="read">اقرأ المصدر</a>
+        <a class="btn ${isDeep ? "done" : "deep"}" href="${issueUrl(it)}" target="_blank" rel="noopener" data-act="deep">${isDeep ? "✓ في قائمة التعمّق" : "تعمّق"}</a>
+      </div>
+    </article>`;
+  }).join("");
+  feed.querySelectorAll("[data-act]").forEach(a => a.addEventListener("click", e => {
+    const id = a.closest(".card").dataset.id;
+    if (a.dataset.act === "read") read.add(id); else { deep.add(id); read.add(id); }
+    ls("read", [...read]); ls("deep", [...deep]);
+    setTimeout(render, 300);
+  }));
+}
+
+async function renderDeep() {
+  const feed = document.getElementById("feed");
+  feed.innerHTML = `<div class="empty">جارٍ تحميل قائمة التعمّق من GitHub Issues…</div>`;
+  try {
+    const r = await fetch(`https://api.github.com/repos/${REPO}/issues?labels=deep-dive&state=open&per_page=50`, { headers: { Accept: "application/vnd.github+json" } });
+    const issues = (await r.json()).filter(i => !i.pull_request);
+    document.getElementById("count").textContent = `${issues.length} مهمة مفتوحة`;
+    document.getElementById("summary").innerHTML = `هذه المهام مفتوحة في GitHub Issues بوسم <b>deep-dive</b>. اكتب ملاحظاتك هناك وأغلق المهمة عند الانتهاء. <a href="https://github.com/${REPO}/issues?q=is%3Aissue+label%3Adeep-dive" target="_blank" style="color:var(--accent)">فتح كل القائمة</a>`;
+    if (!issues.length) { feed.innerHTML = `<div class="empty">لا توجد مهام تعمّق مفتوحة.<br>اضغط "تعمّق" على أي بطاقة لإضافتها هنا.</div>`; return; }
+    feed.innerHTML = issues.map(i => {
+      const p = (i.labels.map(l => l.name).find(n => PILLAR_AR[n])) || "tech";
+      return `<div class="issue" style="--c:${COLORS[p]}">
+        <a href="${i.html_url}" target="_blank" rel="noopener">${esc(i.title.replace(/^\[تعمّق\]\s*/, ""))}</a>
+        <div class="meta"><span class="pill">${PILLAR_AR[p]}</span><span>#${i.number}</span><span>· ${ago(i.created_at)}</span>${i.comments ? `<span>· ${i.comments} تعليق</span>` : ""}</div>
+      </div>`;
+    }).join("");
+  } catch (e) {
+    feed.innerHTML = `<div class="empty">تعذر تحميل Issues (ربما حد الطلبات).<br><a href="https://github.com/${REPO}/issues?q=is%3Aissue+label%3Adeep-dive" target="_blank" style="color:var(--accent)">افتحها في GitHub</a></div>`;
+  }
+}
+
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === t));
+  state.tab = t.dataset.tab;
+  document.getElementById("filters").style.display = state.tab === "feed" ? "" : "none";
+  render();
+});
+loadIndex();
+</script>
+</body>
+</html>
