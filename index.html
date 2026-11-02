@@ -51,6 +51,10 @@
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
   .btn.deep { background: #14301f; border-color: #1f5a37; color: #7ee2a3; }
   .btn.done { background: var(--chip); color: var(--muted); }
+  .lang-btn { background: var(--chip); color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 3px 9px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; direction: ltr; margin-inline-start: auto; }
+  .lang-btn.en { color: var(--accent); border-color: var(--accent); }
+  .card[data-lang="en"] h2, .card[data-lang="en"] p:not(.why), .card[data-lang="en"] .why { direction: ltr; text-align: left; }
+  .card[data-lang="en"] .why { border-inline-start: 0; border-left: 2px solid var(--line); padding-inline-start: 0; padding-left: 10px; }
   .imp { display: inline-flex; gap: 1px; }
   .imp i { width: 6px; height: 6px; border-radius: 50%; background: var(--line); display: inline-block; }
   .imp i.on { background: var(--c, var(--accent)); }
@@ -67,7 +71,10 @@
 <header>
   <div class="top">
     <h1>رادار الذكاء الاصطناعي <small id="count"></small></h1>
-    <select id="date"></select>
+    <div style="display:flex;gap:8px;align-items:center">
+      <button class="lang-btn" id="global-lang" title="لغة العرض">EN</button>
+      <select id="date"></select>
+    </div>
   </div>
   <div class="tabs">
     <div class="tab active" data-tab="feed">اليوم</div>
@@ -92,6 +99,8 @@ const COLORS = { poc: "var(--poc)", tech: "var(--tech)", research: "var(--resear
 let state = { tab: "feed", filter: "all", day: null, dates: [] };
 const ls = (k, v) => { try { return v === undefined ? JSON.parse(localStorage.getItem(k) || "null") : localStorage.setItem(k, JSON.stringify(v)); } catch { return null; } };
 let read = new Set(ls("read") || []);
+let globalLang = ls("lang") || "ar";
+let cardLang = {};  // per-card override for this view
 let deep = new Set(ls("deep") || []);
 
 const esc = s => (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -142,18 +151,25 @@ function render() {
   feed.innerHTML = items.map(it => {
     const c = COLORS[it.pillar] || "var(--accent)";
     const isRead = read.has(it.id), isDeep = deep.has(it.id);
-    return `<article class="card ${isRead ? "read" : ""}" style="--c:${c}" data-id="${it.id}">
+    const lang = cardLang[it.id] || globalLang;
+    const en = lang === "en";
+    const title = en ? (it.title_en || it.title) : (it.title_ar || it.title);
+    const summary = en ? (it.summary_en || it.snippet || it.title) : it.summary_ar;
+    const why = en ? (it.why_en || "") : (it.why_ar || "");
+    const orig = en ? (it.title_ar && it.title_ar !== title ? it.title_ar : "") : (it.title_en || it.title) !== title ? (it.title_en || it.title) : "";
+    return `<article class="card ${isRead ? "read" : ""}" style="--c:${c}" data-id="${it.id}" data-lang="${lang}">
       <div class="meta">
         <span class="pill">${PILLAR_AR[it.pillar] || it.pillar}</span>
         <span>${esc(it.source)}</span>
         <span>· ${ago(it.published)}</span>
         <span class="imp" title="الأهمية">${[1,2,3,4,5].map(n => `<i class="${n <= (it.importance || 3) ? "on" : ""}"></i>`).join("")}</span>
+        <button class="lang-btn ${en ? "en" : ""}" data-act="lang" title="${en ? "اعرض بالعربي" : "Show in English"}">${en ? "ع" : "EN"}</button>
       </div>
-      <h2>${esc(it.title_ar || it.title)}</h2>
-      <p>${esc(it.summary_ar)}</p>
-      ${it.why_ar ? `<p class="why">${esc(it.why_ar)}</p>` : ""}
+      <h2>${esc(title)}</h2>
+      <p>${esc(summary)}</p>
+      ${why ? `<p class="why">${esc(why)}</p>` : ""}
       ${(it.tags || []).length ? `<div class="tags">${it.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>` : ""}
-      ${it.title_ar && it.title_ar !== it.title ? `<div class="orig">${esc(it.title)}</div>` : ""}
+      ${orig ? `<div class="orig" style="direction:${en ? "rtl" : "ltr"};text-align:${en ? "right" : "left"}">${esc(orig)}</div>` : ""}
       <div class="actions">
         <a class="btn primary" href="${esc(it.url)}" target="_blank" rel="noopener" data-act="read">اقرأ المصدر</a>
         <a class="btn ${isDeep ? "done" : "deep"}" href="${issueUrl(it)}" target="_blank" rel="noopener" data-act="deep">${isDeep ? "✓ في قائمة التعمّق" : "تعمّق"}</a>
@@ -162,6 +178,12 @@ function render() {
   }).join("");
   feed.querySelectorAll("[data-act]").forEach(a => a.addEventListener("click", e => {
     const id = a.closest(".card").dataset.id;
+    if (a.dataset.act === "lang") {
+      const cur = cardLang[id] || globalLang;
+      cardLang[id] = cur === "en" ? "ar" : "en";
+      const y = window.scrollY; render(); window.scrollTo(0, y);
+      return;
+    }
     if (a.dataset.act === "read") read.add(id); else { deep.add(id); read.add(id); }
     ls("read", [...read]); ls("deep", [...deep]);
     setTimeout(render, 300);
@@ -189,6 +211,16 @@ async function renderDeep() {
   }
 }
 
+function paintGlobalLang() {
+  const b = document.getElementById("global-lang");
+  b.textContent = globalLang === "en" ? "ع" : "EN";
+  b.classList.toggle("en", globalLang === "en");
+}
+document.getElementById("global-lang").onclick = () => {
+  globalLang = globalLang === "en" ? "ar" : "en";
+  cardLang = {}; ls("lang", globalLang); paintGlobalLang(); render();
+};
+paintGlobalLang();
 document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === t));
   state.tab = t.dataset.tab;

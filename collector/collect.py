@@ -171,10 +171,10 @@ def cap(items):
 
 
 SYSTEM = """أنت محرر نشرة يومية لمهندس ذكاء اصطناعي يعمل في بنك سعودي. نطاق عمله: (1) ابتكار حلول وبناء POCs، (2) متابعة التقنيات والموديلات الجديدة، (3) كتابة أبحاث للنشر، (4) متابعة الاستثمار الجريء بشكل ثانوي.
-لكل عنصر اكتب بالعربية الفصحى المبسطة:
-- title_ar: عنوان عربي قصير وجذاب (أقل من 12 كلمة). أبقِ أسماء المنتجات والموديلات والريبوهات بالإنجليزية.
-- summary_ar: ملخص من 2 إلى 4 جمل يشرح ما الجديد فعلياً، بدون حشو.
-- why_ar: جملة واحدة: لماذا يهم هذا المهندس تحديداً (فكرة POC؟ تقنية تستحق التجربة؟ موضوع بحث؟ فرصة مسابقة؟).
+لكل عنصر اكتب النص مرتين: بالعربية الفصحى المبسطة وبالإنجليزية، بنفس المعنى:
+- title_ar / title_en: عنوان قصير وجذاب (أقل من 12 كلمة). أبقِ أسماء المنتجات والموديلات والريبوهات بالإنجليزية في النسختين.
+- summary_ar / summary_en: ملخص من 2 إلى 4 جمل يشرح ما الجديد فعلياً، بدون حشو.
+- why_ar / why_en: جملة واحدة: لماذا يهم هذا المهندس تحديداً (فكرة POC؟ تقنية تستحق التجربة؟ موضوع بحث؟ فرصة مسابقة؟).
 - tags: 2 إلى 4 وسوم قصيرة بالإنجليزية.
 - importance: رقم من 1 إلى 5 (5 = يجب ألا يفوته).
 - pillar: واحد من: poc, tech, research, banking, competition, vc.
@@ -186,11 +186,12 @@ SCHEMA = {
         "type": "object",
         "properties": {
             "id": {"type": "string"}, "title_ar": {"type": "string"}, "summary_ar": {"type": "string"},
-            "why_ar": {"type": "string"}, "tags": {"type": "array", "items": {"type": "string"}},
+            "why_ar": {"type": "string"}, "title_en": {"type": "string"}, "summary_en": {"type": "string"},
+            "why_en": {"type": "string"}, "tags": {"type": "array", "items": {"type": "string"}},
             "importance": {"type": "integer"},
             "pillar": {"type": "string", "enum": ["poc", "tech", "research", "banking", "competition", "vc"]},
         },
-        "required": ["id", "title_ar", "summary_ar", "why_ar", "tags", "importance", "pillar"],
+        "required": ["id", "title_ar", "summary_ar", "why_ar", "title_en", "summary_en", "why_en", "tags", "importance", "pillar"],
         "additionalProperties": False,
     }}},
     "required": ["items"], "additionalProperties": False,
@@ -201,6 +202,9 @@ def fill_defaults(it):
     it.setdefault("title_ar", it["title"])
     it.setdefault("summary_ar", it["snippet"] or it["title"])
     it.setdefault("why_ar", "")
+    it.setdefault("title_en", it["title"])
+    it.setdefault("summary_en", it["snippet"] or it["title"])
+    it.setdefault("why_en", "")
     it.setdefault("tags", [])
     it.setdefault("importance", 3)
     it.setdefault("pillar", DEFAULT_PILLAR.get(it["category"], it["category"]))
@@ -221,7 +225,7 @@ def summarize(items):
                     "title": b["title"], "text": b["snippet"]} for b in batch]
         try:
             resp = client.messages.create(
-                model="claude-haiku-5-5", max_tokens=8000, system=SYSTEM,
+                model="claude-haiku-5-5", max_tokens=12000, system=SYSTEM,
                 messages=[{"role": "user", "content": "لخّص هذه العناصر وأعد JSON فقط:\n" + json.dumps(payload, ensure_ascii=False)}],
                 output_config={"format": {"type": "json_schema", "schema": SCHEMA}},
             )
