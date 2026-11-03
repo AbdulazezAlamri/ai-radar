@@ -129,19 +129,13 @@
 <div class="toast" id="toast"><span id="toast-msg"></span><button id="toast-undo">تراجع</button></div>
 
 <dialog id="settings">
-  <h3>المزامنة بين أجهزتك</h3>
-  <p>حالة "قرأته" و"تعمّق" تُحفظ في ملف داخل الريبو على الفرع <b>state</b>، فتتزامن بين الجوال والحاسب. تحتاج توكن GitHub محدود الصلاحية تضيفه مرة واحدة على كل جهاز، ويبقى على جهازك فقط.</p>
-  <ol>
-    <li>افتح <a id="token-link" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">صفحة إنشاء Fine-grained token</a>.</li>
-    <li>Repository access: <b>Only select repositories</b> واختر <b>ai-radar</b>.</li>
-    <li>Permissions ← Repository permissions ← <b>Contents: Read and write</b>. لا شيء آخر.</li>
-    <li>Expiration: سنة. ثم Generate وانسخ التوكن والصقه هنا.</li>
-  </ol>
+  <h3>المزامنة</h3>
+  <p>الصق توكن GitHub هنا لتتزامن حالة القراءة والتعمّق بين أجهزتك.</p>
   <input type="password" id="token-input" placeholder="github_pat_..." autocomplete="off">
   <div class="status" id="sync-status"></div>
   <div class="row">
-    <button class="btn primary" id="token-save">حفظ وتزامن</button>
-    <button class="btn" id="token-clear">إزالة التوكن</button>
+    <button class="btn primary" id="token-save">حفظ</button>
+    <button class="btn" id="token-clear">إزالة</button>
     <button class="btn" id="settings-close">إغلاق</button>
   </div>
 </dialog>
@@ -223,7 +217,7 @@ const sync = {
 function paintSync() {
   const g = document.getElementById("gear"); g.className = "ib gear s-" + sync.status;
   const st = document.getElementById("sync-status");
-  st.textContent = sync.token ? (sync.msg || "جاهز") : "لا يوجد توكن على هذا الجهاز. الحالة تُحفظ محلياً فقط.";
+  st.textContent = sync.token ? (sync.msg || "جاهز") : "لا يوجد توكن على هذا الجهاز";
 }
 
 // ---------- Data ----------
