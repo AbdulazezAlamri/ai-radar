@@ -14,7 +14,7 @@
   :root {
     --bg: #0b0f17; --card: #121826; --card2: #182033; --text: #e8ecf4; --muted: #8b95a8;
     --line: #232c3d; --accent: #4f8cff; --accent2: #22c55e; --chip: #1c2538;
-    --models: #4f8cff; --tools: #06b6d4; --research: #a78bfa; --banking: #22c55e; --saudi: #10b981; --hackathon: #f59e0b; --funding: #ec4899; --poc: #facc15;
+    --models: #4f8cff; --tools: #06b6d4; --github: #e2e8f0; --research: #a78bfa; --banking: #22c55e; --saudi: #10b981; --hackathon: #f59e0b; --funding: #ec4899; --poc: #facc15;
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
@@ -147,10 +147,11 @@ const REPO = (location.hostname.endsWith("github.io") && location.pathname.split
 document.getElementById("repo-link").href = `https://github.com/${REPO}`;
 const STATE_BRANCH = "state", STATE_FILE = "state.json";
 
-const PILLAR_AR = { models: "موديلات وتقنيات", tools: "أدوات وريبوهات", research: "أبحاث", banking: "بنوك ومال", saudi: "السعودية", hackathon: "هاكاثونات وجوائز", funding: "استثمار وصفقات" };
+const PILLAR_AR = { models: "موديلات", tools: "أدوات", github: "GitHub", research: "أبحاث", banking: "بنوك", saudi: "السعودية", hackathon: "مسابقات", funding: "صفقات" };
 const COLORS = Object.fromEntries(Object.keys(PILLAR_AR).map(k => [k, `var(--${k})`]));
 // days built before the 7-pillar scheme used: poc, tech, competition, vc
 const LEGACY = { poc: "tools", tech: "models", competition: "hackathon", vc: "funding" };
+const pillarOf = i => i.category === "github" ? "github" : normPillar(i.pillar);
 const normPillar = p => LEGACY[p] || (PILLAR_AR[p] ? p : "models");
 
 let state = { tab: "feed", filter: "all", day: null, dates: [] };
@@ -237,7 +238,7 @@ async function loadIndex() {
 async function loadDay(d) {
   const r = await fetch(`data/${d}.json`, { cache: "no-store" });
   state.day = await r.json();
-  (state.day.items || []).forEach(i => { if (LEGACY[i.pillar]) { i.poc = i.poc || i.pillar === "poc"; } i.pillar = normPillar(i.pillar); });
+  (state.day.items || []).forEach(i => { if (LEGACY[i.pillar]) { i.poc = i.poc || i.pillar === "poc"; } i.pillar = pillarOf(i); });
   renderFilters(); render();
 }
 function visibleItems() {
