@@ -22,9 +22,10 @@
   header { position: sticky; top: 0; z-index: 10; background: rgba(11,15,23,.92); backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line); padding: calc(10px + env(safe-area-inset-top)) 16px 8px; }
   .top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-  h1 { font-size: 18px; margin: 0; font-weight: 700; }
+  h1 { font-size: 18px; margin: 0; font-weight: 700; white-space: nowrap; }
   h1 small { color: var(--muted); font-weight: 400; font-size: 12px; margin-inline-start: 8px; }
-  select { background: var(--chip); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 6px 10px; font: inherit; font-size: 13px; }
+  .tools { display: flex; gap: 6px; align-items: center; }
+  select { background: var(--chip); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 6px 8px; font: inherit; font-size: 13px; max-width: 120px; }
   .tabs { display: flex; gap: 6px; margin-top: 10px; }
   .tab { flex: 1; text-align: center; padding: 8px; border-radius: 10px; background: var(--chip); color: var(--muted); font-size: 14px; cursor: pointer; border: 1px solid transparent; }
   .tab.active { color: var(--text); border-color: var(--accent); background: #15203a; }
@@ -34,12 +35,12 @@
   .chip.active { color: var(--text); border-color: var(--muted); }
   main { padding: 12px 16px calc(24px + env(safe-area-inset-bottom)); max-width: 680px; margin: 0 auto; }
   .feed { display: flex; flex-direction: column; gap: 14px; }
-  .card { background: linear-gradient(180deg, var(--card), var(--card2)); border: 1px solid var(--line); border-radius: 18px; padding: 16px; position: relative; overflow: hidden; }
-  .card.read { opacity: .55; }
+  .card { background: linear-gradient(180deg, var(--card), var(--card2)); border: 1px solid var(--line); border-radius: 18px; padding: 16px; position: relative; overflow: hidden;
+    transition: height .3s ease, opacity .3s ease, margin .3s ease, padding .3s ease; }
+  .card.collapsing { height: 0 !important; opacity: 0; padding-top: 0; padding-bottom: 0; margin-top: -14px; border-width: 0; }
   .card::before { content: ""; position: absolute; inset-inline-start: 0; top: 0; bottom: 0; width: 4px; background: var(--c, var(--accent)); }
   .meta { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); flex-wrap: wrap; }
   .pill { padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: color-mix(in srgb, var(--c, var(--accent)) 18%, transparent); color: var(--c, var(--accent)); }
-  .stars { color: var(--competition); }
   .card h2 { font-size: 17px; margin: 10px 0 8px; line-height: 1.5; font-weight: 700; }
   .card p { margin: 0; font-size: 15px; line-height: 1.8; color: #cfd6e4; }
   .why { margin-top: 10px !important; font-size: 14px !important; color: var(--muted) !important; border-inline-start: 2px solid var(--line); padding-inline-start: 10px; }
@@ -51,10 +52,14 @@
   .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
   .btn.deep { background: #14301f; border-color: #1f5a37; color: #7ee2a3; }
   .btn.done { background: var(--chip); color: var(--muted); }
-  .lang-btn { background: var(--chip); color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 3px 9px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; direction: ltr; margin-inline-start: auto; }
-  .lang-btn.en { color: var(--accent); border-color: var(--accent); }
-  .spk { background: var(--chip); color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 3px 9px; font: inherit; font-size: 13px; cursor: pointer; }
-  .spk.playing, #play-all.playing { color: #7ee2a3; border-color: #1f5a37; background: #14301f; }
+  .ib { background: var(--chip); color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 3px 9px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; direction: ltr; white-space: nowrap; }
+  .ib.en { color: var(--accent); border-color: var(--accent); }
+  .ib.ok { color: #7ee2a3; border-color: #1f5a37; }
+  .ib.playing, #play-all.playing { color: #7ee2a3; border-color: #1f5a37; background: #14301f; }
+  .ib.gear { position: relative; }
+  .ib.gear::after { content: ""; position: absolute; top: -3px; right: -3px; width: 8px; height: 8px; border-radius: 50%; background: #555; border: 2px solid var(--bg); }
+  .ib.gear.s-ok::after { background: #22c55e; } .ib.gear.s-syncing::after { background: #f59e0b; } .ib.gear.s-error::after { background: #ef4444; }
+  .cbtns { display: inline-flex; gap: 6px; margin-inline-start: auto; }
   .card.speaking { border-color: #1f5a37; box-shadow: 0 0 0 1px #1f5a37 inset; }
   .nospeech, .no-speech .spk { display: none; }
   .card[data-lang="en"] h2, .card[data-lang="en"] p:not(.why), .card[data-lang="en"] .why { direction: ltr; text-align: left; }
@@ -67,6 +72,29 @@
   .issue a { color: var(--text); text-decoration: none; font-weight: 600; }
   .issue .meta { margin-top: 6px; }
   .summary { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .readbox { margin-top: 22px; border: 1px dashed var(--line); border-radius: 14px; padding: 4px 12px; }
+  .readbox summary { cursor: pointer; color: var(--muted); font-size: 14px; padding: 10px 0; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+  .readbox summary::-webkit-details-marker { display: none; }
+  .readbox summary::after { content: "▾"; transition: transform .2s; }
+  .readbox[open] summary::after { transform: rotate(180deg); }
+  .stub { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line); font-size: 13px; }
+  .stub .t { flex: 1; color: var(--muted); line-height: 1.5; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .stub .t a { color: inherit; text-decoration: none; }
+  .stub .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: 0 0 auto; }
+  .toast { position: fixed; bottom: calc(18px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%) translateY(20px); background: #1c2538; color: var(--text); border: 1px solid var(--line);
+    border-radius: 12px; padding: 10px 14px; font-size: 14px; display: flex; gap: 14px; align-items: center; opacity: 0; pointer-events: none; transition: all .25s; z-index: 50; box-shadow: 0 10px 30px rgba(0,0,0,.4); white-space: nowrap; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); pointer-events: auto; }
+  .toast button { background: none; border: 0; color: var(--accent); font: inherit; font-weight: 700; cursor: pointer; }
+  dialog { background: var(--card); color: var(--text); border: 1px solid var(--line); border-radius: 18px; padding: 20px; max-width: 420px; width: calc(100% - 32px); }
+  dialog::backdrop { background: rgba(0,0,0,.6); backdrop-filter: blur(4px); }
+  dialog h3 { margin: 0 0 10px; font-size: 17px; }
+  dialog p, dialog li { font-size: 14px; line-height: 1.8; color: #cfd6e4; }
+  dialog ol { padding-inline-start: 20px; margin: 6px 0; }
+  dialog input { width: 100%; background: var(--bg); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 10px; font: inherit; direction: ltr; margin: 8px 0; }
+  dialog .row { display: flex; gap: 8px; margin-top: 10px; }
+  dialog .row .btn { padding: 9px; }
+  dialog a { color: var(--accent); }
+  .status { font-size: 13px; color: var(--muted); margin-top: 8px; }
   footer { text-align: center; color: var(--muted); font-size: 12px; padding: 20px; }
   footer a { color: var(--muted); }
 </style>
@@ -74,10 +102,11 @@
 <body>
 <header>
   <div class="top">
-    <h1>رادار الذكاء الاصطناعي <small id="count"></small></h1>
-    <div style="display:flex;gap:8px;align-items:center">
-      <button class="lang-btn" id="play-all" title="استمع للنشرة كاملة">▶ استمع</button>
-      <button class="lang-btn" id="global-lang" title="لغة العرض">EN</button>
+    <h1>الرادار <small id="count"></small></h1>
+    <div class="tools">
+      <button class="ib" id="play-all" title="استمع للنشرة كاملة">▶</button>
+      <button class="ib" id="global-lang" title="لغة العرض">EN</button>
+      <button class="ib gear" id="gear" title="الإعدادات والمزامنة">⚙</button>
       <select id="date"></select>
     </div>
   </div>
@@ -90,111 +119,210 @@
 <main>
   <div class="summary" id="summary"></div>
   <div class="feed" id="feed"></div>
+  <div id="readbox"></div>
 </main>
 <footer>يُحدَّث تلقائياً كل صباح الساعة 6:30 بتوقيت الرياض · <a id="repo-link" href="#" target="_blank">المستودع</a></footer>
+<div class="toast" id="toast"><span id="toast-msg"></span><button id="toast-undo">تراجع</button></div>
+
+<dialog id="settings">
+  <h3>المزامنة بين أجهزتك</h3>
+  <p>حالة "قرأته" و"تعمّق" تُحفظ في ملف داخل الريبو على الفرع <b>state</b>، فتتزامن بين الجوال والحاسب. تحتاج توكن GitHub محدود الصلاحية تضيفه مرة واحدة على كل جهاز، ويبقى على جهازك فقط.</p>
+  <ol>
+    <li>افتح <a id="token-link" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">صفحة إنشاء Fine-grained token</a>.</li>
+    <li>Repository access: <b>Only select repositories</b> واختر <b>ai-radar</b>.</li>
+    <li>Permissions ← Repository permissions ← <b>Contents: Read and write</b>. لا شيء آخر.</li>
+    <li>Expiration: سنة. ثم Generate وانسخ التوكن والصقه هنا.</li>
+  </ol>
+  <input type="password" id="token-input" placeholder="github_pat_..." autocomplete="off">
+  <div class="status" id="sync-status"></div>
+  <div class="row">
+    <button class="btn primary" id="token-save">حفظ وتزامن</button>
+    <button class="btn" id="token-clear">إزالة التوكن</button>
+    <button class="btn" id="settings-close">إغلاق</button>
+  </div>
+</dialog>
 
 <script>
 const REPO = (location.hostname.endsWith("github.io") && location.pathname.split("/")[1])
   ? `${location.hostname.split(".")[0]}/${location.pathname.split("/")[1]}` : "AbdulazezAlamri/ai-radar";
 document.getElementById("repo-link").href = `https://github.com/${REPO}`;
+const STATE_BRANCH = "state", STATE_FILE = "state.json";
 
 const PILLAR_AR = { poc: "فكرة POC", tech: "تقنية جديدة", research: "بحث", banking: "بنوك", competition: "مسابقة / جائزة", vc: "استثمار" };
 const COLORS = { poc: "var(--poc)", tech: "var(--tech)", research: "var(--research)", banking: "var(--banking)", competition: "var(--competition)", vc: "var(--vc)" };
 
 let state = { tab: "feed", filter: "all", day: null, dates: [] };
 const ls = (k, v) => { try { return v === undefined ? JSON.parse(localStorage.getItem(k) || "null") : localStorage.setItem(k, JSON.stringify(v)); } catch { return null; } };
-let read = new Set(ls("read") || []);
 let globalLang = ls("lang") || "ar";
-let cardLang = {};  // per-card override for this view
-let deep = new Set(ls("deep") || []);
+let cardLang = {};
+
+// ---------- Flags: last-write-wins map {id: {v, t}} for "read" and "deep" ----------
+let S = ls("state2") || { read: {}, deep: {} };
+(function migrate() {  // from the first version's plain sets
+  const r = ls("read"), d = ls("deep"); if (!r && !d) return;
+  (r || []).forEach(id => S.read[id] = S.read[id] || { v: true, t: 1 });
+  (d || []).forEach(id => S.deep[id] = S.deep[id] || { v: true, t: 1 });
+  ls("state2", S); localStorage.removeItem("read"); localStorage.removeItem("deep");
+})();
+const flag = (kind, id) => !!(S[kind][id] && S[kind][id].v);
+function setFlag(kind, id, v) { S[kind][id] = { v, t: Date.now() }; ls("state2", S); sync.schedule(); }
 
 const esc = s => (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const ago = iso => { if (!iso) return ""; const h = Math.round((Date.now() - new Date(iso)) / 36e5); return h < 1 ? "الآن" : h < 24 ? `قبل ${h} س` : `قبل ${Math.round(h / 24)} ي`; };
+const b64enc = s => { const b = new TextEncoder().encode(s); let out = ""; b.forEach(c => out += String.fromCharCode(c)); return btoa(out); };
+const b64dec = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g, "")), c => c.charCodeAt(0)));
 
-async function loadIndex() {
-  try {
-    const r = await fetch("data/index.json", { cache: "no-store" });
-    state.dates = (await r.json()).dates || [];
-  } catch { state.dates = []; }
-  const sel = document.getElementById("date");
-  sel.innerHTML = state.dates.map((d, i) => `<option value="${d}">${i === 0 ? "اليوم · " : ""}${d}</option>`).join("") || `<option>لا توجد بيانات بعد</option>`;
-  sel.onchange = () => loadDay(sel.value);
-  if (state.dates[0]) loadDay(state.dates[0]);
-  else document.getElementById("feed").innerHTML = `<div class="empty">لم يتم تشغيل الجمع بعد.<br>شغّل الـ workflow من GitHub Actions أو انتظر صباح الغد.</div>`;
+// ---------- Sync with the repo's state branch via GitHub Contents API ----------
+const sync = {
+  token: ls("gh_token") || "", sha: null, status: "off", timer: null, msg: "",
+  api: `https://api.github.com/repos/${REPO}/contents/${STATE_FILE}?ref=${STATE_BRANCH}`,
+  headers() { const h = { Accept: "application/vnd.github+json" }; if (this.token) h.Authorization = `Bearer ${this.token}`; return h; },
+  set(status, msg) { this.status = status; this.msg = msg || ""; paintSync(); },
+  merge(remote) {
+    let changed = false;
+    for (const kind of ["read", "deep"]) {
+      const R = (remote && remote[kind]) || {};
+      for (const id in R) { const a = S[kind][id], b = R[id]; if (!a || (b.t || 0) > (a.t || 0)) { S[kind][id] = b; changed = true; } }
+    }
+    if (changed) ls("state2", S);
+    return changed;
+  },
+  async pull() {
+    try {
+      this.set("syncing");
+      const r = await fetch(this.api, { headers: this.headers(), cache: "no-store" });
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      const j = await r.json(); this.sha = j.sha;
+      const changed = this.merge(JSON.parse(b64dec(j.content || "") || "{}"));
+      this.set(this.token ? "ok" : "off", this.token ? "متزامن" : "قراءة فقط، أضف توكن لحفظ التغييرات");
+      return changed;
+    } catch (e) { this.set(this.token ? "error" : "off", "تعذر الاتصال: " + e.message); return false; }
+  },
+  async push(retry = true) {
+    if (!this.token) return;
+    try {
+      this.set("syncing");
+      if (!this.sha) { const r = await fetch(this.api, { headers: this.headers(), cache: "no-store" }); if (r.ok) this.sha = (await r.json()).sha; }
+      const body = { message: `state: ${new Date().toISOString()}`, branch: STATE_BRANCH, sha: this.sha,
+        content: b64enc(JSON.stringify({ read: S.read, deep: S.deep, updated: new Date().toISOString() })) };
+      const r = await fetch(this.api.split("?")[0], { method: "PUT", headers: { ...this.headers(), "Content-Type": "application/json" }, body: JSON.stringify(body) });
+      if (r.status === 409 || r.status === 422) { this.sha = null; if (retry) { await this.pull(); return this.push(false); } throw new Error("تعارض"); }
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      this.sha = (await r.json()).content.sha; this.set("ok", "متزامن · " + new Date().toLocaleTimeString("ar-SA", { hour: "2-digit", minute: "2-digit" }));
+    } catch (e) { this.set("error", "فشل الحفظ: " + e.message); }
+  },
+  schedule() { if (!this.token) return; clearTimeout(this.timer); this.timer = setTimeout(() => this.push(), 2000); },
+};
+function paintSync() {
+  const g = document.getElementById("gear"); g.className = "ib gear s-" + sync.status;
+  const st = document.getElementById("sync-status");
+  st.textContent = sync.token ? (sync.msg || "جاهز") : "لا يوجد توكن على هذا الجهاز. الحالة تُحفظ محلياً فقط.";
 }
 
+// ---------- Data ----------
+async function loadIndex() {
+  try { const r = await fetch("data/index.json", { cache: "no-store" }); state.dates = (await r.json()).dates || []; } catch { state.dates = []; }
+  const sel = document.getElementById("date");
+  sel.innerHTML = state.dates.map((d, i) => `<option value="${d}">${i === 0 ? "اليوم · " : ""}${d.slice(5)}</option>`).join("") || `<option>لا بيانات</option>`;
+  sel.onchange = () => loadDay(sel.value);
+  if (state.dates[0]) await loadDay(state.dates[0]);
+  else document.getElementById("feed").innerHTML = `<div class="empty">لم يتم تشغيل الجمع بعد.</div>`;
+  if (await sync.pull()) render();
+}
 async function loadDay(d) {
   const r = await fetch(`data/${d}.json`, { cache: "no-store" });
   state.day = await r.json();
   renderFilters(); render();
 }
-
+function visibleItems() {
+  return (state.day?.items || []).filter(i => state.filter === "all" || i.pillar === state.filter);
+}
 function renderFilters() {
-  const f = document.getElementById("filters");
-  const counts = {};
-  (state.day?.items || []).forEach(i => counts[i.pillar] = (counts[i.pillar] || 0) + 1);
-  f.innerHTML = [`<div class="chip ${state.filter === "all" ? "active" : ""}" data-f="all">الكل (${state.day?.count || 0})</div>`]
+  const f = document.getElementById("filters"); const counts = {};
+  (state.day?.items || []).filter(i => !flag("read", i.id)).forEach(i => counts[i.pillar] = (counts[i.pillar] || 0) + 1);
+  const total = Object.values(counts).reduce((a, b) => a + b, 0);
+  f.innerHTML = [`<div class="chip ${state.filter === "all" ? "active" : ""}" data-f="all">الكل (${total})</div>`]
     .concat(Object.keys(PILLAR_AR).filter(k => counts[k]).map(k =>
       `<div class="chip ${state.filter === k ? "active" : ""}" data-f="${k}" style="--c:${COLORS[k]}">${PILLAR_AR[k]} (${counts[k]})</div>`)).join("");
   f.querySelectorAll(".chip").forEach(c => c.onclick = () => { state.filter = c.dataset.f; renderFilters(); render(); });
 }
-
 function issueUrl(it) {
   const title = `[تعمّق] ${it.title_ar || it.title}`;
   const body = [`**المصدر:** ${it.source}`, `**الرابط:** ${it.url}`, "", `**الملخص:** ${it.summary_ar || ""}`, "",
     it.why_ar ? `**لماذا يهم:** ${it.why_ar}` : "", "", "---", "## ملاحظاتي", "- [ ] قرأت المصدر الأصلي", "- [ ] جرّبته / حللته", "- [ ] الخلاصة والقرار:", ""].join("\n");
   return `https://github.com/${REPO}/issues/new?labels=deep-dive,${it.pillar}&title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`;
 }
+function titleOf(it, lang) { return lang === "en" ? (it.title_en || it.title) : (it.title_ar || it.title); }
 
+// ---------- Render ----------
 function render() {
-  const feed = document.getElementById("feed");
+  const feed = document.getElementById("feed"), box = document.getElementById("readbox");
   document.getElementById("summary").textContent = "";
-  if (state.tab === "deep") return renderDeep();
-  const items = (state.day?.items || []).filter(i => state.filter === "all" || i.pillar === state.filter);
-  document.getElementById("count").textContent = state.day ? `${items.length} عنصر` : "";
-  if (!items.length) { feed.innerHTML = `<div class="empty">لا توجد عناصر في هذا التصنيف اليوم.</div>`; return; }
-  feed.innerHTML = items.map(it => {
-    const c = COLORS[it.pillar] || "var(--accent)";
-    const isRead = read.has(it.id), isDeep = deep.has(it.id);
-    const lang = cardLang[it.id] || globalLang;
-    const en = lang === "en";
-    const title = en ? (it.title_en || it.title) : (it.title_ar || it.title);
-    const summary = en ? (it.summary_en || it.snippet || it.title) : it.summary_ar;
-    const why = en ? (it.why_en || "") : (it.why_ar || "");
-    const orig = en ? (it.title_ar && it.title_ar !== title ? it.title_ar : "") : (it.title_en || it.title) !== title ? (it.title_en || it.title) : "";
-    return `<article class="card ${isRead ? "read" : ""} ${speech.current === it.id ? "speaking" : ""}" style="--c:${c}" data-id="${it.id}" data-lang="${lang}">
-      <div class="meta">
-        <span class="pill">${PILLAR_AR[it.pillar] || it.pillar}</span>
-        <span>${esc(it.source)}</span>
-        <span>· ${ago(it.published)}</span>
-        <span class="imp" title="الأهمية">${[1,2,3,4,5].map(n => `<i class="${n <= (it.importance || 3) ? "on" : ""}"></i>`).join("")}</span>
-        <button class="lang-btn ${en ? "en" : ""}" data-act="lang" title="${en ? "اعرض بالعربي" : "Show in English"}">${en ? "ع" : "EN"}</button>
-        <button class="spk ${speech.current === it.id ? "playing" : ""}" data-act="speak" title="استمع">${speech.current === it.id ? "■" : "🔊"}</button>
-      </div>
-      <h2>${esc(title)}</h2>
-      <p>${esc(summary)}</p>
-      ${why ? `<p class="why">${esc(why)}</p>` : ""}
-      ${(it.tags || []).length ? `<div class="tags">${it.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>` : ""}
-      ${orig ? `<div class="orig" style="direction:${en ? "rtl" : "ltr"};text-align:${en ? "right" : "left"}">${esc(orig)}</div>` : ""}
-      <div class="actions">
-        <a class="btn primary" href="${esc(it.url)}" target="_blank" rel="noopener" data-act="read">اقرأ المصدر</a>
-        <a class="btn ${isDeep ? "done" : "deep"}" href="${issueUrl(it)}" target="_blank" rel="noopener" data-act="deep">${isDeep ? "✓ في قائمة التعمّق" : "تعمّق"}</a>
-      </div>
-    </article>`;
-  }).join("");
-  feed.querySelectorAll("[data-act]").forEach(a => a.addEventListener("click", e => {
-    const id = a.closest(".card").dataset.id;
-    if (a.dataset.act === "speak") { speech.toggle(id); return; }
-    if (a.dataset.act === "lang") {
-      const cur = cardLang[id] || globalLang;
-      cardLang[id] = cur === "en" ? "ar" : "en";
-      const y = window.scrollY; render(); window.scrollTo(0, y);
-      return;
-    }
-    if (a.dataset.act === "read") read.add(id); else { deep.add(id); read.add(id); }
-    ls("read", [...read]); ls("deep", [...deep]);
-    setTimeout(render, 300);
+  if (state.tab === "deep") { box.innerHTML = ""; return renderDeep(); }
+  const all = visibleItems();
+  const items = all.filter(i => !flag("read", i.id)), done = all.filter(i => flag("read", i.id));
+  document.getElementById("count").textContent = state.day ? `${items.length} متبقي` : "";
+  feed.innerHTML = items.length ? items.map(cardHtml).join("")
+    : `<div class="empty">${all.length ? "قرأت كل شيء في هذا التصنيف ✓" : "لا توجد عناصر في هذا التصنيف اليوم."}</div>`;
+  box.innerHTML = done.length ? `<details class="readbox" ${state.readOpen ? "open" : ""}><summary><span>المقروء (${done.length})</span></summary>
+    ${done.map(it => `<div class="stub" style="--c:${COLORS[it.pillar] || "var(--accent)"}" data-id="${it.id}"><span class="dot"></span>
+      <span class="t"><a href="${esc(it.url)}" target="_blank" rel="noopener">${esc(titleOf(it, cardLang[it.id] || globalLang))}</a> <span style="opacity:.6">· ${esc(it.source)}</span></span>
+      <button class="ib" data-act="unread" title="أرجعها للتدفق">↩</button></div>`).join("")}</details>` : "";
+  box.querySelector("details")?.addEventListener("toggle", e => state.readOpen = e.target.open);
+  box.querySelectorAll('[data-act="unread"]').forEach(b => b.onclick = () => { setFlag("read", b.closest(".stub").dataset.id, false); renderFilters(); render(); });
+  feed.querySelectorAll("[data-act]").forEach(a => a.addEventListener("click", () => {
+    const card = a.closest(".card"), id = card.dataset.id;
+    if (a.dataset.act === "speak") return speech.toggle(id);
+    if (a.dataset.act === "lang") { const cur = cardLang[id] || globalLang; cardLang[id] = cur === "en" ? "ar" : "en"; const y = scrollY; render(); scrollTo(0, y); return; }
+    if (a.dataset.act === "deep") { setFlag("deep", id, true); setTimeout(render, 300); return; }
+    if (a.dataset.act === "done") return markRead(card, id);
   }));
+  refreshSpeechUI();
+}
+function cardHtml(it) {
+  const c = COLORS[it.pillar] || "var(--accent)", isDeep = flag("deep", it.id);
+  const lang = cardLang[it.id] || globalLang, en = lang === "en";
+  const title = titleOf(it, lang);
+  const summary = en ? (it.summary_en || it.snippet || it.title) : it.summary_ar;
+  const why = en ? (it.why_en || "") : (it.why_ar || "");
+  const other = titleOf(it, en ? "ar" : "en"); const orig = other !== title ? other : "";
+  return `<article class="card" style="--c:${c}" data-id="${it.id}" data-lang="${lang}">
+    <div class="meta">
+      <span class="pill">${PILLAR_AR[it.pillar] || it.pillar}</span>
+      <span>${esc(it.source)}</span>
+      <span>· ${ago(it.published)}</span>
+      <span class="imp" title="الأهمية">${[1,2,3,4,5].map(n => `<i class="${n <= (it.importance || 3) ? "on" : ""}"></i>`).join("")}</span>
+      <span class="cbtns">
+        <button class="ib ${en ? "en" : ""}" data-act="lang" title="${en ? "اعرض بالعربي" : "Show in English"}">${en ? "ع" : "EN"}</button>
+        <button class="ib spk" data-act="speak" title="استمع">🔊</button>
+        <button class="ib" data-act="done" title="قرأته، انقلها للمقروء">✓</button>
+      </span>
+    </div>
+    <h2>${esc(title)}</h2>
+    <p>${esc(summary)}</p>
+    ${why ? `<p class="why">${esc(why)}</p>` : ""}
+    ${(it.tags || []).length ? `<div class="tags">${it.tags.map(t => `<span class="tag">${esc(t)}</span>`).join("")}</div>` : ""}
+    ${orig ? `<div class="orig" style="direction:${en ? "rtl" : "ltr"};text-align:${en ? "right" : "left"}">${esc(orig)}</div>` : ""}
+    <div class="actions">
+      <a class="btn primary" href="${esc(it.url)}" target="_blank" rel="noopener">اقرأ المصدر</a>
+      <a class="btn ${isDeep ? "done" : "deep"}" href="${issueUrl(it)}" target="_blank" rel="noopener" data-act="deep">${isDeep ? "✓ في قائمة التعمّق" : "تعمّق"}</a>
+    </div>
+  </article>`;
+}
+function markRead(card, id) {
+  if (speech.current === id) speech.stop();
+  card.style.height = card.offsetHeight + "px"; card.offsetHeight;  // lock height, then collapse
+  card.classList.add("collapsing");
+  setTimeout(() => {
+    setFlag("read", id, true); renderFilters(); render();
+    toast("نُقلت إلى المقروء", () => { setFlag("read", id, false); renderFilters(); render(); });
+  }, 300);
+}
+let toastTimer;
+function toast(msg, undo) {
+  const t = document.getElementById("toast"); document.getElementById("toast-msg").textContent = msg;
+  document.getElementById("toast-undo").onclick = () => { undo && undo(); t.classList.remove("show"); };
+  t.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 3500);
 }
 
 async function renderDeep() {
@@ -225,80 +353,66 @@ const speech = {
   loadVoices() { this.voices = speechSynthesis.getVoices(); },
   pickVoice(lang) {
     const want = lang === "en" ? /^en/i : /^ar/i;
-    const vs = this.voices.filter(v => want.test(v.lang));
-    if (!vs.length) return null;
-    // Prefer Saudi / premium / enhanced voices when available
+    const vs = this.voices.filter(v => want.test(v.lang)); if (!vs.length) return null;
     const score = v => (lang === "ar" && /sa/i.test(v.lang) ? 4 : 0) + (/premium|enhanced|natural|neural/i.test(v.name) ? 3 : 0)
       + (/siri|google|microsoft/i.test(v.name) ? 1 : 0) + (v.localService ? 1 : 0);
     return vs.sort((a, b) => score(b) - score(a))[0];
   },
   textFor(it) {
     const lang = cardLang[it.id] || globalLang, en = lang === "en";
-    const parts = en ? [it.title_en || it.title, it.summary_en || it.snippet || "", it.why_en || ""]
-                     : [it.title_ar || it.title, it.summary_ar || "", it.why_ar || ""];
+    const parts = en ? [it.title_en || it.title, it.summary_en || it.snippet || "", it.why_en || ""] : [it.title_ar || it.title, it.summary_ar || "", it.why_ar || ""];
     return { lang, text: parts.filter(Boolean).join(". ").replace(/\s+/g, " ") };
   },
   speak(it, onend) {
     const { lang, text } = this.textFor(it);
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = lang === "en" ? "en-US" : "ar-SA";
-    const v = this.pickVoice(lang); if (v) u.voice = v;
-    u.rate = 1.0; u.pitch = 1.0;
+    u.lang = lang === "en" ? "en-US" : "ar-SA"; const v = this.pickVoice(lang); if (v) u.voice = v;
     u.onend = u.onerror = () => { if (this.current === it.id) { this.current = null; onend && onend(); refreshSpeechUI(); } };
-    this.current = it.id; refreshSpeechUI();
-    speechSynthesis.cancel(); speechSynthesis.speak(u);
+    this.current = it.id; refreshSpeechUI(); speechSynthesis.cancel(); speechSynthesis.speak(u);
   },
   stop() { this.queue = []; this.current = null; speechSynthesis.cancel(); refreshSpeechUI(); },
-  toggle(id) {
-    if (this.current === id) return this.stop();
-    const it = (state.day?.items || []).find(x => x.id === id); if (!it) return;
-    this.queue = []; this.speak(it);
-  },
+  toggle(id) { if (this.current === id) return this.stop(); const it = (state.day?.items || []).find(x => x.id === id); if (!it) return; this.queue = []; this.speak(it); },
   playAll() {
     if (this.queue.length || this.current) return this.stop();
-    const items = (state.day?.items || []).filter(i => state.filter === "all" || i.pillar === state.filter);
-    this.queue = items.slice();
+    this.queue = visibleItems().filter(i => !flag("read", i.id));
     const next = () => { const it = this.queue.shift(); if (!it) return refreshSpeechUI();
-      document.querySelector(`.card[data-id="${it.id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" });
-      this.speak(it, next); };
+      document.querySelector(`.card[data-id="${it.id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" }); this.speak(it, next); };
     next();
   },
 };
 function refreshSpeechUI() {
   document.querySelectorAll(".card").forEach(c => {
-    const on = c.dataset.id === speech.current;
-    c.classList.toggle("speaking", on);
+    const on = c.dataset.id === speech.current; c.classList.toggle("speaking", on);
     const b = c.querySelector('[data-act="speak"]'); if (b) { b.classList.toggle("playing", on); b.textContent = on ? "■" : "🔊"; }
   });
-  const pa = document.getElementById("play-all"); const busy = !!(speech.current || speech.queue.length);
-  pa.classList.toggle("playing", busy); pa.textContent = busy ? "■ إيقاف" : "▶ استمع";
+  const pa = document.getElementById("play-all"), busy = !!(speech.current || speech.queue.length);
+  pa.classList.toggle("playing", busy); pa.textContent = busy ? "■" : "▶";
 }
 if (speech.ok) {
-  speech.loadVoices();
-  speechSynthesis.onvoiceschanged = () => speech.loadVoices();
+  speech.loadVoices(); speechSynthesis.onvoiceschanged = () => speech.loadVoices();
   document.getElementById("play-all").onclick = () => speech.playAll();
-  window.addEventListener("pagehide", () => speechSynthesis.cancel());
-} else {
-  document.getElementById("play-all").classList.add("nospeech");
-  document.documentElement.classList.add("no-speech");
-}
+  addEventListener("pagehide", () => speechSynthesis.cancel());
+} else { document.getElementById("play-all").classList.add("nospeech"); document.documentElement.classList.add("no-speech"); }
 
-function paintGlobalLang() {
-  const b = document.getElementById("global-lang");
-  b.textContent = globalLang === "en" ? "ع" : "EN";
-  b.classList.toggle("en", globalLang === "en");
-}
-document.getElementById("global-lang").onclick = () => {
-  globalLang = globalLang === "en" ? "ar" : "en";
-  cardLang = {}; ls("lang", globalLang); paintGlobalLang(); render();
-};
+// ---------- Header controls ----------
+function paintGlobalLang() { const b = document.getElementById("global-lang"); b.textContent = globalLang === "en" ? "ع" : "EN"; b.classList.toggle("en", globalLang === "en"); }
+document.getElementById("global-lang").onclick = () => { globalLang = globalLang === "en" ? "ar" : "en"; cardLang = {}; ls("lang", globalLang); paintGlobalLang(); render(); };
 paintGlobalLang();
 document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x === t));
-  state.tab = t.dataset.tab;
-  document.getElementById("filters").style.display = state.tab === "feed" ? "" : "none";
-  render();
+  state.tab = t.dataset.tab; document.getElementById("filters").style.display = state.tab === "feed" ? "" : "none"; render();
 });
+const dlg = document.getElementById("settings");
+document.getElementById("gear").onclick = () => { document.getElementById("token-input").value = sync.token; paintSync(); dlg.showModal(); };
+document.getElementById("settings-close").onclick = () => dlg.close();
+document.getElementById("token-save").onclick = async () => {
+  const t = document.getElementById("token-input").value.trim(); if (!t) return;
+  sync.token = t; ls("gh_token", t); sync.sha = null;
+  const changed = await sync.pull(); if (sync.status === "ok") { await sync.push(); if (changed) { renderFilters(); render(); } }
+};
+document.getElementById("token-clear").onclick = () => { sync.token = ""; localStorage.removeItem("gh_token"); sync.set("off"); document.getElementById("token-input").value = ""; };
+document.addEventListener("visibilitychange", async () => { if (document.visibilityState === "visible" && state.day && await sync.pull()) { renderFilters(); render(); } });
+paintSync();
 loadIndex();
 </script>
 </body>
