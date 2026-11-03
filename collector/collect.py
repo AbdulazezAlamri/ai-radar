@@ -195,7 +195,7 @@ def semantic_dedupe(items):
     )
     try:
         resp = anthropic.Anthropic().messages.create(
-            model="claude-haiku-5-5", max_tokens=4000,
+            model="claude-haiku-5-5", max_tokens=16000,
             system="You are a precise deduplication filter. Output only the JSON object.",
             messages=[{"role": "user", "content": prompt}],
             output_config={"format": {"type": "json_schema", "schema": DEDUPE_SCHEMA}},
@@ -286,7 +286,7 @@ def summarize(items):
                     "title": b["title"], "text": b["snippet"]} for b in batch]
         try:
             resp = client.messages.create(
-                model="claude-haiku-5-5", max_tokens=12000, system=SYSTEM,
+                model="claude-haiku-5-5", max_tokens=16000, system=SYSTEM,
                 messages=[{"role": "user", "content": "لخّص هذه العناصر وأعد JSON فقط:\n" + json.dumps(payload, ensure_ascii=False)}],
                 output_config={"format": {"type": "json_schema", "schema": SCHEMA}},
             )
