@@ -195,17 +195,22 @@ def semantic_dedupe(items):
     )
     try:
         resp = anthropic.Anthropic().messages.create(
-            model="claude-haiku-5-5", max_tokens=2000,
+            model="claude-haiku-5-5", max_tokens=4000,
+            system="You are a precise deduplication filter. Output only the JSON object.",
             messages=[{"role": "user", "content": prompt}],
             output_config={"format": {"type": "json_schema", "schema": DEDUPE_SCHEMA}},
         )
-        text = next(b.text for b in resp.content if b.type == "text")
+        if resp.stop_reason != "end_turn":
+            raise RuntimeError(f"stop_reason={resp.stop_reason}")
+        text = next((b.text for b in resp.content if b.type == "text"), None)
+        if text is None:
+            raise RuntimeError(f"no text block: {[b.type for b in resp.content]}")
         drop = set(json.loads(text)["drop"])
         kept = [it for it in items if it["id"] not in drop]
         print(f"[dedupe] model dropped {len(items) - len(kept)} near-duplicates (in={resp.usage.input_tokens} out={resp.usage.output_tokens})")
         return kept
     except Exception as ex:
-        print(f"[dedupe] model step failed, keeping all: {ex}")
+        print(f"[dedupe] model step failed, keeping all: {ex!r}")
         return items
 
 
@@ -275,8 +280,8 @@ def summarize(items):
     import anthropic
     client = anthropic.Anthropic()
     by_id = {it["id"]: it for it in items}
-    for i in range(0, len(items), 10):
-        batch = items[i:i + 10]
+    for i in range(0, len(items), 6):
+        batch = items[i:i + 6]
         payload = [{"id": b["id"], "source": b["source"], "category": PILLARS[b["category"]],
                     "title": b["title"], "text": b["snippet"]} for b in batch]
         try:
@@ -285,16 +290,16 @@ def summarize(items):
                 messages=[{"role": "user", "content": "لخّص هذه العناصر وأعد JSON فقط:\n" + json.dumps(payload, ensure_ascii=False)}],
                 output_config={"format": {"type": "json_schema", "schema": SCHEMA}},
             )
-            if resp.stop_reason == "refusal":
-                print("[llm] refusal on batch", i)
+            if resp.stop_reason != "end_turn":
+                print(f"[llm] batch {i // 6 + 1} stopped early: {resp.stop_reason}")
                 continue
             text = next(b.text for b in resp.content if b.type == "text")
             for s in json.loads(text)["items"]:
                 if s["id"] in by_id:
                     by_id[s["id"]].update(s)
-            print(f"[llm] batch {i // 10 + 1}: in={resp.usage.input_tokens} out={resp.usage.output_tokens}")
+            print(f"[llm] batch {i // 6 + 1}: in={resp.usage.input_tokens} out={resp.usage.output_tokens}")
         except Exception as ex:
-            print(f"[llm] batch {i // 10 + 1} failed: {ex}")
+            print(f"[llm] batch {i // 6 + 1} failed: {ex}")
     for it in items:
         fill_defaults(it)
     return items
