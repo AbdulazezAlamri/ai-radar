@@ -14,7 +14,7 @@
   :root {
     --bg: #0b0f17; --card: #121826; --card2: #182033; --text: #e8ecf4; --muted: #8b95a8;
     --line: #232c3d; --accent: #4f8cff; --accent2: #22c55e; --chip: #1c2538;
-    --tech: #4f8cff; --research: #a78bfa; --banking: #22c55e; --competition: #f59e0b; --vc: #ec4899; --poc: #06b6d4;
+    --models: #4f8cff; --tools: #06b6d4; --research: #a78bfa; --banking: #22c55e; --saudi: #10b981; --hackathon: #f59e0b; --funding: #ec4899; --poc: #facc15;
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
@@ -40,6 +40,7 @@
   .card.collapsing { height: 0 !important; opacity: 0; padding-top: 0; padding-bottom: 0; margin-top: -14px; border-width: 0; }
   .card::before { content: ""; position: absolute; inset-inline-start: 0; top: 0; bottom: 0; width: 4px; background: var(--c, var(--accent)); }
   .meta { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); flex-wrap: wrap; }
+  .pill.poc { --c: var(--poc); }
   .pill { padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; background: color-mix(in srgb, var(--c, var(--accent)) 18%, transparent); color: var(--c, var(--accent)); }
   .card h2 { font-size: 17px; margin: 10px 0 8px; line-height: 1.5; font-weight: 700; unicode-bidi: plaintext; }
   .card p { margin: 0; font-size: 15px; line-height: 1.8; color: #cfd6e4; unicode-bidi: plaintext; }
@@ -146,8 +147,11 @@ const REPO = (location.hostname.endsWith("github.io") && location.pathname.split
 document.getElementById("repo-link").href = `https://github.com/${REPO}`;
 const STATE_BRANCH = "state", STATE_FILE = "state.json";
 
-const PILLAR_AR = { poc: "فكرة POC", tech: "تقنية جديدة", research: "بحث", banking: "بنوك", competition: "مسابقة / جائزة", vc: "استثمار" };
-const COLORS = { poc: "var(--poc)", tech: "var(--tech)", research: "var(--research)", banking: "var(--banking)", competition: "var(--competition)", vc: "var(--vc)" };
+const PILLAR_AR = { models: "موديلات وتقنيات", tools: "أدوات وريبوهات", research: "أبحاث", banking: "بنوك ومال", saudi: "السعودية", hackathon: "هاكاثونات وجوائز", funding: "استثمار وصفقات" };
+const COLORS = Object.fromEntries(Object.keys(PILLAR_AR).map(k => [k, `var(--${k})`]));
+// days built before the 7-pillar scheme used: poc, tech, competition, vc
+const LEGACY = { poc: "tools", tech: "models", competition: "hackathon", vc: "funding" };
+const normPillar = p => LEGACY[p] || (PILLAR_AR[p] ? p : "models");
 
 let state = { tab: "feed", filter: "all", day: null, dates: [] };
 const ls = (k, v) => { try { return v === undefined ? JSON.parse(localStorage.getItem(k) || "null") : localStorage.setItem(k, JSON.stringify(v)); } catch { return null; } };
@@ -233,6 +237,7 @@ async function loadIndex() {
 async function loadDay(d) {
   const r = await fetch(`data/${d}.json`, { cache: "no-store" });
   state.day = await r.json();
+  (state.day.items || []).forEach(i => { if (LEGACY[i.pillar]) { i.poc = i.poc || i.pillar === "poc"; } i.pillar = normPillar(i.pillar); });
   renderFilters(); render();
 }
 function visibleItems() {
@@ -289,7 +294,7 @@ function cardHtml(it) {
   const other = titleOf(it, en ? "ar" : "en"); const orig = other !== title ? other : "";
   return `<article class="card" style="--c:${c}" data-id="${it.id}" data-lang="${lang}">
     <div class="meta">
-      <span class="pill">${PILLAR_AR[it.pillar] || it.pillar}</span>
+      <span class="pill">${PILLAR_AR[it.pillar] || it.pillar}</span>${it.poc ? `<span class="pill poc" title="يمكن تجربته">⚡ POC</span>` : ""}
       <span>${esc(it.source)}</span>
       <span>· ${ago(it.published)}</span>
       <span class="imp" title="الأهمية">${[1,2,3,4,5].map(n => `<i class="${n <= (it.importance || 3) ? "on" : ""}"></i>`).join("")}</span>
@@ -336,7 +341,7 @@ async function renderDeep() {
     document.getElementById("summary").innerHTML = `هذه المهام مفتوحة في GitHub Issues بوسم <b>deep-dive</b>. اكتب ملاحظاتك هناك وأغلق المهمة عند الانتهاء. <a href="https://github.com/${REPO}/issues?q=is%3Aissue+label%3Adeep-dive" target="_blank" style="color:var(--accent)">فتح كل القائمة</a>`;
     if (!issues.length) { feed.innerHTML = `<div class="empty">لا توجد مهام تعمّق مفتوحة.<br>اضغط "تعمّق" على أي بطاقة لإضافتها هنا.</div>`; return; }
     feed.innerHTML = issues.map(i => {
-      const p = (i.labels.map(l => l.name).find(n => PILLAR_AR[n])) || "tech";
+      const p = normPillar(i.labels.map(l => l.name).find(n => PILLAR_AR[n] || LEGACY[n]));
       return `<div class="issue" style="--c:${COLORS[p]}">
         <a href="${i.html_url}" target="_blank" rel="noopener">${esc(i.title.replace(/^\[تعمّق\]\s*/, ""))}</a>
         <div class="meta"><span class="pill">${PILLAR_AR[p]}</span><span>#${i.number}</span><span>· ${ago(i.created_at)}</span>${i.comments ? `<span>· ${i.comments} تعليق</span>` : ""}</div>

@@ -16,10 +16,11 @@ GH_TOKEN = os.environ.get("GITHUB_TOKEN")
 HEADERS = {"User-Agent": "ai-radar/1.0 (+github actions)"}
 
 PILLARS = {
-    "tech": "تقنيات جديدة", "research": "أبحاث", "github": "ريبوهات صاعدة",
-    "banking": "بنوك وذكاء اصطناعي", "saudi": "السعودية: مسابقات وجوائز", "vc": "استثمار",
+    "models": "موديلات وتقنيات", "tools": "أدوات وريبوهات", "research": "أبحاث", "banking": "بنوك ومال",
+    "saudi": "السعودية", "hackathon": "هاكاثونات وجوائز", "funding": "استثمار وصفقات",
 }
-DEFAULT_PILLAR = {"github": "tech", "saudi": "competition"}
+SOURCE_CAT = {"tech": "أخبار تقنية", "research": "أبحاث", "github": "ريبو GitHub صاعد", "banking": "بنوك", "saudi": "السعودية", "vc": "استثمار"}
+DEFAULT_PILLAR = {"tech": "models", "github": "tools", "research": "research", "banking": "banking", "saudi": "saudi", "vc": "funding"}
 
 
 def uid(s):
@@ -56,6 +57,7 @@ def fetch_rss():
             print(f"[rss] {src['name']} failed: {ex}")
             continue
         kws = [k.lower() for k in src.get("keywords", [])]
+        excl = [k.lower() for k in src.get("exclude", [])]
         n = 0
         for e in feed.entries[:40]:
             title = clean(e.get("title"), 200)
@@ -67,6 +69,8 @@ def fetch_rss():
                 continue
             text = (title + " " + clean(e.get("summary", ""))).lower()
             if kws and not any(k in text for k in kws):
+                continue
+            if excl and any(k in text for k in excl):
                 continue
             out.append({
                 "id": uid(link), "title": title, "url": link, "source": src["name"],
@@ -215,23 +219,66 @@ def semantic_dedupe(items):
 
 
 def cap(items):
-    lim = CFG["limits"]
+    """Pre-summarize cap per source category (keeps the LLM bill bounded)."""
+    lim = CFG["limits"]["pre"]
     by = {}
     for it in sorted(items, key=lambda x: x.get("published") or "", reverse=True):
         by.setdefault(it["category"], [])
         if len(by[it["category"]]) < lim.get(it["category"], 6):
             by[it["category"]].append(it)
-    return [it for cat in ["tech", "research", "github", "banking", "saudi", "vc"] for it in by.get(cat, [])]
+    return [it for cat in lim for it in by.get(cat, [])]
+
+
+def select(items):
+    """After scoring: drop low-relevance items, then cap per pillar by relevance and importance."""
+    lim, min_rel = CFG["limits"]["final"], CFG["limits"].get("min_relevance", 3)
+    for it in items:
+        if int(it.get("relevance", 3)) < min_rel:
+            print(f"[select] drop rel={it.get('relevance')} {it['pillar']:9} {it['title'][:70]}")
+    by = {}
+    for it in sorted(items, key=lambda x: (-int(x.get("relevance", 3)), -int(x.get("importance", 3)))):
+        if int(it.get("relevance", 3)) < min_rel:
+            continue
+        by.setdefault(it["pillar"], [])
+        if len(by[it["pillar"]]) < lim.get(it["pillar"], 6):
+            by[it["pillar"]].append(it)
+    return [it for p in PILLARS for it in by.get(p, [])]
 
 
 SYSTEM = """أنت محرر نشرة يومية لمهندس ذكاء اصطناعي يعمل في بنك سعودي. نطاق عمله: (1) ابتكار حلول وبناء POCs، (2) متابعة التقنيات والموديلات الجديدة، (3) كتابة أبحاث للنشر، (4) متابعة الاستثمار الجريء بشكل ثانوي.
-لكل عنصر اكتب النص مرتين: بالعربية الفصحى المبسطة وبالإنجليزية، بنفس المعنى:
+لكل عنصر أعد الحقول التالية:
 - title_ar / title_en: عنوان قصير وجذاب (أقل من 12 كلمة). أبقِ أسماء المنتجات والموديلات والريبوهات بالإنجليزية في النسختين.
 - summary_ar / summary_en: ملخص من 2 إلى 4 جمل يشرح ما الجديد فعلياً، بدون حشو.
-- why_ar / why_en: جملة واحدة: لماذا يهم هذا المهندس تحديداً (فكرة POC؟ تقنية تستحق التجربة؟ موضوع بحث؟ فرصة مسابقة؟).
+- why_ar / why_en: جملة واحدة: لماذا يهم هذا المهندس تحديداً.
 - tags: 2 إلى 4 وسوم قصيرة بالإنجليزية.
-- importance: رقم من 1 إلى 5 (5 = يجب ألا يفوته).
-- pillar: واحد من: poc, tech, research, banking, competition, vc.
+- importance: 1 إلى 5، حجم الخبر في عالم AI (5 = حدث كبير).
+- relevance: 0 إلى 5، مدى صلته بعمل هذا المهندس تحديداً. هذا الحقل هو بوابة النشر: ما تحت 3 لا يُنشر.
+- poc: true فقط إذا كان في العنصر شيء يمكنه تجربته أو بناؤه فعلاً خلال أيام (أداة، ريبو، API، تقنية جديدة لها استخدام في بنك). وإلا false.
+- pillar: التصنيف، واحد فقط من السبعة أدناه.
+
+التصنيفات (اختر حسب "ما هو الخبر"، لا حسب من نشره):
+- models: موديلات جديدة أو تحديثاتها، تقنيات وقدرات جديدة، إعلانات مختبرات AI التقنية، benchmarks، inference، agents. مثال: "Qwen يطلق موديل 27B"، "OpenAI تضيف ميزة memory".
+- tools: أدوات، مكتبات، ريبوهات GitHub، إصدارات برمجية، frameworks، MCP servers. مثال: "llm 0.37 released"، أي ريبو صاعد.
+- research: أوراق علمية، دراسات، تقارير بحثية، مؤتمرات أكاديمية. مثال: أي ورقة من Hugging Face Papers.
+- banking: استخدام AI في البنوك والمدفوعات والتمويل والاحتيال والامتثال والبنوك المركزية. مثال: "Goldman يمنع أدوات AI coding"، "دليل البنك المركزي حول AI".
+- saudi: أي خبر AI يخص السعودية أو الخليج: شركات، شراكات، SDAIA، HUMAIN، بنية تحتية، سياسات. مثال: "Aramco تستحوذ على حصة في HUMAIN"، "شراكة Tencent وOmniOps في السعودية".
+- hackathon: هاكاثونات ومسابقات وجوائز وتحديات يمكن للمهندس المشاركة فيها أو التقديم عليها. فقط هذا المعنى. مثال: "فتح التسجيل في هاكاثون المدينة للذكاء الاصطناعي".
+- funding: جولات تمويل، استحواذات، IPO، صفقات استثمار في شركات AI. مثال: "Trajectory ترفع 45 مليون دولار".
+
+قواعد حاسمة في التصنيف:
+- "منافسة" بين الشركات أو نمو الإيرادات أو تقييم شركة ليس hackathon أبداً. إيرادات Anthropic تذهب إلى funding أو models حسب المحتوى.
+- التسريحات، الدعاوى القضائية، بيع الأسهم، أرباح البنوك بدون AI، التصريحات العامة: ليست banking ولا funding. أعطها relevance منخفضاً.
+- أولوية saudi: إذا كان الخبر سعودياً أو خليجياً فهو saudi حتى لو كان صفقة، إلا الهاكاثونات والجوائز فتبقى hackathon.
+- ورقة بحثية عن AI في المال تذهب إلى research، وليس banking.
+
+معايير relevance (مهمة جداً):
+- 5: يجب ألا يفوته: موديل كبير جديد، أداة يستطيع تجربتها فوراً في عمله، خبر سعودي مهم، هاكاثون مفتوح للتسجيل.
+- 4: مهم لعمله أو أبحاثه بشكل مباشر.
+- 3: مفيد للاطلاع العام في مجال AI.
+- 2: هامشي: ميزة استهلاكية، خبر إقليمي خارج الخليج لا يؤثر عليه، نقاش رأي، تنبؤات.
+- 0 أو 1: لا يهمه إطلاقاً: رياضة، ترفيه، دعاية مؤتمرات وتذاكر، تسريحات، بيع أسهم، أخبار شركات عامة بلا محتوى تقني، توسيع منتج استهلاكي إلى سوق أو لغة خارج المنطقة العربية.
+أمثلة: "Google توسع تطبيق قصص AI إلى الهند بـ13 لغة هندية" تأخذ relevance 1. "جائزة أفضل مدرب في الدوري السعودي" تأخذ 0. "Oracle تبيع أسهماً بـ20 مليار" تأخذ 1. "Goldman يمنع المتداولين من AI coding tools" تأخذ 4. "ريبو agent framework وصل 3000 نجمة" تأخذ 4 مع poc true.
+
 قاعدة المصطلحات في النسخة العربية (مهمة جداً):
 - لا تترجم ولا تعرّب ولا تكتب بحروف عربية أي مصطلح تقني أو اسم أداة أو مكتبة أو إطار عمل أو موديل أو شركة أو مفهوم تقني. اكتبه بالإنجليزية كما هو داخل الجملة العربية، بدون أقواس ولا شرح مكرر.
 - يشمل ذلك مثلاً: RAG, fine-tuning, embeddings, transformer, inference, agent, benchmark, open-source, LLM, API, token, latency, prompt, dataset, GPU, LangChain, PyTorch, Hugging Face, Claude, GPT, Llama, MCP, vector database.
@@ -249,10 +296,10 @@ SCHEMA = {
             "id": {"type": "string"}, "title_ar": {"type": "string"}, "summary_ar": {"type": "string"},
             "why_ar": {"type": "string"}, "title_en": {"type": "string"}, "summary_en": {"type": "string"},
             "why_en": {"type": "string"}, "tags": {"type": "array", "items": {"type": "string"}},
-            "importance": {"type": "integer"},
-            "pillar": {"type": "string", "enum": ["poc", "tech", "research", "banking", "competition", "vc"]},
+            "importance": {"type": "integer"}, "relevance": {"type": "integer"}, "poc": {"type": "boolean"},
+            "pillar": {"type": "string", "enum": list(PILLARS)},
         },
-        "required": ["id", "title_ar", "summary_ar", "why_ar", "title_en", "summary_en", "why_en", "tags", "importance", "pillar"],
+        "required": ["id", "title_ar", "summary_ar", "why_ar", "title_en", "summary_en", "why_en", "tags", "importance", "relevance", "poc", "pillar"],
         "additionalProperties": False,
     }}},
     "required": ["items"], "additionalProperties": False,
@@ -268,7 +315,9 @@ def fill_defaults(it):
     it.setdefault("why_en", "")
     it.setdefault("tags", [])
     it.setdefault("importance", 3)
-    it.setdefault("pillar", DEFAULT_PILLAR.get(it["category"], it["category"]))
+    it.setdefault("relevance", 3)
+    it.setdefault("poc", False)
+    it.setdefault("pillar", DEFAULT_PILLAR.get(it["category"], "models"))
 
 
 def summarize(items):
@@ -282,7 +331,7 @@ def summarize(items):
     by_id = {it["id"]: it for it in items}
     for i in range(0, len(items), 6):
         batch = items[i:i + 6]
-        payload = [{"id": b["id"], "source": b["source"], "category": PILLARS[b["category"]],
+        payload = [{"id": b["id"], "source": b["source"], "source_type": SOURCE_CAT[b["category"]],
                     "title": b["title"], "text": b["snippet"]} for b in batch]
         try:
             resp = client.messages.create(
@@ -318,9 +367,9 @@ def main():
 
     items = fetch_rss() + fetch_hn() + fetch_github() + fetch_hf_papers()
     items = cap(semantic_dedupe(dedupe(items, set(seen))))
-    print(f"[total] {len(items)} items to summarize")
-    items = summarize(items)
-    items.sort(key=lambda x: -int(x.get("importance", 3)))
+    print(f"[total] {len(items)} candidates to score")
+    items = select(summarize(items))
+    items.sort(key=lambda x: (-int(x.get("relevance", 3)), -int(x.get("importance", 3))))
 
     day = {"date": TODAY, "generated_at": NOW.isoformat(), "count": len(items), "pillars": PILLARS, "items": items}
     (DATA / f"{TODAY}.json").write_text(json.dumps(day, ensure_ascii=False, indent=1), encoding="utf-8")
