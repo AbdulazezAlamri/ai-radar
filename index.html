@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f6f1ea" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#17130f" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#1a1511" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="manifest.json">
@@ -16,17 +16,17 @@
     /* Warm, low-saturation palette: four hue families encode category groups */
     --bg: #f6f1ea; --card: #fffdfa; --text: #2b2420; --text2: #4a403a; --muted: #7a6f66;
     --line: rgba(80,60,40,.16); --fill: rgba(120,95,70,.10); --fill2: rgba(120,95,70,.2);
-    --accent: #b8713a; --green: #7d9a6c; --red: #bf5f4a; --orange: #c7813a;
-    --models: #b8713a; --tools: #b8713a; --github: #b8713a; --research: #8f7a9b; --banking: #7d9a6c; --funding: #7d9a6c; --saudi: #bf5f4a; --hackathon: #bf5f4a; --poc: #b8891a;
+    --accent: #c67a3c; --green: #7d9a6c; --red: #bf5f4a; --orange: #cf8a3e;
+    --models: #c67a3c; --tools: #c67a3c; --github: #c67a3c; --research: #8f7a9b; --banking: #7d9a6c; --funding: #7d9a6c; --saudi: #bf5f4a; --hackathon: #bf5f4a; --poc: #c9931c;
     --bar: rgba(246,241,234,.86); --radius: 16px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #17130f; --card: #221c17; --text: #efe7dc; --text2: #d8cfc3; --muted: #a3978b;
-      --line: rgba(200,170,140,.18); --fill: rgba(220,190,160,.12); --fill2: rgba(220,190,160,.22);
-      --accent: #d9955e; --green: #93b081; --red: #d47660; --orange: #d99552;
-      --models: #d99552; --tools: #d99552; --github: #d99552; --research: #a893b5; --banking: #93b081; --funding: #93b081; --saudi: #d47660; --hackathon: #d47660; --poc: #e3b53a;
-      --bar: rgba(23,19,15,.84);
+      --bg: #1a1511; --card: #26201a; --text: #f5eee4; --text2: #ddd3c6; --muted: #aa9e91;
+      --line: rgba(210,180,150,.2); --fill: rgba(230,200,170,.14); --fill2: rgba(230,200,170,.26);
+      --accent: #eaa96a; --green: #9fbd8c; --red: #e0836c; --orange: #eaa75e;
+      --models: #eaa75e; --tools: #eaa75e; --github: #eaa75e; --research: #b8a3c6; --banking: #9fbd8c; --funding: #9fbd8c; --saudi: #e0836c; --hackathon: #e0836c; --poc: #f2c54a;
+      --bar: rgba(26,21,17,.84);
     }
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -80,7 +80,7 @@
   .card.collapsing { height: 0 !important; opacity: 0; padding-top: 0; padding-bottom: 0; margin-top: -12px; }
   .card::before { content: ""; position: absolute; inset-inline-start: 0; top: 14px; bottom: 14px; width: 3px; border-radius: 3px; background: var(--c, var(--accent)); }
   .meta { display: flex; align-items: center; gap: 8px; font-size: 0.8125rem; color: var(--muted); flex-wrap: wrap; }
-  .pill { padding: 3px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; background: color-mix(in srgb, var(--c, var(--accent)) 16%, transparent); color: var(--c, var(--accent)); }
+  .pill { padding: 3px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; background: color-mix(in srgb, var(--c, var(--accent)) 20%, transparent); color: var(--c, var(--accent)); }
   .pill.poc { --c: var(--poc); }
   .card h2 { font-size: 1.0625rem; margin: 10px 0 6px; line-height: 1.45; font-weight: 600; unicode-bidi: plaintext; }
   .card p { margin: 0; font-size: 0.9375rem; line-height: 1.7; color: var(--text2); unicode-bidi: plaintext; }
