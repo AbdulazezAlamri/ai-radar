@@ -3,9 +3,15 @@
   "short_name": "AI Radar",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#0b0f17",
-  "theme_color": "#0b0f17",
+  "background_color": "#17130f",
+  "theme_color": "#17130f",
   "dir": "rtl",
   "lang": "ar",
-  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
 }
