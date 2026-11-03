@@ -18,7 +18,7 @@
     --line: rgba(80,60,40,.16); --fill: rgba(120,95,70,.10); --fill2: rgba(120,95,70,.2);
     --accent: #c67a3c; --green: #7d9a6c; --red: #bf5f4a; --orange: #cf8a3e;
     --models: #c67a3c; --tools: #c67a3c; --github: #c67a3c; --research: #8f7a9b; --banking: #7d9a6c; --funding: #7d9a6c; --saudi: #bf5f4a; --hackathon: #bf5f4a; --poc: #c9931c;
-    --bar: rgba(246,241,234,.86); --radius: 16px;
+    --bar: #f6f1ea; --radius: 16px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -26,7 +26,7 @@
       --line: rgba(215,185,155,.22); --fill: rgba(235,205,175,.16); --fill2: rgba(235,205,175,.28);
       --accent: #f2b676; --green: #a9c796; --red: #e88f78; --orange: #f2b46a;
       --models: #f2b46a; --tools: #f2b46a; --github: #f2b46a; --research: #c4b0d2; --banking: #a9c796; --funding: #a9c796; --saudi: #e88f78; --hackathon: #e88f78; --poc: #f7cf5e;
-      --bar: rgba(31,25,21,.84);
+      --bar: #1f1915;
     }
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -39,7 +39,7 @@
   [dir="rtl"] .flip { transform: scaleX(-1); }
 
   /* Toolbar: title leading, date + language + More trailing (HIG Toolbars: item groupings) */
-  header { position: sticky; top: 0; z-index: 10; background: var(--bar); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+  header { position: sticky; top: 0; z-index: 10; background: var(--bar); 
     border-bottom: 1px solid var(--line); padding: calc(8px + env(safe-area-inset-top)) 16px 0; }
   .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 44px; }
   h1 { font-size: 1.375rem; margin: 0; font-weight: 700; line-height: 1.2; }
@@ -128,7 +128,7 @@
   .stub .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: 0 0 auto; }
 
   /* Bottom tab bar (HIG Tab bars: navigation between peer sections, symbol + label) */
-  .tabbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 20; display: flex; background: var(--bar); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+  .tabbar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 20; display: flex; background: var(--bar); 
     border-top: 1px solid var(--line); padding: 6px 0 calc(6px + env(safe-area-inset-bottom)); }
   .tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; min-height: 44px; padding: 4px 0; border: 0; background: none; color: var(--muted); font-size: 0.625rem; font-weight: 500; cursor: pointer; }
   .tab svg { width: 26px; height: 26px; }
@@ -140,7 +140,7 @@
   .toast button { background: none; border: 0; color: var(--accent); font: inherit; font-weight: 600; cursor: pointer; min-height: 32px; }
 
   dialog { background: var(--card); color: var(--text); border: 0; border-radius: var(--radius); padding: 20px; max-width: 420px; width: calc(100% - 32px); box-shadow: 0 20px 60px rgba(0,0,0,.35); }
-  dialog::backdrop { background: rgba(0,0,0,.4); backdrop-filter: blur(6px); }
+  dialog::backdrop { background: rgba(0,0,0,.45); }
   dialog h3 { margin: 0 0 8px; font-size: 1.0625rem; }
   dialog p { font-size: 0.9375rem; line-height: 1.7; color: var(--text2); margin: 0 0 6px; }
   dialog input { width: 100%; background: var(--fill); color: var(--text); border: 0; border-radius: 10px; padding: 11px 12px; font: inherit; direction: ltr; margin: 8px 0; min-height: 44px; }
