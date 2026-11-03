@@ -45,7 +45,8 @@
   .card p { margin: 0; font-size: 15px; line-height: 1.8; color: #cfd6e4; unicode-bidi: plaintext; }
   .card[data-lang="ar"] h2, .card[data-lang="ar"] p { direction: rtl; text-align: right; }
   .stub .t { unicode-bidi: plaintext; }
-  .lt { unicode-bidi: isolate; direction: ltr; white-space: nowrap; }
+  .lt { unicode-bidi: isolate; direction: ltr; }
+  .lt.nb { white-space: nowrap; }
   .why { margin-top: 10px !important; font-size: 14px !important; color: var(--muted) !important; border-inline-start: 2px solid var(--line); padding-inline-start: 10px; }
   .tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
   .tag { font-size: 11px; color: var(--muted); background: var(--chip); padding: 2px 8px; border-radius: 6px; direction: ltr; }
@@ -172,7 +173,8 @@ function setFlag(kind, id, v) { S[kind][id] = { v, t: Date.now() }; ls("state2",
 
 const esc = s => (s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 // Wrap Latin terms inside Arabic text so each stays in one piece and in reading order
-const rich = s => esc(s).replace(/[A-Za-z][A-Za-z0-9.\-_/+#]*[A-Za-z0-9+#]|[A-Za-z]/g, m => m.length <= 28 ? `<span class="lt">${m}</span>` : m);
+const rich = s => esc(s).replace(/[A-Za-z0-9][A-Za-z0-9 .\-_/+#]*[A-Za-z0-9+#]|[A-Za-z0-9]/g,
+  m => /[A-Za-z]/.test(m) ? `<span class="lt${m.length <= 20 && !m.includes(" ") ? " nb" : ""}">${m}</span>` : m);
 const ago = iso => { if (!iso) return ""; const h = Math.round((Date.now() - new Date(iso)) / 36e5); return h < 1 ? "الآن" : h < 24 ? `قبل ${h} س` : `قبل ${Math.round(h / 24)} ي`; };
 const b64enc = s => { const b = new TextEncoder().encode(s); let out = ""; b.forEach(c => out += String.fromCharCode(c)); return btoa(out); };
 const b64dec = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g, "")), c => c.charCodeAt(0)));
