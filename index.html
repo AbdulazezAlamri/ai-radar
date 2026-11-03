@@ -53,6 +53,10 @@
   .btn.done { background: var(--chip); color: var(--muted); }
   .lang-btn { background: var(--chip); color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 3px 9px; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; direction: ltr; margin-inline-start: auto; }
   .lang-btn.en { color: var(--accent); border-color: var(--accent); }
+  .spk { background: var(--chip); color: var(--muted); border: 1px solid var(--line); border-radius: 8px; padding: 3px 9px; font: inherit; font-size: 13px; cursor: pointer; }
+  .spk.playing, #play-all.playing { color: #7ee2a3; border-color: #1f5a37; background: #14301f; }
+  .card.speaking { border-color: #1f5a37; box-shadow: 0 0 0 1px #1f5a37 inset; }
+  .nospeech, .no-speech .spk { display: none; }
   .card[data-lang="en"] h2, .card[data-lang="en"] p:not(.why), .card[data-lang="en"] .why { direction: ltr; text-align: left; }
   .card[data-lang="en"] .why { border-inline-start: 0; border-left: 2px solid var(--line); padding-inline-start: 0; padding-left: 10px; }
   .imp { display: inline-flex; gap: 1px; }
@@ -72,6 +76,7 @@
   <div class="top">
     <h1>رادار الذكاء الاصطناعي <small id="count"></small></h1>
     <div style="display:flex;gap:8px;align-items:center">
+      <button class="lang-btn" id="play-all" title="استمع للنشرة كاملة">▶ استمع</button>
       <button class="lang-btn" id="global-lang" title="لغة العرض">EN</button>
       <select id="date"></select>
     </div>
@@ -157,13 +162,14 @@ function render() {
     const summary = en ? (it.summary_en || it.snippet || it.title) : it.summary_ar;
     const why = en ? (it.why_en || "") : (it.why_ar || "");
     const orig = en ? (it.title_ar && it.title_ar !== title ? it.title_ar : "") : (it.title_en || it.title) !== title ? (it.title_en || it.title) : "";
-    return `<article class="card ${isRead ? "read" : ""}" style="--c:${c}" data-id="${it.id}" data-lang="${lang}">
+    return `<article class="card ${isRead ? "read" : ""} ${speech.current === it.id ? "speaking" : ""}" style="--c:${c}" data-id="${it.id}" data-lang="${lang}">
       <div class="meta">
         <span class="pill">${PILLAR_AR[it.pillar] || it.pillar}</span>
         <span>${esc(it.source)}</span>
         <span>· ${ago(it.published)}</span>
         <span class="imp" title="الأهمية">${[1,2,3,4,5].map(n => `<i class="${n <= (it.importance || 3) ? "on" : ""}"></i>`).join("")}</span>
         <button class="lang-btn ${en ? "en" : ""}" data-act="lang" title="${en ? "اعرض بالعربي" : "Show in English"}">${en ? "ع" : "EN"}</button>
+        <button class="spk ${speech.current === it.id ? "playing" : ""}" data-act="speak" title="استمع">${speech.current === it.id ? "■" : "🔊"}</button>
       </div>
       <h2>${esc(title)}</h2>
       <p>${esc(summary)}</p>
@@ -178,6 +184,7 @@ function render() {
   }).join("");
   feed.querySelectorAll("[data-act]").forEach(a => a.addEventListener("click", e => {
     const id = a.closest(".card").dataset.id;
+    if (a.dataset.act === "speak") { speech.toggle(id); return; }
     if (a.dataset.act === "lang") {
       const cur = cardLang[id] || globalLang;
       cardLang[id] = cur === "en" ? "ar" : "en";
@@ -209,6 +216,71 @@ async function renderDeep() {
   } catch (e) {
     feed.innerHTML = `<div class="empty">تعذر تحميل Issues (ربما حد الطلبات).<br><a href="https://github.com/${REPO}/issues?q=is%3Aissue+label%3Adeep-dive" target="_blank" style="color:var(--accent)">افتحها في GitHub</a></div>`;
   }
+}
+
+// ---------- Speech (Web Speech API, on-device voices) ----------
+const speech = {
+  current: null, queue: [], voices: [],
+  ok: "speechSynthesis" in window && "SpeechSynthesisUtterance" in window,
+  loadVoices() { this.voices = speechSynthesis.getVoices(); },
+  pickVoice(lang) {
+    const want = lang === "en" ? /^en/i : /^ar/i;
+    const vs = this.voices.filter(v => want.test(v.lang));
+    if (!vs.length) return null;
+    // Prefer Saudi / premium / enhanced voices when available
+    const score = v => (lang === "ar" && /sa/i.test(v.lang) ? 4 : 0) + (/premium|enhanced|natural|neural/i.test(v.name) ? 3 : 0)
+      + (/siri|google|microsoft/i.test(v.name) ? 1 : 0) + (v.localService ? 1 : 0);
+    return vs.sort((a, b) => score(b) - score(a))[0];
+  },
+  textFor(it) {
+    const lang = cardLang[it.id] || globalLang, en = lang === "en";
+    const parts = en ? [it.title_en || it.title, it.summary_en || it.snippet || "", it.why_en || ""]
+                     : [it.title_ar || it.title, it.summary_ar || "", it.why_ar || ""];
+    return { lang, text: parts.filter(Boolean).join(". ").replace(/\s+/g, " ") };
+  },
+  speak(it, onend) {
+    const { lang, text } = this.textFor(it);
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = lang === "en" ? "en-US" : "ar-SA";
+    const v = this.pickVoice(lang); if (v) u.voice = v;
+    u.rate = 1.0; u.pitch = 1.0;
+    u.onend = u.onerror = () => { if (this.current === it.id) { this.current = null; onend && onend(); refreshSpeechUI(); } };
+    this.current = it.id; refreshSpeechUI();
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  },
+  stop() { this.queue = []; this.current = null; speechSynthesis.cancel(); refreshSpeechUI(); },
+  toggle(id) {
+    if (this.current === id) return this.stop();
+    const it = (state.day?.items || []).find(x => x.id === id); if (!it) return;
+    this.queue = []; this.speak(it);
+  },
+  playAll() {
+    if (this.queue.length || this.current) return this.stop();
+    const items = (state.day?.items || []).filter(i => state.filter === "all" || i.pillar === state.filter);
+    this.queue = items.slice();
+    const next = () => { const it = this.queue.shift(); if (!it) return refreshSpeechUI();
+      document.querySelector(`.card[data-id="${it.id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+      this.speak(it, next); };
+    next();
+  },
+};
+function refreshSpeechUI() {
+  document.querySelectorAll(".card").forEach(c => {
+    const on = c.dataset.id === speech.current;
+    c.classList.toggle("speaking", on);
+    const b = c.querySelector('[data-act="speak"]'); if (b) { b.classList.toggle("playing", on); b.textContent = on ? "■" : "🔊"; }
+  });
+  const pa = document.getElementById("play-all"); const busy = !!(speech.current || speech.queue.length);
+  pa.classList.toggle("playing", busy); pa.textContent = busy ? "■ إيقاف" : "▶ استمع";
+}
+if (speech.ok) {
+  speech.loadVoices();
+  speechSynthesis.onvoiceschanged = () => speech.loadVoices();
+  document.getElementById("play-all").onclick = () => speech.playAll();
+  window.addEventListener("pagehide", () => speechSynthesis.cancel());
+} else {
+  document.getElementById("play-all").classList.add("nospeech");
+  document.documentElement.classList.add("no-speech");
 }
 
 function paintGlobalLang() {
