@@ -159,6 +159,55 @@ def dedupe(items, seen_ids):
         out.append(it)
     return out
 
+DEDUPE_SCHEMA = {
+    "type": "object",
+    "properties": {"drop": {"type": "array", "items": {"type": "string"}}},
+    "required": ["drop"], "additionalProperties": False,
+}
+
+
+def recent_titles(days=7):
+    out = []
+    for p in sorted(DATA.glob("20??-??-??.json"), reverse=True)[:days]:
+        if p.stem == TODAY:
+            continue
+        for it in json.loads(p.read_text(encoding="utf-8")).get("items", []):
+            out.append(it.get("title_en") or it.get("title") or "")
+    return [t for t in out if t][:200]
+
+
+def semantic_dedupe(items):
+    """One cheap model call on titles: drop items that cover a story already in today's list or published recently."""
+    if NO_LLM or not os.environ.get("ANTHROPIC_API_KEY") or len(items) < 2:
+        return items
+    import anthropic
+    cands = [{"id": it["id"], "title": it["title"], "source": it["source"], "has_text": len(it.get("snippet") or "") > 80}
+             for it in items[:200]]
+    payload = {"candidates": cands, "published_recently": recent_titles()}
+    prompt = (
+        "You deduplicate a daily AI news feed. Two items are the SAME STORY when they report the same event, deal, "
+        "release or announcement, even in different languages or from different outlets. "
+        "Return the ids to DROP: "
+        "1. Among candidates covering the same story, keep exactly one (prefer has_text=true, then the more specific title) and drop the rest. "
+        "2. Drop any candidate whose story already appears in published_recently. "
+        "Different stories about the same company or topic are NOT duplicates. When unsure, keep. "
+        + json.dumps(payload, ensure_ascii=False)
+    )
+    try:
+        resp = anthropic.Anthropic().messages.create(
+            model="claude-haiku-5-5", max_tokens=2000,
+            messages=[{"role": "user", "content": prompt}],
+            output_config={"format": {"type": "json_schema", "schema": DEDUPE_SCHEMA}},
+        )
+        text = next(b.text for b in resp.content if b.type == "text")
+        drop = set(json.loads(text)["drop"])
+        kept = [it for it in items if it["id"] not in drop]
+        print(f"[dedupe] model dropped {len(items) - len(kept)} near-duplicates (in={resp.usage.input_tokens} out={resp.usage.output_tokens})")
+        return kept
+    except Exception as ex:
+        print(f"[dedupe] model step failed, keeping all: {ex}")
+        return items
+
 
 def cap(items):
     lim = CFG["limits"]
@@ -263,7 +312,7 @@ def main():
             seen.pop(it["id"], None)
 
     items = fetch_rss() + fetch_hn() + fetch_github() + fetch_hf_papers()
-    items = cap(dedupe(items, set(seen)))
+    items = cap(semantic_dedupe(dedupe(items, set(seen))))
     print(f"[total] {len(items)} items to summarize")
     items = summarize(items)
     items.sort(key=lambda x: -int(x.get("importance", 3)))
