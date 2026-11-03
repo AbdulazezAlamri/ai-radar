@@ -156,7 +156,7 @@
 <body>
 <header>
   <div class="top">
-    <div><h1>الرادار</h1><div class="sub" id="count"></div></div>
+    <div><h1 dir="ltr" style="text-align:start">AI Radar</h1><div class="sub" id="count"></div></div>
     <div class="tools">
       <select id="date" aria-label="اختر اليوم"></select>
       <button class="ib" id="global-lang" aria-label="لغة العرض">EN</button>
@@ -206,6 +206,8 @@ const I = {
   undo: '<svg class="sym flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14L4 9l5-5"/><path d="M4 9h9.5a5.5 5.5 0 0 1 0 11H10"/></svg>',
 };
 const PILLAR_AR = { models: "موديلات", tools: "أدوات", github: "GitHub", research: "أبحاث", banking: "بنوك", saudi: "السعودية", hackathon: "مسابقات", funding: "صفقات" };
+const PILLAR_EN = { models: "Models", tools: "Tools", github: "GitHub", research: "Research", banking: "Banking", saudi: "Saudi", hackathon: "Contests", funding: "Deals" };
+const pname = (k, lang) => ((lang || globalLang) === "en" ? PILLAR_EN : PILLAR_AR)[k] || k;
 const COLORS = Object.fromEntries(Object.keys(PILLAR_AR).map(k => [k, `var(--${k})`]));
 // days built before the 7-pillar scheme used: poc, tech, competition, vc
 const LEGACY = { poc: "tools", tech: "models", competition: "hackathon", vc: "funding" };
@@ -307,9 +309,9 @@ function renderFilters() {
   const f = document.getElementById("filters"); const counts = {};
   (state.day?.items || []).filter(i => !flag("read", i.id)).forEach(i => counts[i.pillar] = (counts[i.pillar] || 0) + 1);
   const total = Object.values(counts).reduce((a, b) => a + b, 0);
-  f.innerHTML = [`<button class="chip" aria-pressed="${state.filter === "all"}" data-f="all">الكل ${total}</button>`]
+  f.innerHTML = [`<button class="chip" aria-pressed="${state.filter === "all"}" data-f="all">${globalLang === "en" ? "All" : "الكل"} ${total}</button>`]
     .concat(Object.keys(PILLAR_AR).filter(k => counts[k]).map(k =>
-      `<button class="chip" aria-pressed="${state.filter === k}" data-f="${k}">${PILLAR_AR[k]} ${counts[k]}</button>`)).join("");
+      `<button class="chip" aria-pressed="${state.filter === k}" data-f="${k}">${pname(k)} ${counts[k]}</button>`)).join("");
   f.querySelectorAll(".chip").forEach(c => c.onclick = () => { state.filter = c.dataset.f; renderFilters(); render(); });
 }
 function issueUrl(it) {
@@ -327,7 +329,7 @@ function render() {
   if (state.tab === "deep") { box.innerHTML = ""; return renderDeep(); }
   const all = visibleItems();
   const items = all.filter(i => !flag("read", i.id)), done = all.filter(i => flag("read", i.id));
-  document.getElementById("count").textContent = state.day ? `${items.length} متبقي` : "";
+  document.getElementById("count").textContent = state.day ? (globalLang === "en" ? `${items.length} left` : `${items.length} متبقي`) : "";
   feed.innerHTML = items.length ? items.map(cardHtml).join("")
     : `<div class="empty">${all.length ? "قرأت كل شيء في هذا التصنيف ✓" : "لا توجد عناصر في هذا التصنيف اليوم."}</div>`;
   box.innerHTML = done.length ? `<details class="readbox" ${state.readOpen ? "open" : ""}><summary><span>المقروء (${done.length})</span></summary>
@@ -354,7 +356,7 @@ function cardHtml(it) {
   const other = titleOf(it, en ? "ar" : "en"); const orig = other !== title ? other : "";
   return `<article class="card" style="--c:${c}" data-id="${it.id}" data-lang="${lang}">
     <div class="meta">
-      <span class="pill">${PILLAR_AR[it.pillar] || it.pillar}</span>${it.poc ? `<span class="pill poc" title="يمكن تجربته">⚡ POC</span>` : ""}
+      <span class="pill">${pname(it.pillar, lang)}</span>${it.poc ? `<span class="pill poc" title="يمكن تجربته">⚡ POC</span>` : ""}
       <span>${esc(it.source)}</span>
       <span>· ${ago(it.published)}</span>
       <span class="imp" title="الأهمية">${[1,2,3,4,5].map(n => `<i class="${n <= (it.importance || 3) ? "on" : ""}"></i>`).join("")}</span>
@@ -404,7 +406,7 @@ async function renderDeep() {
       const p = normPillar(i.labels.map(l => l.name).find(n => PILLAR_AR[n] || LEGACY[n]));
       return `<div class="issue" style="--c:${COLORS[p]}">
         <a href="${i.html_url}" target="_blank" rel="noopener">${esc(i.title.replace(/^\[تعمّق\]\s*/, ""))}</a>
-        <div class="meta"><span class="pill">${PILLAR_AR[p]}</span><span>#${i.number}</span><span>· ${ago(i.created_at)}</span>${i.comments ? `<span>· ${i.comments} تعليق</span>` : ""}</div>
+        <div class="meta"><span class="pill">${pname(p)}</span><span>#${i.number}</span><span>· ${ago(i.created_at)}</span>${i.comments ? `<span>· ${i.comments} تعليق</span>` : ""}</div>
       </div>`;
     }).join("");
   } catch (e) {
@@ -462,7 +464,7 @@ if (speech.ok) {
 
 // ---------- Header controls ----------
 function paintGlobalLang() { const b = document.getElementById("global-lang"); b.textContent = globalLang === "en" ? "ع" : "EN"; b.classList.toggle("on", globalLang === "en"); }
-document.getElementById("global-lang").onclick = () => { globalLang = globalLang === "en" ? "ar" : "en"; cardLang = {}; ls("lang", globalLang); paintGlobalLang(); render(); };
+document.getElementById("global-lang").onclick = () => { globalLang = globalLang === "en" ? "ar" : "en"; cardLang = {}; ls("lang", globalLang); paintGlobalLang(); renderFilters(); render(); };
 paintGlobalLang();
 document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
   document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", x === t));
