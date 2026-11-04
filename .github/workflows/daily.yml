@@ -46,4 +46,5 @@ jobs:
           git config user.email "actions@github.com"
           git add data/
           git diff --cached --quiet || git commit -m "radar: $(date -u +%Y-%m-%d)"
+          git pull --rebase origin main
           git push
