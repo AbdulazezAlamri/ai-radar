@@ -149,6 +149,9 @@
   footer { text-align: center; color: var(--muted); font-size: 0.75rem; padding: 8px 20px 20px; }
   footer a { color: var(--muted); }
 
+  .guest .tabbar, .guest [data-act="deep"] { display: none; }
+  .guest main { padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
+  .guest .toast { bottom: calc(18px + env(safe-area-inset-bottom)); }
   @media (prefers-reduced-motion: reduce) {
     .card, .toast, .readbox summary::after { transition: none !important; }
   }
@@ -282,6 +285,12 @@ const sync = {
 };
 function paintSync() {
   document.getElementById("more-btn").className = "ib more s-" + sync.status;
+  // Deep dives write Issues to the owner's repo, so only show them on devices that hold the token
+  document.body.classList.toggle("guest", !sync.token);
+  if (!sync.token && state.tab === "deep") {
+    state.tab = "feed"; document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", x.dataset.tab === "feed"));
+    document.getElementById("filters").style.display = ""; render();
+  }
   const msg = sync.token ? (sync.msg || "جاهز") : "لا يوجد توكن على هذا الجهاز";
   document.getElementById("sync-status").textContent = msg;
   document.getElementById("menu-sync").textContent = sync.token ? (sync.status === "ok" ? "متزامن" : sync.status === "error" ? "خطأ" : "…") : "غير مفعّلة";
